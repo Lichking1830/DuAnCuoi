@@ -4,10 +4,22 @@
  */
 package Service;
 
+import DomainModel.NSX;
+import java.util.List;
+
 /**
  *
  * @author admin
  */
 public interface NSXService {
-    
+
+    List<NSX> getAll();
+
+    NSX getOne(String tenNSX);
+
+    String delete(String idNSX);
+
+    String add(NSX nsx);
+
+    String update(NSX nsx, String idNSX);
 }
