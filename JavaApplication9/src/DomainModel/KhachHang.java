@@ -13,7 +13,7 @@ public class KhachHang {
     private String ID;
     private String maKhachHang;
     private String hoVaTen;
-    private int ngaySinh;
+    private String ngaySinh;
     private String CCCD;
     private String diaChi;
     private String gioiTinh;
@@ -22,7 +22,7 @@ public class KhachHang {
     public KhachHang() {
     }
 
-    public KhachHang(String ID, String maKhachHang, String hoVaTen, int ngaySinh, String CCCD, String diaChi, String gioiTinh, String queQuan) {
+    public KhachHang(String ID, String maKhachHang, String hoVaTen,  String ngaySinh, String CCCD, String diaChi, String gioiTinh, String queQuan) {
         this.ID = ID;
         this.maKhachHang = maKhachHang;
         this.hoVaTen = hoVaTen;
@@ -57,11 +57,11 @@ public class KhachHang {
         this.hoVaTen = hoVaTen;
     }
 
-    public int getNgaySinh() {
+    public  String getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(int ngaySinh) {
+    public void setNgaySinh( String ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
