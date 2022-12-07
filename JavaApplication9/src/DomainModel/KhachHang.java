@@ -16,13 +16,13 @@ public class KhachHang {
     private int ngaySinh;
     private String CCCD;
     private String diaChi;
-    private boolean gioiTinh;
+    private String gioiTinh;
     private String queQuan;
 
     public KhachHang() {
     }
 
-    public KhachHang(String ID, String maKhachHang, String hoVaTen, int ngaySinh, String CCCD, String diaChi, boolean gioiTinh, String queQuan) {
+    public KhachHang(String ID, String maKhachHang, String hoVaTen, int ngaySinh, String CCCD, String diaChi, String gioiTinh, String queQuan) {
         this.ID = ID;
         this.maKhachHang = maKhachHang;
         this.hoVaTen = hoVaTen;
@@ -81,11 +81,11 @@ public class KhachHang {
         this.diaChi = diaChi;
     }
 
-    public boolean isGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(boolean gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
@@ -97,12 +97,4 @@ public class KhachHang {
         this.queQuan = queQuan;
     }
 
-    @Override
-    public String toString() {
-        return "Khach_Hang{" + "ID=" + ID + ", maKhachHang=" + maKhachHang + ", hoVaTen=" + hoVaTen + ", ngaySinh=" + ngaySinh + ", CCCD=" + CCCD + ", diaChi=" + diaChi + ", gioiTinh=" + gioiTinh + ", queQuan=" + queQuan + '}';
-    }
-
-    public Object[] showdata() {
-        return new Object[]{ID, maKhachHang, hoVaTen, ngaySinh, CCCD, diaChi, gioiTinh, queQuan};
-    }
 }

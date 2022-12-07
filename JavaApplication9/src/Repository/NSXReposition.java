@@ -23,7 +23,8 @@ public class NSXReposition {
                 + "      ,[Ma]\n"
                 + "      ,[Ten]\n"
                 + "  FROM [dbo].[NSX]";
-        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(query)) {
             List<NSX> listNSX = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -43,7 +44,8 @@ public class NSXReposition {
                 + "      ,[Ten]\n"
                 + "  FROM [dbo].[NSX]\n"
                 + "  WHERE Ten like ?";
-        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, tenNSX);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -63,7 +65,8 @@ public class NSXReposition {
                 + "     VALUES\n"
                 + "           (?,?)";
         int check = 0;
-        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, nsx.getMaNSX());
             ps.setObject(2, nsx.getTenNSX());
             check = ps.executeUpdate();
@@ -79,7 +82,8 @@ public class NSXReposition {
                 + "      ,[Ten] = ?"
                 + " WHERE Id like ?";
         int check = 0;
-        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, nsx.getMaNSX());
             ps.setObject(2, nsx.getTenNSX());
             ps.setObject(3, idNSX);
@@ -94,7 +98,8 @@ public class NSXReposition {
         String query = "DELETE FROM [dbo].[NSX]\n"
                 + "      WHERE Id like ?";
         int check = 0;
-        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, idNSX);
             check = ps.executeUpdate();
         } catch (Exception e) {

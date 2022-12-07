@@ -14,10 +14,10 @@ public class NhanVien {
     private ChucVu chucVu;
     private String maNV;
     private String hoTen;
-    private int ngaySinh;
-    private boolean gioiTinh;
+    private String ngaySinh;
+    private String gioiTinh;
     private String diaChi;
-    private int SDT;
+    private String SDT;
     private String tenTK;
     private String matKhau;
     private int trangThai;
@@ -25,7 +25,7 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String ID, ChucVu chucVu, String maNV, String hoTen, int ngaySinh, boolean gioiTinh, String diaChi, int SDT, String tenTK, String matKhau, int trangThai) {
+    public NhanVien(String ID, ChucVu chucVu, String maNV, String hoTen, String ngaySinh, String gioiTinh, String diaChi, String SDT, String tenTK, String matKhau, int trangThai) {
         this.ID = ID;
         this.chucVu = chucVu;
         this.maNV = maNV;
@@ -71,19 +71,19 @@ public class NhanVien {
         this.hoTen = hoTen;
     }
 
-    public int getNgaySinh() {
+    public String getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(int ngaySinh) {
+    public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
-    public boolean isGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(boolean gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
@@ -95,11 +95,11 @@ public class NhanVien {
         this.diaChi = diaChi;
     }
 
-    public int getSDT() {
+    public String getSDT() {
         return SDT;
     }
 
-    public void setSDT(int SDT) {
+    public void setSDT(String SDT) {
         this.SDT = SDT;
     }
 

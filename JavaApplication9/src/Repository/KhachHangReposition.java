@@ -9,5 +9,4 @@ package Repository;
  * @author admin
  */
 public class KhachHangReposition {
-    
 }

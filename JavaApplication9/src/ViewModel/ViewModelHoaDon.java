@@ -17,14 +17,14 @@ public class ViewModelHoaDon {
     private KhachHang khachHang;
     private NhanVien nhanVien;
     private String maHD;
-    private int ngayTao;
-    private int ngayThanhToan;
+    private String ngayTao;
+    private String ngayThanhToan;
     private int tinhTrang;
 
     public ViewModelHoaDon() {
     }
 
-    public ViewModelHoaDon(String ID, KhachHang khachHang, NhanVien nhanVien, String maHD, int ngayTao, int ngayThanhToan, int tinhTrang) {
+    public ViewModelHoaDon(String ID, KhachHang khachHang, NhanVien nhanVien, String maHD, String ngayTao, String ngayThanhToan, int tinhTrang) {
         this.ID = ID;
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
@@ -66,19 +66,19 @@ public class ViewModelHoaDon {
         this.maHD = maHD;
     }
 
-    public int getNgayTao() {
+    public String getNgayTao() {
         return ngayTao;
     }
 
-    public void setNgayTao(int ngayTao) {
+    public void setNgayTao(String ngayTao) {
         this.ngayTao = ngayTao;
     }
 
-    public int getNgayThanhToan() {
+    public String getNgayThanhToan() {
         return ngayThanhToan;
     }
 
-    public void setNgayThanhToan(int ngayThanhToan) {
+    public void setNgayThanhToan(String ngayThanhToan) {
         this.ngayThanhToan = ngayThanhToan;
     }
 

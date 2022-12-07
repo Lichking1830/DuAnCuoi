@@ -23,7 +23,8 @@ public class SanPhamReposition {
                 + "      ,[Ma]\n"
                 + "      ,[Ten]\n"
                 + "  FROM [dbo].[SanPham]";
-        try (Connection conn = SQLConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(query)) {
             List<SanPham> listSP = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -60,7 +61,8 @@ public class SanPhamReposition {
         String query = "DELETE FROM [dbo].[SanPham]\n"
                 + "      WHERE Id like ?";
         int check = 0;
-        try (Connection conn = SQLConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection(); 
+                PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, idSP);
             check = ps.executeUpdate();
         } catch (Exception e) {
@@ -75,7 +77,8 @@ public class SanPhamReposition {
                 + "      ,[Ten] = ?"
                 + " WHERE SanPham.Id like ?";
         int check = 0;
-        try (Connection conn = SQLConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection(); 
+                PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, vmsp.getMaSP());
             ps.setObject(2, vmsp.getTenSP());
             ps.setObject(3, idSP);
@@ -93,7 +96,8 @@ public class SanPhamReposition {
                 + "     VALUES\n"
                 + "           (?,?)";
         int check = 0;
-        try (Connection conn = SQLConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection(); 
+                PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, sp.getMaSP());
             ps.setObject(2, sp.getTenSP());
             check = ps.executeUpdate();
