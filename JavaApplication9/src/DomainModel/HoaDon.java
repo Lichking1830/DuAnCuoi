@@ -2,13 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ViewModel;
-
-import DomainModel.KhachHang;
+package DomainModel;
 
 /**
  *
- * @author HP
+ * @author admin
  */
 public class HoaDon {
 
@@ -18,12 +16,12 @@ public class HoaDon {
     private String maHD;
     private int ngayTao;
     private int ngayThanhToan;
-    private String tinhTrang;
+    private int tinhTrang;
 
     public HoaDon() {
     }
 
-    public HoaDon(String ID, KhachHang khachHang, NhanVien nhanVien, String maHD, int ngayTao, int ngayThanhToan, String tinhTrang) {
+    public HoaDon(String ID, KhachHang khachHang, NhanVien nhanVien, String maHD, int ngayTao, int ngayThanhToan, int tinhTrang) {
         this.ID = ID;
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
@@ -81,20 +79,12 @@ public class HoaDon {
         this.ngayThanhToan = ngayThanhToan;
     }
 
-    public String getTinhTrang() {
+    public int getTinhTrang() {
         return tinhTrang;
     }
 
-    public void setTinhTrang(String tinhTrang) {
+    public void setTinhTrang(int tinhTrang) {
         this.tinhTrang = tinhTrang;
     }
 
-    @Override
-    public String toString() {
-        return "HoaDon{" + "ID=" + ID + ", khachHang=" + khachHang + ", nhanVien=" + nhanVien + ", maHD=" + maHD + ", ngayTao=" + ngayTao + ", ngayThanhToan=" + ngayThanhToan + ", tinhTrang=" + tinhTrang + '}';
-    }
-
-    public Object[] showdata() {
-        return new Object[]{ID, khachHang, nhanVien, maHD, ngayTao, ngayThanhToan, tinhTrang};
-    }
 }

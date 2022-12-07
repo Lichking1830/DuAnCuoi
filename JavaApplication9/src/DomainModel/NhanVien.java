@@ -2,13 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ViewModel;
-
-import DomainModel.ChucVu;
+package DomainModel;
 
 /**
  *
- * @author HP
+ * @author admin
  */
 public class NhanVien {
 
@@ -22,12 +20,12 @@ public class NhanVien {
     private int SDT;
     private String tenTK;
     private String matKhau;
-    private String trangThai;
+    private int trangThai;
 
     public NhanVien() {
     }
 
-    public NhanVien(String ID, ChucVu chucVu, String maNV, String hoTen, int ngaySinh, boolean gioiTinh, String diaChi, int SDT, String tenTK, String matKhau, String trangThai) {
+    public NhanVien(String ID, ChucVu chucVu, String maNV, String hoTen, int ngaySinh, boolean gioiTinh, String diaChi, int SDT, String tenTK, String matKhau, int trangThai) {
         this.ID = ID;
         this.chucVu = chucVu;
         this.maNV = maNV;
@@ -121,20 +119,12 @@ public class NhanVien {
         this.matKhau = matKhau;
     }
 
-    public String getTrangThai() {
+    public int getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(String trangThai) {
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
 
-    @Override
-    public String toString() {
-        return "Nhan_Vien{" + "ID=" + ID + ", chucVu=" + chucVu + ", maNV=" + maNV + ", hoTen=" + hoTen + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", SDT=" + SDT + ", tenTK=" + tenTK + ", matKhau=" + matKhau + ", trangThai=" + trangThai + '}';
-    }
-
-    public Object[] showdata() {
-        return new Object[]{ID, chucVu, maNV, hoTen, ngaySinh, gioiTinh, diaChi, SDT, tenTK, matKhau, trangThai};
-    }
 }

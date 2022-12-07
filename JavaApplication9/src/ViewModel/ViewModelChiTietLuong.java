@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package ViewModel;
+
+import DomainModel.NhanVien;
 
 /**
  *
- * @author HP
+ * @author admin
  */
-public class ChiTietLuong {
+public class ViewModelChiTietLuong {
 
     private String ID;
     private NhanVien nhanVien;
@@ -16,10 +18,10 @@ public class ChiTietLuong {
     private float luongCoBan;
     private float luongTinhTheoGio;
 
-    public ChiTietLuong() {
+    public ViewModelChiTietLuong() {
     }
 
-    public ChiTietLuong(String ID, NhanVien nhanVien, float soGioLam, float luongCoBan, float luongTinhTheoGio) {
+    public ViewModelChiTietLuong(String ID, NhanVien nhanVien, float soGioLam, float luongCoBan, float luongTinhTheoGio) {
         this.ID = ID;
         this.nhanVien = nhanVien;
         this.soGioLam = soGioLam;

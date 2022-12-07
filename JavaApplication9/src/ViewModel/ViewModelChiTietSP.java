@@ -11,9 +11,9 @@ import DomainModel.SanPham;
 
 /**
  *
- * @author HP
+ * @author admin
  */
-public class ChiTietSanPham {
+public class ViewModelChiTietSP {
 
     private String ID;
     private SanPham sanPham;
@@ -23,11 +23,14 @@ public class ChiTietSanPham {
     private int namBH;
     private String moTa;
     private int soLuongTon;
+    private float giaNhap;
+    private float giaBan;
+    private float tongTien;
 
-    public ChiTietSanPham() {
+    public ViewModelChiTietSP() {
     }
 
-    public ChiTietSanPham(String ID, SanPham sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon) {
+    public ViewModelChiTietSP(String ID, SanPham sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan, float tongTien) {
         this.ID = ID;
         this.sanPham = sanPham;
         this.nsx = nsx;
@@ -36,6 +39,9 @@ public class ChiTietSanPham {
         this.namBH = namBH;
         this.moTa = moTa;
         this.soLuongTon = soLuongTon;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.tongTien = tongTien;
     }
 
     public String getID() {
@@ -102,12 +108,28 @@ public class ChiTietSanPham {
         this.soLuongTon = soLuongTon;
     }
 
-    @Override
-    public String toString() {
-        return "Chi_Tiet_San_Pham{" + "ID=" + ID + ", sanPham=" + sanPham + ", nsx=" + nsx + ", mauSac=" + mauSac + ", dongSanPham=" + dongSanPham + ", namBH=" + namBH + ", moTa=" + moTa + ", soLuongTon=" + soLuongTon + '}';
+    public float getGiaNhap() {
+        return giaNhap;
     }
 
-    public Object showdata() {
-        return new Object[]{ID, sanPham, nsx, mauSac, dongSanPham, namBH, moTa, soLuongTon};
+    public void setGiaNhap(float giaNhap) {
+        this.giaNhap = giaNhap;
     }
+
+    public float getGiaBan() {
+        return giaBan;
+    }
+
+    public void setGiaBan(float giaBan) {
+        this.giaBan = giaBan;
+    }
+
+    public float getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(float tongTien) {
+        this.tongTien = tongTien;
+    }
+
 }

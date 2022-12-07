@@ -13,16 +13,14 @@ public class ChucVu {
     private String ID;
     private String maChucVu;
     private String tenChucVu;
-    private String trangThai;
 
     public ChucVu() {
     }
 
-    public ChucVu(String ID, String maChucVu, String tenChucVu, String trangThai) {
+    public ChucVu(String ID, String maChucVu, String tenChucVu) {
         this.ID = ID;
         this.maChucVu = maChucVu;
         this.tenChucVu = tenChucVu;
-        this.trangThai = trangThai;
     }
 
     public String getID() {
@@ -49,20 +47,9 @@ public class ChucVu {
         this.tenChucVu = tenChucVu;
     }
 
-    public String getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
-    }
-
     @Override
     public String toString() {
-        return "Chuc_Vu{" + "ID=" + ID + ", maChucVu=" + maChucVu + ", tenChucVu=" + tenChucVu + ", trangThai=" + trangThai + '}';
+        return "ChucVu{" + "ID=" + ID + ", maChucVu=" + maChucVu + ", tenChucVu=" + tenChucVu + '}';
     }
 
-    public Object[] showdata() {
-        return new Object[]{ID, maChucVu, tenChucVu, trangThai};
-    }
 }

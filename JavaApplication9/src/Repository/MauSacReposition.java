@@ -6,8 +6,8 @@ package Repository;
 
 /**
  *
- * @author ADMIN
+ * @author admin
  */
-public class NewClass {
+public class MauSacReposition {
     
 }
