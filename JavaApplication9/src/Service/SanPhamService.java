@@ -4,10 +4,23 @@
  */
 package Service;
 
+import DomainModel.SanPham;
+import java.util.List;
+
 /**
  *
  * @author admin
  */
 public interface SanPhamService {
-    
+
+    List<SanPham> getall();
+
+    SanPham getOne(String ten);
+
+    String delete(String id);
+
+    String add(SanPham sp);
+
+    String update(SanPham sp, String id);
+
 }
