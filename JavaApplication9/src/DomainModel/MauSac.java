@@ -23,6 +23,11 @@ public class MauSac {
         this.tenMS = tenMS;
     }
 
+    public MauSac(String maMS, String tenMS) {
+        this.maMS = maMS;
+        this.tenMS = tenMS;
+    }
+
     public String getID() {
         return ID;
     }

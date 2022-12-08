@@ -23,6 +23,11 @@ public class DongSP {
         this.tenDSP = tenDSP;
     }
 
+    public DongSP(String maDSP, String tenDSP) {
+        this.maDSP = maDSP;
+        this.tenDSP = tenDSP;
+    }
+
     public String getID() {
         return ID;
     }

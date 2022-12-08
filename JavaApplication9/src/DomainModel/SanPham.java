@@ -23,6 +23,11 @@ public class SanPham {
         this.tenSP = tenSP;
     }
 
+    public SanPham(String maSP, String tenSP) {
+        this.maSP = maSP;
+        this.tenSP = tenSP;
+    }
+
     public String getID() {
         return ID;
     }

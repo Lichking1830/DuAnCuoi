@@ -52,6 +52,11 @@ public class NhanVien {
         this.trangThai = trangThai;
     }
 
+    public NhanVien(String maNV, String hoTen) {
+        this.maNV = maNV;
+        this.hoTen = hoTen;
+    }
+
     public String getID() {
         return ID;
     }

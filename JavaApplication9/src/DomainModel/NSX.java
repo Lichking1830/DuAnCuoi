@@ -23,6 +23,11 @@ public class NSX {
         this.tenNSX = tenNSX;
     }
 
+    public NSX(String maNSX, String tenNSX) {
+        this.maNSX = maNSX;
+        this.tenNSX = tenNSX;
+    }
+
     public String getID() {
         return ID;
     }

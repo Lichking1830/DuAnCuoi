@@ -33,6 +33,11 @@ public class KhachHang {
         this.queQuan = queQuan;
     }
 
+    public KhachHang(String maKhachHang, String hoVaTen) {
+        this.maKhachHang = maKhachHang;
+        this.hoVaTen = hoVaTen;
+    }
+
     public String getID() {
         return ID;
     }

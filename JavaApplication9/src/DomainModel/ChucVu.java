@@ -23,6 +23,11 @@ public class ChucVu {
         this.tenChucVu = tenChucVu;
     }
 
+    public ChucVu(String maChucVu, String tenChucVu) {
+        this.maChucVu = maChucVu;
+        this.tenChucVu = tenChucVu;
+    }
+
     public String getID() {
         return ID;
     }
