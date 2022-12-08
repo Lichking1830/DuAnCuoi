@@ -4,7 +4,10 @@
  */
 package Application;
 
+import View.Home;
 import View.Login;
+import View.SanPham;
+import java.awt.Point;
 
 /**
  *
@@ -12,6 +15,5 @@ import View.Login;
  */
 public class Application {
     public static void main(String[] args) {
-        new Login().setVisible(true);
     }
 }

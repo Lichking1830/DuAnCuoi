@@ -15,21 +15,16 @@ import java.util.List;
  */
 public class MauSacServiceImpl implements MauSacService {
 
-    MauSacReposition msre = new MauSacReposition();
-
-    @Override
-    public List<MauSac> getall() {
-        return msre.getAll();
-    }
+    MauSacReposition msr = new MauSacReposition();
 
     @Override
     public MauSac getOne(String ten) {
-        return msre.getOne(ten);
+        return msr.getOne(ten);
     }
 
     @Override
     public String add(MauSac ms) {
-        boolean add = msre.add(ms);
+        boolean add = msr.add(ms);
         if (add) {
             return "thanh cong";
         } else {
@@ -39,7 +34,7 @@ public class MauSacServiceImpl implements MauSacService {
 
     @Override
     public String delete(String id) {
-        boolean delete = msre.delete(id);
+        boolean delete = msr.delete(id);
         if (delete) {
             return "thanh cong";
         } else {
@@ -49,12 +44,17 @@ public class MauSacServiceImpl implements MauSacService {
 
     @Override
     public String update(MauSac ms, String id) {
-        boolean update = msre.update(ms, id);
+        boolean update = msr.update(ms, id);
         if (update) {
             return "thanh cong";
         } else {
             return "ko thanh cong";
         }
+    }
+
+    @Override
+    public List<MauSac> getAll() {
+        return msr.getAll();
     }
 
 }

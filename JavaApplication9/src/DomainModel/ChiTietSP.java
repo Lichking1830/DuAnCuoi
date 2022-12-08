@@ -11,7 +11,7 @@ package DomainModel;
 public class ChiTietSP {
 
     private String ID;
-    private SanPham sanPham;
+    private DanhMucSP sanPham;
     private NSX nsx;
     private MauSac mauSac;
     private DongSP dongSanPham;
@@ -24,8 +24,20 @@ public class ChiTietSP {
     public ChiTietSP() {
     }
 
-    public ChiTietSP(String ID, SanPham sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan) {
+    public ChiTietSP(String ID, DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan) {
         this.ID = ID;
+        this.sanPham = sanPham;
+        this.nsx = nsx;
+        this.mauSac = mauSac;
+        this.dongSanPham = dongSanPham;
+        this.namBH = namBH;
+        this.moTa = moTa;
+        this.soLuongTon = soLuongTon;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+    }
+
+    public ChiTietSP(DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan) {
         this.sanPham = sanPham;
         this.nsx = nsx;
         this.mauSac = mauSac;
@@ -45,11 +57,11 @@ public class ChiTietSP {
         this.ID = ID;
     }
 
-    public SanPham getSanPham() {
+    public DanhMucSP getSanPham() {
         return sanPham;
     }
 
-    public void setSanPham(SanPham sanPham) {
+    public void setSanPham(DanhMucSP sanPham) {
         this.sanPham = sanPham;
     }
 

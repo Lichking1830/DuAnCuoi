@@ -7,7 +7,7 @@ package ViewModel;
 import DomainModel.DongSP;
 import DomainModel.MauSac;
 import DomainModel.NSX;
-import DomainModel.SanPham;
+import DomainModel.DanhMucSP;
 
 /**
  *
@@ -16,7 +16,7 @@ import DomainModel.SanPham;
 public class ViewModelChiTietSP {
 
     private String ID;
-    private SanPham sanPham;
+    private DanhMucSP sanPham;
     private NSX nsx;
     private MauSac mauSac;
     private DongSP dongSanPham;
@@ -30,7 +30,7 @@ public class ViewModelChiTietSP {
     public ViewModelChiTietSP() {
     }
 
-    public ViewModelChiTietSP(String ID, SanPham sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan, float tongTien) {
+    public ViewModelChiTietSP(String ID, DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan, float tongTien) {
         this.ID = ID;
         this.sanPham = sanPham;
         this.nsx = nsx;
@@ -52,11 +52,11 @@ public class ViewModelChiTietSP {
         this.ID = ID;
     }
 
-    public SanPham getSanPham() {
+    public DanhMucSP getSanPham() {
         return sanPham;
     }
 
-    public void setSanPham(SanPham sanPham) {
+    public void setSanPham(DanhMucSP sanPham) {
         this.sanPham = sanPham;
     }
 

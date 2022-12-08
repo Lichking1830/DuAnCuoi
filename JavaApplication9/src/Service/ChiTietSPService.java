@@ -4,23 +4,24 @@
  */
 package Service;
 
+import DomainModel.ChiTietSP;
 import DomainModel.DanhMucSP;
+import ViewModel.ViewModelChiTietSP;
 import java.util.List;
 
 /**
  *
  * @author admin
  */
-public interface SanPhamService {
+public interface ChiTietSPService {
 
-    List<DanhMucSP> getall();
+    List<ViewModelChiTietSP> getAll();
 
-    DanhMucSP getOne(String ten);
+    String add(ChiTietSP ctsp);
+
+    String update(ChiTietSP ctsp, String id);
 
     String delete(String id);
-
-    String add(DanhMucSP sp);
-
-    String update(DanhMucSP sp, String id);
-
+    
+    List<ViewModelChiTietSP> getSearch(String ten);
 }

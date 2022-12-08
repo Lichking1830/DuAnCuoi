@@ -145,7 +145,7 @@ public class NhanVienReposition {
                 + " dbo.NhanVien.MatKhau, dbo.NhanVien.TrangThai\n"
                 + " FROM dbo.ChucVu INNER JOIN\n"
                 + " dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV WHERE dbo.NhanVien.Ma like ? and dbo.NhanVien.MatKhau = ?";
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(tk)) {
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(querry)) {
 
             List<NhanVien> listnv = new ArrayList<>();
             ps.setObject(1, tk);

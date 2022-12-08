@@ -6,24 +6,24 @@ package DomainModel;
 
 /**
  *
- * @author HP
+ * @author admin
  */
-public class SanPham {
+public class DanhMucSP {
 
     private String ID;
     private String maSP;
     private String tenSP;
 
-    public SanPham() {
+    public DanhMucSP() {
     }
 
-    public SanPham(String ID, String maSP, String tenSP) {
+    public DanhMucSP(String ID, String maSP, String tenSP) {
         this.ID = ID;
         this.maSP = maSP;
         this.tenSP = tenSP;
     }
 
-    public SanPham(String maSP, String tenSP) {
+    public DanhMucSP(String maSP, String tenSP) {
         this.maSP = maSP;
         this.tenSP = tenSP;
     }
@@ -52,12 +52,4 @@ public class SanPham {
         this.tenSP = tenSP;
     }
 
-    @Override
-    public String toString() {
-        return "SanPham{" + "ID=" + ID + ", maSP=" + maSP + ", tenSP=" + tenSP + '}';
-    }
-
-    public Object[] showdata() {
-        return new Object[]{ID, maSP, tenSP};
-    }
 }
