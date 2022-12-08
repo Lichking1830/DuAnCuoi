@@ -6,6 +6,7 @@ package View;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
@@ -21,9 +22,10 @@ public class BanHang1 extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public BanHang1() {
+    public BanHang1(Point locate) {
         initComponents();
-        this.setLocation(461, 156);
+        this.setLocation(locate);
+
 
         table_head_color(tbHoaDon);
 
@@ -39,9 +41,9 @@ public class BanHang1 extends javax.swing.JFrame {
         //table_head_color("write table name");
     }
 
-    public static BanHang1 getManHoaDon() {
+    public static BanHang1 getManHoaDon(Point locate) {
         if (manHoDon == null) {
-            manHoDon = new BanHang1();
+            manHoDon = new BanHang1(locate);
         }
         return manHoDon;
     }
@@ -272,8 +274,8 @@ public class BanHang1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        BanHang bh = new BanHang();
-        bh.getObj().setVisible(true);
+        BanHang bh = new BanHang(this.getLocationOnScreen());
+        bh.getObj(this.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
