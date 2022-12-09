@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         txtUserName = new javax.swing.JTextField();
         pfPass = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cbShow = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -79,10 +79,10 @@ public class Login extends javax.swing.JFrame {
         pfPass.setText("jPasswordField1");
         pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
-        jCheckBox1.setBackground(new java.awt.Color(135, 142, 205));
-        jCheckBox1.setFont(new java.awt.Font(".VnArabia", 1, 18)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("show password");
+        cbShow.setBackground(new java.awt.Color(135, 142, 205));
+        cbShow.setFont(new java.awt.Font(".VnArabia", 1, 18)); // NOI18N
+        cbShow.setForeground(new java.awt.Color(255, 255, 255));
+        cbShow.setText("show password");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,12 +113,12 @@ public class Login extends javax.swing.JFrame {
                                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(32, 32, 32)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox1)
+                                            .addComponent(cbShow)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addComponent(pfPass, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                                                 .addComponent(txtUserName))))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
+                                .addGap(65, 65, 65)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7)))
@@ -143,7 +143,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox1)
+                .addComponent(cbShow)
                 .addGap(50, 50, 50)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -202,8 +202,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox cbShow;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

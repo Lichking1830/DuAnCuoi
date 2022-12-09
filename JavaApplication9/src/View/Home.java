@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import View.BanHang;
 import java.awt.Window;
 
+import java.awt.PopupMenu;
 /**
  *
  * @author ADMIN
@@ -24,7 +25,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-
+       
     }
 
     /**

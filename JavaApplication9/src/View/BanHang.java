@@ -21,9 +21,8 @@ public class BanHang extends javax.swing.JFrame {
 
     private static BanHang obj = null;
     private DefaultTableModel dtmSP = new DefaultTableModel();
-    /**
-     * Creates new form NewJFrame
-     */
+    private DefaultTableModel dtmGH = new DefaultTableModel();
+
     public BanHang(Point locate) {
         initComponents();
         this.setLocation(locate);
@@ -31,9 +30,9 @@ public class BanHang extends javax.swing.JFrame {
         table_head_color(tbSanPham);
 
         table_head_color(tbGioHang);
-        
+
         tbSanPham.setModel(dtmSP);
-        
+
     }
 
     private void table_head_color(JTable table_name) {
