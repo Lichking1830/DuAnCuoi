@@ -20,7 +20,7 @@ public interface MauSacService {
 
     String add(MauSac ms);
 
-    String delete(String id);
+    String delete(String ma);
 
     String update(MauSac ms, String id);
 }

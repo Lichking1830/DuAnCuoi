@@ -17,7 +17,7 @@ public interface NSXService {
 
     NSX getOne(String tenNSX);
 
-    String delete(String idNSX);
+    String delete(String ma);
 
     String add(NSX nsx);
 

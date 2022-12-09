@@ -23,8 +23,7 @@ public class MauSacReposition {
                 + "      ,[Ma]\n"
                 + "      ,[Ten]\n"
                 + "  FROM [dbo].[MauSac]";
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
             List<MauSac> listMS = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -44,8 +43,7 @@ public class MauSacReposition {
                 + "      ,[Ten]\n"
                 + "  FROM [dbo].[MauSac]\n"
                 + "  WHERE Ten like ?";
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, tenMS);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -65,8 +63,7 @@ public class MauSacReposition {
                 + "     VALUES\n"
                 + "           (?,?)";
         int check = 0;
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, ms.getMaMS());
             ps.setObject(2, ms.getTenMS());
             check = ps.executeUpdate();
@@ -82,8 +79,7 @@ public class MauSacReposition {
                 + "      ,[Ten] = ?"
                 + " WHERE Id like ?";
         int check = 0;
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, ms.getMaMS());
             ps.setObject(2, ms.getTenMS());
             ps.setObject(3, idMS);
@@ -94,13 +90,12 @@ public class MauSacReposition {
         return check > 0;
     }
 
-    public boolean delete(String idMS) {
+    public boolean delete(String ma) {
         String query = "DELETE FROM [dbo].[MauSac]\n"
-                + "      WHERE Id like ?";
+                + "      WHERE ma like ?";
         int check = 0;
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setObject(1, idMS);
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setObject(1, ma);
             check = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace(System.out);

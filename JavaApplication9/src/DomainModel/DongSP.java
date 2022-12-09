@@ -58,6 +58,6 @@ public class DongSP {
     }
 
     public Object[] showdata() {
-        return new Object[]{ID, maDSP, tenDSP};
+        return new Object[]{ maDSP, tenDSP};
     }
 }

@@ -94,13 +94,13 @@ public class NSXReposition {
         return check > 0;
     }
 
-    public boolean delete(String idNSX) {
+    public boolean delete(String ma) {
         String query = "DELETE FROM [dbo].[NSX]\n"
-                + "      WHERE Id like ?";
+                + "      WHERE ma like ?";
         int check = 0;
         try (Connection conn = SQLConnection.getConnection();
                 PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setObject(1, idNSX);
+            ps.setObject(1, ma);
             check = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace(System.out);

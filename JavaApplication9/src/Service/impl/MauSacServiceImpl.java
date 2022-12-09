@@ -33,8 +33,8 @@ public class MauSacServiceImpl implements MauSacService {
     }
 
     @Override
-    public String delete(String id) {
-        boolean delete = msr.delete(id);
+    public String delete(String ma) {
+        boolean delete = msr.delete(ma);
         if (delete) {
             return "thanh cong";
         } else {

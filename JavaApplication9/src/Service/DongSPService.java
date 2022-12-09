@@ -19,7 +19,7 @@ public interface DongSPService {
 
     String add(DongSP dsp);
 
-    String delete(String id);
+    String delete(String ma);
 
     String update(DongSP dsp, String id);
 }

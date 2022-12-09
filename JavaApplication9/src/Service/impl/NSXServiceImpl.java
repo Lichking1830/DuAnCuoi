@@ -28,8 +28,8 @@ public class NSXServiceImpl implements NSXService {
     }
 
     @Override
-    public String delete(String idNSX) {
-        boolean delete = nsxre.delete(idNSX);
+    public String delete(String ma) {
+        boolean delete = nsxre.delete(ma);
         if (delete) {
             return "thanh cong";
         } else {

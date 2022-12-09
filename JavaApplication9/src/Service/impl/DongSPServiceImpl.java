@@ -38,8 +38,8 @@ public class DongSPServiceImpl implements DongSPService {
     }
 
     @Override
-    public String delete(String id) {
-        boolean delete = dspre.delete(id);
+    public String delete(String ma) {
+        boolean delete = dspre.delete(ma);
         if (delete) {
             return "thanh cong";
         } else {
