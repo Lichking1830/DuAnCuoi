@@ -14,6 +14,7 @@ import View.BanHang;
 import java.awt.Window;
 
 import java.awt.PopupMenu;
+
 /**
  *
  * @author ADMIN
@@ -25,7 +26,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-       
+
     }
 
     /**
@@ -47,6 +48,9 @@ public class Home extends javax.swing.JFrame {
         pnSanPham = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        pnNhanVien = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -164,6 +168,45 @@ public class Home extends javax.swing.JFrame {
             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        pnNhanVien.setBackground(new java.awt.Color(25, 30, 50));
+        pnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnNhanVienMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnNhanVienMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnNhanVienMouseExited(evt);
+            }
+        });
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user_groups_50px.png"))); // NOI18N
+        jLabel7.setToolTipText("");
+
+        jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("NHÂN VIÊN");
+
+        javax.swing.GroupLayout pnNhanVienLayout = new javax.swing.GroupLayout(pnNhanVien);
+        pnNhanVien.setLayout(pnNhanVienLayout);
+        pnNhanVienLayout.setHorizontalGroup(
+            pnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnNhanVienLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnNhanVienLayout.setVerticalGroup(
+            pnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+            .addGroup(pnNhanVienLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -171,6 +214,7 @@ public class Home extends javax.swing.JFrame {
             .addComponent(pnBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +225,9 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(pnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(pnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(pnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(85, 52, 165));
@@ -255,6 +301,19 @@ public class Home extends javax.swing.JFrame {
         pnSanPham.setBackground(new Color(25, 30, 50));
     }//GEN-LAST:event_pnSanPhamMouseExited
 
+    private void pnNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnNhanVienMouseExited
+        pnNhanVien.setBackground(new Color(25, 30, 50));
+    }//GEN-LAST:event_pnNhanVienMouseExited
+
+    private void pnNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnNhanVienMouseEntered
+        pnNhanVien.setBackground(new Color(135, 142, 205));
+    }//GEN-LAST:event_pnNhanVienMouseEntered
+
+    private void pnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnNhanVienMouseClicked
+        NhanVien nv = new NhanVien(jPanel2.getLocationOnScreen());
+        nv.getNhanVien(jPanel2.getLocationOnScreen()).setVisible(true);
+    }//GEN-LAST:event_pnNhanVienMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -297,9 +356,12 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pnBanHang;
+    private javax.swing.JPanel pnNhanVien;
     private javax.swing.JPanel pnSanPham;
     private javax.swing.JPanel pnThongKe;
     // End of variables declaration//GEN-END:variables

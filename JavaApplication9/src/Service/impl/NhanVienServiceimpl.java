@@ -7,7 +7,6 @@ package Service.impl;
 import DomainModel.NhanVien;
 import Repository.NhanVienReposition;
 import Service.NhanVienService;
-import ViewModel.ViewModelNhanVien;
 import java.util.List;
 
 /**
@@ -19,12 +18,12 @@ public class NhanVienServiceimpl implements NhanVienService {
     NhanVienReposition nvre = new NhanVienReposition();
 
     @Override
-    public List<ViewModelNhanVien> getall() {
+    public List<NhanVien> getall() {
         return nvre.getAll();
     }
 
     @Override
-    public ViewModelNhanVien getOne(String ten) {
+    public NhanVien getOne(String ten) {
         return nvre.getOne(ten);
     }
 
@@ -59,7 +58,7 @@ public class NhanVienServiceimpl implements NhanVienService {
     }
 
     @Override
-    public boolean checkTKMK(String tk, String mk) {
+    public NhanVien checkTKMK(String tk, String mk) {
         return nvre.check(tk, mk);
     }
 

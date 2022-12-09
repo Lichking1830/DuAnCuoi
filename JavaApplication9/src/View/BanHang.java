@@ -32,7 +32,11 @@ public class BanHang extends javax.swing.JFrame {
         table_head_color(tbGioHang);
 
         tbSanPham.setModel(dtmSP);
-
+        tbGioHang.setModel(dtmGH);
+        
+        String[] header = {"Tên SP", "NSX", "Màu sắc", "Dòng SP", "Năm BH", "Số lượng tồn", "Giá nhập", "Giá bán"};
+        dtmSP.setColumnIdentifiers(header);
+        
     }
 
     private void table_head_color(JTable table_name) {

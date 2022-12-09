@@ -5,7 +5,6 @@
 package Service;
 
 import DomainModel.NhanVien;
-import ViewModel.ViewModelNhanVien;
 import java.util.List;
 
 /**
@@ -14,9 +13,9 @@ import java.util.List;
  */
 public interface NhanVienService {
 
-    List<ViewModelNhanVien> getall();
+    List<NhanVien> getall();
 
-    ViewModelNhanVien getOne(String ten);
+    NhanVien getOne(String ten);
 
     String add(NhanVien nv);
 
@@ -24,5 +23,5 @@ public interface NhanVienService {
 
     String update(NhanVien nv, String id);
 
-    boolean checkTKMK(String tk, String mk);
+    NhanVien checkTKMK(String tk, String mk);
 }
