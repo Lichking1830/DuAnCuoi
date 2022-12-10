@@ -4,9 +4,13 @@
  */
 package View;
 
+import Service.impl.ChiTietSPServiceImpl;
+import ViewModel.ViewModelChiTietSP;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +24,10 @@ public class ChiTietSP extends javax.swing.JFrame {
 
     private static ChiTietSP manSanPham = null;
     private DefaultTableModel dtm = new DefaultTableModel();
+     private List<ViewModelChiTietSP> listCtsp;
+    private ChiTietSPServiceImpl chiTietSPServiceImpl;
+    private DefaultComboBoxModel comDongSP;
+    private ViewModelChiTietSP viewModelChiTietSP;
     /**
      * Creates new form NewJFrame
      */
