@@ -18,6 +18,12 @@ public class GioHangChiTiet {
     public GioHangChiTiet() {
     }
 
+    public GioHangChiTiet(ChiTietSP chiTietSP, int soLuong, Double donGia) {
+        this.chiTietSP = chiTietSP;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+    }
+
     public GioHangChiTiet(GioHang gioHang, ChiTietSP chiTietSP, int soLuong, Double donGia) {
         this.gioHang = gioHang;
         this.chiTietSP = chiTietSP;

@@ -24,6 +24,22 @@ public class ChiTietSP {
     public ChiTietSP() {
     }
 
+    public ChiTietSP(String idChiTietSP) {
+        this.idChiTietSP = idChiTietSP;
+    }
+
+    public ChiTietSP(SanPham sanPham) {
+        this.sanPham = sanPham;
+    }
+
+    public ChiTietSP(SanPham sanPham, int namBH, String moTa, int soLuongTon, Double giaBan) {
+        this.sanPham = sanPham;
+        this.namBH = namBH;
+        this.moTa = moTa;
+        this.soLuongTon = soLuongTon;
+        this.giaBan = giaBan;
+    }
+
     public ChiTietSP(String idChiTietSP, SanPham sanPham, NSX nsx, MauSac mauSac, DongSP dongSP, int namBH, String moTa, int soLuongTon, Double giaNhap, Double giaBan) {
         this.idChiTietSP = idChiTietSP;
         this.sanPham = sanPham;
