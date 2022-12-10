@@ -2,23 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package DomainModels;
 
 /**
  *
- * @author HP
+ * @author admin
  */
 public class DongSP {
 
-    private String ID;
+    private String idDSP;
     private String maDSP;
     private String tenDSP;
 
     public DongSP() {
     }
 
-    public DongSP(String ID, String maDSP, String tenDSP) {
-        this.ID = ID;
+    public DongSP(String idDSP, String maDSP, String tenDSP) {
+        this.idDSP = idDSP;
         this.maDSP = maDSP;
         this.tenDSP = tenDSP;
     }
@@ -28,12 +28,16 @@ public class DongSP {
         this.tenDSP = tenDSP;
     }
 
-    public String getID() {
-        return ID;
+    public DongSP(String tenDSP) {
+        this.tenDSP = tenDSP;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public String getIdDSP() {
+        return idDSP;
+    }
+
+    public void setIdDSP(String idDSP) {
+        this.idDSP = idDSP;
     }
 
     public String getMaDSP() {
@@ -54,10 +58,10 @@ public class DongSP {
 
     @Override
     public String toString() {
-        return "Dong_SP{" + "ID=" + ID + ", maDSP=" + maDSP + ", tenDSP=" + tenDSP + '}';
+        return "DongSP{" + "idDSP=" + idDSP + ", maDSP=" + maDSP + ", tenDSP=" + tenDSP + '}';
     }
 
-    public Object[] showdata() {
-        return new Object[]{ maDSP, tenDSP};
+    public Object[] toDataRow() {
+        return new Object[]{idDSP, maDSP, tenDSP};
     }
 }

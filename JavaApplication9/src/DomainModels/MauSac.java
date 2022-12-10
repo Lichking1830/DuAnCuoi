@@ -2,23 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package DomainModels;
 
 /**
  *
- * @author ADMIN
+ * @author admin
  */
 public class MauSac {
 
-    private String ID;
+    private String idMS;
     private String maMS;
     private String tenMS;
 
     public MauSac() {
     }
 
-    public MauSac(String ID, String maMS, String tenMS) {
-        this.ID = ID;
+    public MauSac(String idMS, String maMS, String tenMS) {
+        this.idMS = idMS;
         this.maMS = maMS;
         this.tenMS = tenMS;
     }
@@ -28,12 +28,16 @@ public class MauSac {
         this.tenMS = tenMS;
     }
 
-    public String getID() {
-        return ID;
+    public MauSac(String tenMS) {
+        this.tenMS = tenMS;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public String getIdMS() {
+        return idMS;
+    }
+
+    public void setIdMS(String idMS) {
+        this.idMS = idMS;
     }
 
     public String getMaMS() {
@@ -54,10 +58,11 @@ public class MauSac {
 
     @Override
     public String toString() {
-        return "Mau_Sac{" + "ID=" + ID + ", maMS=" + maMS + ", tenMS=" + tenMS + '}';
+        return "MauSac{" + "idMS=" + idMS + ", maMS=" + maMS + ", tenMS=" + tenMS + '}';
     }
 
-    public Object[] showdata() {
-        return new Object[]{ID, maMS, tenMS};
+    public Object[] toDataRow() {
+        return new Object[]{idMS, maMS, tenMS};
     }
+
 }

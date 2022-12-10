@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package DomainModels;
 
 /**
  *
@@ -11,34 +11,39 @@ package DomainModel;
 public class HoaDonChiTiet {
 
     private HoaDon hoaDon;
-    private ChiTietSP ctsp;
+    private ChiTietSP chiTietSP;
     private int soLuong;
     private float donGia;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(HoaDon hoaDon, ChiTietSP ctsp, int soLuong, float donGia) {
-        this.hoaDon = hoaDon;
-        this.ctsp = ctsp;
+    public HoaDonChiTiet(int soLuong, float donGia) {
         this.soLuong = soLuong;
         this.donGia = donGia;
     }
 
-    public HoaDon getHoaDon() {
+    public HoaDonChiTiet(HoaDon hoaDon, ChiTietSP chiTietSP, int soLuong, float donGia) {
+        this.hoaDon = hoaDon;
+        this.chiTietSP = chiTietSP;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+    }
+
+    public HoaDon getHd() {
         return hoaDon;
     }
 
-    public void setHoaDon(HoaDon hoaDon) {
+    public void setHd(HoaDon hoaDon) {
         this.hoaDon = hoaDon;
     }
 
     public ChiTietSP getCtsp() {
-        return ctsp;
+        return chiTietSP;
     }
 
-    public void setCtsp(ChiTietSP ctsp) {
-        this.ctsp = ctsp;
+    public void setCtsp(ChiTietSP chiTietSP) {
+        this.chiTietSP = chiTietSP;
     }
 
     public int getSoLuong() {
@@ -55,6 +60,11 @@ public class HoaDonChiTiet {
 
     public void setDonGia(float donGia) {
         this.donGia = donGia;
+    }
+
+    @Override
+    public String toString() {
+        return "HoaDonChiTiet{" + "hoaDon=" + hoaDon + ", chiTietSP=" + chiTietSP + ", soLuong=" + soLuong + ", donGia=" + donGia + '}';
     }
 
 }

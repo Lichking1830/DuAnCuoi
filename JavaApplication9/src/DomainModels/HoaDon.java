@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package DomainModels;
+
+import java.util.Date;
 
 /**
  *
@@ -10,33 +12,33 @@ package DomainModel;
  */
 public class HoaDon {
 
-    private String ID;
+    private String idHoaDon;
     private KhachHang khachHang;
     private NhanVien nhanVien;
-    private String maHD;
+    private String maHoaDon;
     private String ngayTao;
     private String ngayThanhToan;
     private int tinhTrang;
 
     public HoaDon() {
     }
-
-    public HoaDon(String ID, KhachHang khachHang, NhanVien nhanVien, String maHD, String ngayTao, String ngayThanhToan, int tinhTrang) {
-        this.ID = ID;
+    
+    public HoaDon(String idHoaDon, KhachHang khachHang, NhanVien nhanVien, String maHoaDon, String ngayTao, String ngayThanhToan, int tinhTrang) {
+        this.idHoaDon = idHoaDon;
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
-        this.maHD = maHD;
+        this.maHoaDon = maHoaDon;
         this.ngayTao = ngayTao;
         this.ngayThanhToan = ngayThanhToan;
         this.tinhTrang = tinhTrang;
     }
 
-    public String getID() {
-        return ID;
+    public String getIdHoaDon() {
+        return idHoaDon;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setIdHoaDon(String idHoaDon) {
+        this.idHoaDon = idHoaDon;
     }
 
     public KhachHang getKhachHang() {
@@ -55,12 +57,12 @@ public class HoaDon {
         this.nhanVien = nhanVien;
     }
 
-    public String getMaHD() {
-        return maHD;
+    public String getMaHoaDon() {
+        return maHoaDon;
     }
 
-    public void setMaHD(String maHD) {
-        this.maHD = maHD;
+    public void setMaHoaDon(String maHoaDon) {
+        this.maHoaDon = maHoaDon;
     }
 
     public String getNgayTao() {
@@ -87,5 +89,9 @@ public class HoaDon {
         this.tinhTrang = tinhTrang;
     }
 
-   
+    @Override
+    public String toString() {
+        return "HoaDon{" + "idHoaDon=" + idHoaDon + ", khachHang=" + khachHang + ", nhanVien=" + nhanVien + ", maHoaDon=" + maHoaDon + ", ngayTao=" + ngayTao + ", ngayThanhToan=" + ngayThanhToan + ", tinhTrang=" + tinhTrang + '}';
+    }
+
 }

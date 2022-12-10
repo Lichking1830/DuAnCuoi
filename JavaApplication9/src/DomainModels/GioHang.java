@@ -2,47 +2,47 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package DomainModels;
 
 /**
  *
- * @author HP
+ * @author HieuTran
  */
 public class GioHang {
 
-    private String ID;
+    private String idGioHang;
     private KhachHang khachHang;
     private NhanVien nhanVien;
-    private String maGH;
+    private String maGioHang;
     private String ngayTao;
     private String ngayThanhToan;
     private String tenNguoiNhan;
     private String diaChi;
-    private String SDT;
+    private String soDienThoai;
     private int tinhTrang;
 
     public GioHang() {
     }
 
-    public GioHang(String ID, KhachHang khachHang, NhanVien nhanVien, String maGH, String ngayTao, String ngayThanhToan, String tenNguoiNhan, String diaChi, String SDT, int tinhTrang) {
-        this.ID = ID;
+    public GioHang(String idGioHang, KhachHang khachHang, NhanVien nhanVien, String maGioHang, String ngayTao, String ngayThanhToan, String tenNguoiNhan, String diaChi, String soDienThoai, int tinhTrang) {
+        this.idGioHang = idGioHang;
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
-        this.maGH = maGH;
+        this.maGioHang = maGioHang;
         this.ngayTao = ngayTao;
         this.ngayThanhToan = ngayThanhToan;
         this.tenNguoiNhan = tenNguoiNhan;
         this.diaChi = diaChi;
-        this.SDT = SDT;
+        this.soDienThoai = soDienThoai;
         this.tinhTrang = tinhTrang;
     }
 
-    public String getID() {
-        return ID;
+    public String getIdGioHang() {
+        return idGioHang;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setIdGioHang(String idGioHang) {
+        this.idGioHang = idGioHang;
     }
 
     public KhachHang getKhachHang() {
@@ -61,12 +61,12 @@ public class GioHang {
         this.nhanVien = nhanVien;
     }
 
-    public String getMaGH() {
-        return maGH;
+    public String getMaGioHang() {
+        return maGioHang;
     }
 
-    public void setMaGH(String maGH) {
-        this.maGH = maGH;
+    public void setMaGioHang(String maGioHang) {
+        this.maGioHang = maGioHang;
     }
 
     public String getNgayTao() {
@@ -101,12 +101,12 @@ public class GioHang {
         this.diaChi = diaChi;
     }
 
-    public String getSDT() {
-        return SDT;
+    public String getSoDienThoai() {
+        return soDienThoai;
     }
 
-    public void setSDT(String SDT) {
-        this.SDT = SDT;
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
     }
 
     public int getTinhTrang() {
@@ -119,7 +119,7 @@ public class GioHang {
 
     @Override
     public String toString() {
-        return "GioHang{" + "ID=" + ID + ", khachHang=" + khachHang + ", nhanVien=" + nhanVien + ", maGH=" + maGH + ", ngayTao=" + ngayTao + ", ngayThanhToan=" + ngayThanhToan + ", tenNguoiNhan=" + tenNguoiNhan + ", diaChi=" + diaChi + ", SDT=" + SDT + ", tinhTrang=" + tinhTrang + '}';
+        return "GioHang{" + "idGioHang=" + idGioHang + ", khachHang=" + khachHang + ", nhanVien=" + nhanVien + ", maGioHang=" + maGioHang + ", ngayTao=" + ngayTao + ", ngayThanhToan=" + ngayThanhToan + ", tenNguoiNhan=" + tenNguoiNhan + ", diaChi=" + diaChi + ", soDienThoai=" + soDienThoai + ", tinhTrang=" + tinhTrang + '}';
     }
 
 }

@@ -2,25 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package DomainModels;
 
 /**
  *
- * @author HP
+ * @author HieuTran
  */
 public class GioHangChiTiet {
 
     private GioHang gioHang;
-    private ChiTietSP ctsp;
+    private ChiTietSP chiTietSP;
     private int soLuong;
-    private int donGia;
+    private Double donGia;
 
     public GioHangChiTiet() {
     }
 
-    public GioHangChiTiet(GioHang gioHang, ChiTietSP ctsp, int soLuong, int donGia) {
+    public GioHangChiTiet(GioHang gioHang, ChiTietSP chiTietSP, int soLuong, Double donGia) {
         this.gioHang = gioHang;
-        this.ctsp = ctsp;
+        this.chiTietSP = chiTietSP;
         this.soLuong = soLuong;
         this.donGia = donGia;
     }
@@ -33,12 +33,12 @@ public class GioHangChiTiet {
         this.gioHang = gioHang;
     }
 
-    public ChiTietSP getCtsp() {
-        return ctsp;
+    public ChiTietSP getChiTietSP() {
+        return chiTietSP;
     }
 
-    public void setCtsp(ChiTietSP ctsp) {
-        this.ctsp = ctsp;
+    public void setChiTietSP(ChiTietSP chiTietSP) {
+        this.chiTietSP = chiTietSP;
     }
 
     public int getSoLuong() {
@@ -49,12 +49,17 @@ public class GioHangChiTiet {
         this.soLuong = soLuong;
     }
 
-    public int getDonGia() {
+    public Double getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(int donGia) {
+    public void setDonGia(Double donGia) {
         this.donGia = donGia;
+    }
+
+    @Override
+    public String toString() {
+        return "GioHangChiTiet{" + "gioHang=" + gioHang + ", chiTietSP=" + chiTietSP + ", soLuong=" + soLuong + ", donGia=" + donGia + '}';
     }
 
 }
