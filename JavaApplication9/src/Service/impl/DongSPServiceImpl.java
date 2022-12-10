@@ -57,4 +57,9 @@ public class DongSPServiceImpl implements DongSPService {
         }
     }
 
+    @Override
+    public List<DongSP> search(String ten) {
+        return dspre.Search(ten);
+    }
+
 }

@@ -22,4 +22,6 @@ public interface DongSPService {
     String delete(String ma);
 
     String update(DongSP dsp, String id);
+
+    List<DongSP> search(String ten);
 }

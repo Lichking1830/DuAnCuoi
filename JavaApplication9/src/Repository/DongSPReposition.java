@@ -23,8 +23,7 @@ public class DongSPReposition {
                 + "      ,[Ma]\n"
                 + "      ,[Ten]\n"
                 + "  FROM [dbo].[DongSP]";
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
             List<DongSP> listDSP = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -44,8 +43,7 @@ public class DongSPReposition {
                 + "      ,[Ten]\n"
                 + "  FROM [dbo].[DongSP]\n"
                 + "  WHERE Ten like ?";
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, tenDSP);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -65,8 +63,7 @@ public class DongSPReposition {
                 + "     VALUES\n"
                 + "           (?,?)";
         int check = 0;
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, dsp.getMaDSP());
             ps.setObject(2, dsp.getTenDSP());
             check = ps.executeUpdate();
@@ -82,8 +79,7 @@ public class DongSPReposition {
                 + "      ,[Ten] = ?"
                 + " WHERE Id like ?";
         int check = 0;
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, dsp.getMaDSP());
             ps.setObject(2, dsp.getTenDSP());
             ps.setObject(3, idDSP);
@@ -98,13 +94,32 @@ public class DongSPReposition {
         String query = "DELETE FROM [dbo].[DongSP]\n"
                 + "      WHERE ma like ?";
         int check = 0;
-        try (Connection conn = SQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(query)) {
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, ma);
             check = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return check > 0;
+    }
+
+    public List<DongSP> Search(String ten) {
+        String query = "SELECT [Id]\n"
+                + "      ,[Ma]\n"
+                + "      ,[Ten]\n"
+                + "  FROM [dbo].[DongSP] where ten like ?";
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
+            List<DongSP> listDSP = new ArrayList<>();
+            ps.setObject(1, ten);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                DongSP dsp = new DongSP(rs.getString(1), rs.getString(2), rs.getString(3));
+                listDSP.add(dsp);
+            }
+            return listDSP;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
 }

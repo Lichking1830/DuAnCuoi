@@ -4,25 +4,20 @@
  */
 package Service;
 
-import DomainModel.MauSac;
-import com.sun.tools.javac.Main;
+import ViewModel.ViewModelHoaDonCT;
 import java.util.List;
 
 /**
  *
- * @author admin
+ * @author HP
  */
-public interface MauSacService {
+public interface HoaDonChiTietService {
 
-    List<MauSac> getAll();
+    List<ViewModelHoaDonCT> getAll();
 
-    MauSac getOne(String ten);
+    String insert(ViewModelHoaDonCT hoaDonChiTiet);
 
-    String add(MauSac ms);
+    String update(ViewModelHoaDonCT hoaDonChiTiet, String ma);
 
     String delete(String ma);
-
-    String update(MauSac ms, String id);
-
-    List<MauSac> search(String ten);
 }

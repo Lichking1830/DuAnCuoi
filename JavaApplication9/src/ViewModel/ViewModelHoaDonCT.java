@@ -30,6 +30,12 @@ public class ViewModelHoaDonCT {
         this.tongTien = tongTien;
     }
 
+    public ViewModelHoaDonCT(ViewModelChiTietSP chiTietSP, int soLuong, float donGia) {
+        this.ctsp = ctsp;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+    }
+
     public HoaDon getHoaDon() {
         return hoaDon;
     }

@@ -44,6 +44,10 @@ public class ViewModelChiTietSP {
         this.tongTien = tongTien;
     }
 
+    public ViewModelChiTietSP(DanhMucSP sanPham) {
+         this.sanPham = sanPham;
+    }
+
     public String getID() {
         return ID;
     }

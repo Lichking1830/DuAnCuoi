@@ -102,4 +102,25 @@ public class MauSacReposition {
         }
         return check > 0;
     }
+
+    public List<MauSac> search(String ten) {
+        String query = "SELECT [Id]\n"
+                + "      ,[Ma]\n"
+                + "      ,[Ten]\n"
+                + "  FROM [dbo].[MauSac] where ten like ?";
+
+        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
+            List<MauSac> listMS = new ArrayList<>();
+            ps.setObject(1, ten);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                MauSac ms = new MauSac(rs.getString(1), rs.getString(2), rs.getString(3));
+                listMS.add(ms);
+            }
+            return listMS;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 }

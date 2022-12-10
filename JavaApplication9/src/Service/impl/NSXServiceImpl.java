@@ -57,4 +57,9 @@ public class NSXServiceImpl implements NSXService {
         }
     }
 
+    @Override
+    public List<NSX> search(String ten) {
+        return nsxre.search(ten);
+    }
+
 }

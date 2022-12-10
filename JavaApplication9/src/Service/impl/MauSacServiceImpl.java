@@ -57,4 +57,9 @@ public class MauSacServiceImpl implements MauSacService {
         return msr.getAll();
     }
 
+    @Override
+    public List<MauSac> search(String ten) {
+        return msr.search(ten);
+    }
+
 }

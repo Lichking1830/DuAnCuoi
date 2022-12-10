@@ -22,4 +22,6 @@ public interface NSXService {
     String add(NSX nsx);
 
     String update(NSX nsx, String idNSX);
+
+    List<NSX> search(String ten);
 }
