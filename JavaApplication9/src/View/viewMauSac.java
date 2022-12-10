@@ -286,6 +286,10 @@ public class viewMauSac extends javax.swing.JFrame {
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
         String ma = txtMaMS.getText();
+        if(ma.isBlank()){
+            JOptionPane.showMessageDialog(this, "khong dc de trong nhe");
+            return;
+        }
         String ten = txtTenMS.getText();
         MauSac ms = new MauSac(ma, ten);
         listms.add(ms);
