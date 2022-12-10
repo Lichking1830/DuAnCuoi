@@ -4,10 +4,16 @@
  */
 package View;
 
+import DomainModel.MauSac;
+import Service.impl.MauSacServiceImpl;
+import Service.impl.SanPhamServiceImpl;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -17,21 +23,26 @@ import javax.swing.table.JTableHeader;
  *
  * @author ADMIN
  */
-public class MauSac extends javax.swing.JFrame {
+public class viewMauSac extends javax.swing.JFrame {
+    
+    private static viewMauSac obj = null;
+    private DefaultTableModel dtmMS = new DefaultTableModel();
+    private MauSacServiceImpl msimpl = new MauSacServiceImpl();
+    private List<MauSac> listms = new ArrayList<>();
 
-    private static MauSac obj = null;
-    private DefaultTableModel dtmSP = new DefaultTableModel();
     /**
      * Creates new form NewJFrame
      */
-    public MauSac(Point locate) {
+    public viewMauSac(Point locate) {
         initComponents();
-        this.setLocation(locate); 
-        
-        tbMauSac.setModel(dtmSP);
-        
+        String header[] = {"ma", "ten"};
+        this.setLocation(locate);
+        tbMauSac.setModel(dtmMS);
+        dtmMS.setColumnIdentifiers(header);
+        listms = msimpl.getAll();
+        showdata(listms);
     }
-
+    
     private void table_head_color(JTable table_name) {
         DefaultTableCellRenderer head_render = new DefaultTableCellRenderer();
         head_render.setForeground(Color.WHITE);
@@ -41,10 +52,23 @@ public class MauSac extends javax.swing.JFrame {
         //to call above method
         //table_head_color("write table name");
     }
-
-    public static MauSac getObj(Point locate) {
+    
+    private void showdata(List<MauSac> listms) {
+        dtmMS.setNumRows(0);
+        for (MauSac ms : listms) {
+            dtmMS.addRow(ms.showdata());
+        }
+    }
+    
+    private void filldata(List<MauSac> listms, int index) {
+        MauSac ms = listms.get(index);
+        txtMaMS.setText(ms.getMaMS());
+        txtTenMS.setText(ms.getTenMS());
+    }
+    
+    public static viewMauSac getObj(Point locate) {
         if (obj == null) {
-            obj = new MauSac(locate);
+            obj = new viewMauSac(locate);
         }
         return obj;
     }
@@ -65,13 +89,13 @@ public class MauSac extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        txtMaMS = new javax.swing.JTextField();
+        btAdd = new javax.swing.JButton();
+        btReset = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtTenMS = new javax.swing.JTextField();
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,6 +129,11 @@ public class MauSac extends javax.swing.JFrame {
         tbMauSac.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbMauSac.setShowHorizontalLines(false);
         tbMauSac.setShowVerticalLines(false);
+        tbMauSac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbMauSacMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbMauSac);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -116,7 +145,7 @@ public class MauSac extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtMaMS.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -124,27 +153,37 @@ public class MauSac extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMaMS, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(441, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMaMS, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
-        jButton7.setBackground(new java.awt.Color(85, 52, 165));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add_35px.png"))); // NOI18N
-        jButton7.setText("THÊM");
+        btAdd.setBackground(new java.awt.Color(85, 52, 165));
+        btAdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btAdd.setForeground(new java.awt.Color(255, 255, 255));
+        btAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add_35px.png"))); // NOI18N
+        btAdd.setText("THÊM");
+        btAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddActionPerformed(evt);
+            }
+        });
 
-        jButton8.setBackground(new java.awt.Color(85, 52, 165));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/available_updates_35px.png"))); // NOI18N
-        jButton8.setText("SỬA");
+        btReset.setBackground(new java.awt.Color(85, 52, 165));
+        btReset.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btReset.setForeground(new java.awt.Color(255, 255, 255));
+        btReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/available_updates_35px.png"))); // NOI18N
+        btReset.setText("SỬA");
+        btReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btResetActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("MÀU SẮC");
@@ -155,10 +194,10 @@ public class MauSac extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Tên");
 
-        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtTenMS.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtTenMS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtTenMSActionPerformed(evt);
             }
         });
 
@@ -175,9 +214,9 @@ public class MauSac extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(132, 132, 132)
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btReset, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -188,7 +227,7 @@ public class MauSac extends javax.swing.JFrame {
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(17, 17, 17)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(txtTenMS, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -213,11 +252,11 @@ public class MauSac extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTenMS, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btReset, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,18 +280,38 @@ public class MauSac extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtTenMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenMSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtTenMSActionPerformed
+
+    private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
+        String ma = txtMaMS.getText();
+        String ten = txtTenMS.getText();
+        MauSac ms = new MauSac(ma, ten);
+        listms.add(ms);
+        JOptionPane.showMessageDialog(this, msimpl.add(ms));
+        listms = msimpl.getAll();
+        showdata(listms);
+    }//GEN-LAST:event_btAddActionPerformed
+
+    private void tbMauSacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMauSacMouseClicked
+        int row = tbMauSac.getSelectedRow();
+        filldata(listms, row);
+    }//GEN-LAST:event_tbMauSacMouseClicked
+
+    private void btResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btResetActionPerformed
+        txtMaMS.setText("");
+        txtTenMS.setText("");
+    }//GEN-LAST:event_btResetActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAdd;
+    private javax.swing.JButton btReset;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -261,8 +320,8 @@ public class MauSac extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tbMauSac;
+    private javax.swing.JTextField txtMaMS;
+    private javax.swing.JTextField txtTenMS;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,10 +4,15 @@
  */
 package View;
 
+import DomainModel.DongSP;
+import Service.impl.DongSPServiceImpl;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -17,21 +22,32 @@ import javax.swing.table.JTableHeader;
  *
  * @author ADMIN
  */
-public class SanPham extends javax.swing.JFrame {
-
-    private static SanPham obj = null;
+public class ViewDongSP extends javax.swing.JFrame {
+    
+    private static ViewDongSP obj = null;
     private DefaultTableModel dtmSP = new DefaultTableModel();
+    private List<DongSP> listdsp = new ArrayList<>();
+    private DongSPServiceImpl dspimpl = new DongSPServiceImpl();
+
     /**
      * Creates new form NewJFrame
      */
-    public SanPham(Point locate) {
+    public ViewDongSP(Point locate) {
         initComponents();
-        this.setLocation(locate); 
-        
+        String header[] = {"ma", "ten"};
+        this.setLocation(locate);
         tbDongSP.setModel(dtmSP);
-        
+        dtmSP.setColumnIdentifiers(header);
+        listdsp = dspimpl.getall();
+        showdata(listdsp);
     }
-
+    
+    private void filldata(int index, List<DongSP> listdsp) {
+        DongSP dsp = listdsp.get(index);
+        txtMa.setText(dsp.getMaDSP());
+        txtTen.setText(dsp.getTenDSP());
+    }
+    
     private void table_head_color(JTable table_name) {
         DefaultTableCellRenderer head_render = new DefaultTableCellRenderer();
         head_render.setForeground(Color.WHITE);
@@ -41,12 +57,19 @@ public class SanPham extends javax.swing.JFrame {
         //to call above method
         //table_head_color("write table name");
     }
-
-    public static SanPham getObj(Point locate) {
+    
+    public static ViewDongSP getObj(Point locate) {
         if (obj == null) {
-            obj = new SanPham(locate);
+            obj = new ViewDongSP(locate);
         }
         return obj;
+    }
+    
+    private void showdata(List<DongSP> listdsp) {
+        dtmSP.setNumRows(0);
+        for (DongSP dsp : listdsp) {
+            dtmSP.addRow(dsp.showdata());
+        }
     }
 
     /**
@@ -102,11 +125,21 @@ public class SanPham extends javax.swing.JFrame {
         tbDongSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbDongSP.setShowHorizontalLines(false);
         tbDongSP.setShowVerticalLines(false);
+        tbDongSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDongSPMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbDongSP);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(85, 52, 165));
         jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(56, 34, 110)));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search_32px.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -129,6 +162,11 @@ public class SanPham extends javax.swing.JFrame {
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add_35px.png"))); // NOI18N
         btnThem.setText("THÊM");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Mã ");
@@ -140,9 +178,14 @@ public class SanPham extends javax.swing.JFrame {
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/available_updates_35px.png"))); // NOI18N
         btnSua.setText("SỬA");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("Sản Phẩm");
+        jLabel8.setText("DÒNG SẢN PHẨM");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Tên");
@@ -156,7 +199,7 @@ public class SanPham extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
+                        .addGap(139, 139, 139)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,7 +234,7 @@ public class SanPham extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -233,6 +276,30 @@ public class SanPham extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String ma = txtMa.getText();
+        String ten = txtTen.getText();
+        DongSP dsp = new DongSP(ma, ten);
+        listdsp.add(dsp);
+        JOptionPane.showMessageDialog(this, dspimpl.add(dsp));
+        listdsp = dspimpl.getall();
+        showdata(listdsp);
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void tbDongSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDongSPMouseClicked
+        int row = tbDongSP.getSelectedRow();
+        filldata(row, listdsp);
+    }//GEN-LAST:event_tbDongSPMouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        txtMa.setText("");
+        txtTen.setText("");
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

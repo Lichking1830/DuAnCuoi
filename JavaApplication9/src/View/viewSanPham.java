@@ -4,10 +4,16 @@
  */
 package View;
 
+import DomainModel.DanhMucSP;
+import DomainModel.DongSP;
+import Service.impl.SanPhamServiceImpl;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -17,21 +23,38 @@ import javax.swing.table.JTableHeader;
  *
  * @author ADMIN
  */
-public class DongSP extends javax.swing.JFrame {
-
-    private static DongSP obj = null;
+public class viewSanPham extends javax.swing.JFrame {
+    
+    private static viewSanPham obj = null;
     private DefaultTableModel dtmSP = new DefaultTableModel();
+    private List<DanhMucSP> listsp = new ArrayList<>();
+    private SanPhamServiceImpl spimpl = new SanPhamServiceImpl();
+
     /**
      * Creates new form NewJFrame
      */
-    public DongSP(Point locate) {
+    public viewSanPham(Point locate) {
         initComponents();
-        this.setLocation(locate); 
-        
-        tbDongSP.setModel(dtmSP);
-        
+        String header[] = {"ma", "ten"};
+        dtmSP.setColumnIdentifiers(header);
+        this.setLocation(locate);
+        tbSP.setModel(dtmSP);
+        listsp = spimpl.getall();
     }
-
+    
+    private void showdata(List<DanhMucSP> listsp) {
+        dtmSP.setNumRows(0);
+        for (DanhMucSP sp : listsp) {
+            dtmSP.addRow(sp.showdata());
+        }
+    }
+    
+    private void filldata(int index, List<DanhMucSP> listsp) {
+        DanhMucSP sp = listsp.get(index);
+        txtMa.setText(sp.getMaSP());
+        txtTen.setText(sp.getTenSP());
+    }
+    
     private void table_head_color(JTable table_name) {
         DefaultTableCellRenderer head_render = new DefaultTableCellRenderer();
         head_render.setForeground(Color.WHITE);
@@ -41,10 +64,10 @@ public class DongSP extends javax.swing.JFrame {
         //to call above method
         //table_head_color("write table name");
     }
-
-    public static DongSP getObj(Point locate) {
+    
+    public static viewSanPham getObj(Point locate) {
         if (obj == null) {
-            obj = new DongSP(locate);
+            obj = new viewSanPham(locate);
         }
         return obj;
     }
@@ -61,7 +84,7 @@ public class DongSP extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbDongSP = new javax.swing.JTable();
+        tbSP = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -85,8 +108,8 @@ public class DongSP extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(785, 513));
 
-        tbDongSP.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        tbDongSP.setModel(new javax.swing.table.DefaultTableModel(
+        tbSP.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        tbSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -94,15 +117,20 @@ public class DongSP extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbDongSP.setFocusable(false);
-        tbDongSP.setGridColor(new java.awt.Color(85, 52, 165));
-        tbDongSP.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tbDongSP.setOpaque(false);
-        tbDongSP.setRowHeight(25);
-        tbDongSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tbDongSP.setShowHorizontalLines(false);
-        tbDongSP.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(tbDongSP);
+        tbSP.setFocusable(false);
+        tbSP.setGridColor(new java.awt.Color(85, 52, 165));
+        tbSP.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tbSP.setOpaque(false);
+        tbSP.setRowHeight(25);
+        tbSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbSP.setShowHorizontalLines(false);
+        tbSP.setShowVerticalLines(false);
+        tbSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbSPMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbSP);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(85, 52, 165));
@@ -129,6 +157,11 @@ public class DongSP extends javax.swing.JFrame {
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add_35px.png"))); // NOI18N
         btnThem.setText("THÊM");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Mã ");
@@ -140,9 +173,14 @@ public class DongSP extends javax.swing.JFrame {
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/available_updates_35px.png"))); // NOI18N
         btnSua.setText("SỬA");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("DÒNG SẢN PHẨM");
+        jLabel8.setText("Sản Phẩm");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Tên");
@@ -156,7 +194,7 @@ public class DongSP extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
+                        .addGap(179, 179, 179)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,7 +229,7 @@ public class DongSP extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -234,6 +272,26 @@ public class DongSP extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String ma = txtMa.getText();
+        String ten = txtTen.getText();
+        DanhMucSP sp = new DanhMucSP(ma, ten);
+        listsp.add(sp);
+        JOptionPane.showMessageDialog(this, spimpl.add(sp));
+        listsp = spimpl.getall();
+        showdata(listsp);
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void tbSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSPMouseClicked
+        int row = tbSP.getSelectedRow();
+        filldata(row, listsp);
+    }//GEN-LAST:event_tbSPMouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        txtMa.setText("");
+        txtTen.setText("");
+    }//GEN-LAST:event_btnSuaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,7 +308,7 @@ public class DongSP extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tbDongSP;
+    private javax.swing.JTable tbSP;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables

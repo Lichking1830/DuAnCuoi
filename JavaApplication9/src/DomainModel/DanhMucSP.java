@@ -52,4 +52,8 @@ public class DanhMucSP {
         this.tenSP = tenSP;
     }
 
+    public Object[] showdata() {
+        return new Object[]{maSP, tenSP};
+    }
+
 }

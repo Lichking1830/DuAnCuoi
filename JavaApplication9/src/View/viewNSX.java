@@ -4,10 +4,15 @@
  */
 package View;
 
+import DomainModel.NSX;
+import Service.impl.NSXServiceImpl;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -17,21 +22,33 @@ import javax.swing.table.JTableHeader;
  *
  * @author ADMIN
  */
-public class NSX extends javax.swing.JFrame {
+public class viewNSX extends javax.swing.JFrame {
+    
+    private static viewNSX obj = null;
+    private DefaultTableModel dtmNSX = new DefaultTableModel();
+    private NSXServiceImpl nsximpl = new NSXServiceImpl();
+    private List<NSX> listnsx = new ArrayList<>();
 
-    private static NSX obj = null;
-    private DefaultTableModel dtmSP = new DefaultTableModel();
     /**
      * Creates new form NewJFrame
      */
-    public NSX(Point locate) {
+    public viewNSX(Point locate) {
         initComponents();
-        this.setLocation(locate); 
-        
-        tbSanPham.setModel(dtmSP);
+        String header[] = {"ma", "ten"};
+        this.setLocation(locate);
+        tbNSX.setModel(dtmNSX);
+        dtmNSX.setColumnIdentifiers(header);
+        listnsx = nsximpl.getAll();
+        showdata(listnsx);
+    }
+    
+    private void filldata(int index, List<NSX> listnsx) {
+        NSX nsx = listnsx.get(index);
+        txtMa.setText(nsx.getMaNSX());
+        txtTen.setText(nsx.getTenNSX());
         
     }
-
+    
     private void table_head_color(JTable table_name) {
         DefaultTableCellRenderer head_render = new DefaultTableCellRenderer();
         head_render.setForeground(Color.WHITE);
@@ -41,12 +58,19 @@ public class NSX extends javax.swing.JFrame {
         //to call above method
         //table_head_color("write table name");
     }
-
-    public static NSX getObj(Point locate) {
+    
+    public static viewNSX getObj(Point locate) {
         if (obj == null) {
-            obj = new NSX(locate);
+            obj = new viewNSX(locate);
         }
         return obj;
+    }
+
+    private void showdata(List<NSX> litsnsx) {
+        dtmNSX.setNumRows(0);
+        for (NSX nsx : listnsx) {
+            dtmNSX.addRow(nsx.showdata());
+        }
     }
 
     /**
@@ -61,17 +85,17 @@ public class NSX extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbSanPham = new javax.swing.JTable();
+        tbNSX = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtMa = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtTen = new javax.swing.JTextField();
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,8 +109,8 @@ public class NSX extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(785, 513));
 
-        tbSanPham.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        tbSanPham.setModel(new javax.swing.table.DefaultTableModel(
+        tbNSX.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        tbNSX.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -97,15 +121,20 @@ public class NSX extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbSanPham.setFocusable(false);
-        tbSanPham.setGridColor(new java.awt.Color(85, 52, 165));
-        tbSanPham.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tbSanPham.setOpaque(false);
-        tbSanPham.setRowHeight(25);
-        tbSanPham.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tbSanPham.setShowHorizontalLines(false);
-        tbSanPham.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(tbSanPham);
+        tbNSX.setFocusable(false);
+        tbNSX.setGridColor(new java.awt.Color(85, 52, 165));
+        tbNSX.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tbNSX.setOpaque(false);
+        tbNSX.setRowHeight(25);
+        tbNSX.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbNSX.setShowHorizontalLines(false);
+        tbNSX.setShowVerticalLines(false);
+        tbNSX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNSXMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbNSX);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(85, 52, 165));
@@ -138,11 +167,16 @@ public class NSX extends javax.swing.JFrame {
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add_35px.png"))); // NOI18N
         jButton7.setText("THÊM");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Mã ");
 
-        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtMa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         jButton8.setBackground(new java.awt.Color(85, 52, 165));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -153,7 +187,7 @@ public class NSX extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Tên");
 
-        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtTen.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -171,13 +205,13 @@ public class NSX extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(81, 81, 81)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel2)
                                 .addGap(79, 79, 79)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(11, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -196,11 +230,11 @@ public class NSX extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -233,6 +267,21 @@ public class NSX extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tbNSXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNSXMouseClicked
+        int row = tbNSX.getSelectedRow();
+        filldata(row, listnsx);
+    }//GEN-LAST:event_tbNSXMouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String ma = txtMa.getText();
+        String ten = txtTen.getText();
+        NSX nsx = new NSX(ma, ten);
+        listnsx.add(nsx);
+        JOptionPane.showMessageDialog(this, nsximpl.add(nsx));
+        listnsx = nsximpl.getAll();
+        showdata(listnsx);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,8 +298,8 @@ public class NSX extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTable tbSanPham;
+    private javax.swing.JTable tbNSX;
+    private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }
