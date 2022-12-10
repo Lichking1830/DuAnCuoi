@@ -4,6 +4,7 @@
  */
 package View;
 
+import DomainModel.DanhMucSP;
 import Service.NhanVienService;
 import Service.impl.NhanVienServiceimpl;
 import java.awt.Color;
@@ -13,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import View.BanHang;
+import ViewModel.ViewModelChiTietSP;
 import java.awt.Window;
 
 import java.awt.PopupMenu;
@@ -349,8 +351,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnThongKeMouseClicked
 
     private void pnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSanPhamMouseClicked
-        SanPham sp = new SanPham(jPanel2.getLocationOnScreen());
-        sp.getManSanPham(jPanel2.getLocationOnScreen()).setVisible(true);
+        ChiTietSP ctsp = new ChiTietSP(jPanel2.getLocationOnScreen());
+        ctsp.getManSanPham(jPanel2.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_pnSanPhamMouseClicked
 
     private void pnSanPhamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSanPhamMouseEntered

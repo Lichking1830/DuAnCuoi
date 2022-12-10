@@ -23,7 +23,7 @@ import javax.swing.table.JTableHeader;
  * @author ADMIN
  */
 public class ViewDongSP extends javax.swing.JFrame {
-    
+
     private static ViewDongSP obj = null;
     private DefaultTableModel dtmSP = new DefaultTableModel();
     private List<DongSP> listdsp = new ArrayList<>();
@@ -32,22 +32,21 @@ public class ViewDongSP extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public ViewDongSP(Point locate) {
+    public ViewDongSP() {
         initComponents();
         String header[] = {"ma", "ten"};
-        this.setLocation(locate);
         tbDongSP.setModel(dtmSP);
         dtmSP.setColumnIdentifiers(header);
         listdsp = dspimpl.getall();
         showdata(listdsp);
     }
-    
+
     private void filldata(int index, List<DongSP> listdsp) {
         DongSP dsp = listdsp.get(index);
         txtMa.setText(dsp.getMaDSP());
         txtTen.setText(dsp.getTenDSP());
     }
-    
+
     private void table_head_color(JTable table_name) {
         DefaultTableCellRenderer head_render = new DefaultTableCellRenderer();
         head_render.setForeground(Color.WHITE);
@@ -57,14 +56,13 @@ public class ViewDongSP extends javax.swing.JFrame {
         //to call above method
         //table_head_color("write table name");
     }
-    
-    public static ViewDongSP getObj(Point locate) {
-        if (obj == null) {
-            obj = new ViewDongSP(locate);
-        }
-        return obj;
-    }
-    
+
+//    public static ViewDongSP getObj(Point locate) {
+//        if (obj == null) {
+//            obj = new ViewDongSP(locate);
+//        }
+//        return obj;
+//    }
     private void showdata(List<DongSP> listdsp) {
         dtmSP.setNumRows(0);
         for (DongSP dsp : listdsp) {
@@ -95,6 +93,7 @@ public class ViewDongSP extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtTen = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,6 +191,14 @@ public class ViewDongSP extends javax.swing.JFrame {
 
         txtTen.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/BackMini.png"))); // NOI18N
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -199,7 +206,8 @@ public class ViewDongSP extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,10 +239,15 @@ public class ViewDongSP extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -301,6 +314,11 @@ public class ViewDongSP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ChiTietSP ctsp = new ChiTietSP(jPanel2.getLocationOnScreen());
+        ctsp.getManSanPham(jPanel2.getLocationOnScreen()).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -308,6 +326,7 @@ public class ViewDongSP extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

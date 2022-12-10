@@ -32,10 +32,9 @@ public class viewNSX extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public viewNSX(Point locate) {
+    public viewNSX() {
         initComponents();
         String header[] = {"ma", "ten"};
-        this.setLocation(locate);
         tbNSX.setModel(dtmNSX);
         dtmNSX.setColumnIdentifiers(header);
         listnsx = nsximpl.getAll();
@@ -59,12 +58,12 @@ public class viewNSX extends javax.swing.JFrame {
         //table_head_color("write table name");
     }
     
-    public static viewNSX getObj(Point locate) {
-        if (obj == null) {
-            obj = new viewNSX(locate);
-        }
-        return obj;
-    }
+//    public static viewNSX getObj(Point locate) {
+//        if (obj == null) {
+//            obj = new viewNSX(locate);
+//        }
+//        return obj;
+//    }
 
     private void showdata(List<NSX> litsnsx) {
         dtmNSX.setNumRows(0);

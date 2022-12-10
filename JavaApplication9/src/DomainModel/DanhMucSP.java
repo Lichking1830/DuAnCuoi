@@ -4,6 +4,8 @@
  */
 package DomainModel;
 
+import java.awt.Point;
+
 /**
  *
  * @author admin
@@ -26,6 +28,10 @@ public class DanhMucSP {
     public DanhMucSP(String maSP, String tenSP) {
         this.maSP = maSP;
         this.tenSP = tenSP;
+    }
+
+    public DanhMucSP(Point locationOnScreen) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String getID() {

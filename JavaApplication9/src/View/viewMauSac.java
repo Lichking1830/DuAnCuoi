@@ -33,10 +33,10 @@ public class viewMauSac extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public viewMauSac(Point locate) {
+    public viewMauSac() {
         initComponents();
         String header[] = {"ma", "ten"};
-        this.setLocation(locate);
+        
         tbMauSac.setModel(dtmMS);
         dtmMS.setColumnIdentifiers(header);
         listms = msimpl.getAll();
@@ -66,12 +66,12 @@ public class viewMauSac extends javax.swing.JFrame {
         txtTenMS.setText(ms.getTenMS());
     }
     
-    public static viewMauSac getObj(Point locate) {
-        if (obj == null) {
-            obj = new viewMauSac(locate);
-        }
-        return obj;
-    }
+//    public static viewMauSac getObj(Point locate) {
+////        if (obj == null) {
+////            obj = new viewMauSac(locate);
+////        }
+////        return obj;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
