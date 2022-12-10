@@ -6,7 +6,9 @@ package View;
 
 
 import java.awt.Color;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,7 +42,7 @@ public class Register extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        txtNumber = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -83,6 +85,11 @@ public class Register extends javax.swing.JFrame {
                 txtNameMouseClicked(evt);
             }
         });
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNameKeyReleased(evt);
@@ -93,10 +100,15 @@ public class Register extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(180, 180, 160));
         jLabel3.setText("PHONE NUMBER");
 
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(200, 200, 200));
-        txtEmail.setText("Email Address...");
-        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(241, 241, 241)));
+        txtNumber.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtNumber.setForeground(new java.awt.Color(200, 200, 200));
+        txtNumber.setText("Email Address...");
+        txtNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(241, 241, 241)));
+        txtNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumberActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font(".VnArialH", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(180, 180, 160));
@@ -106,6 +118,11 @@ public class Register extends javax.swing.JFrame {
         txtUser.setForeground(new java.awt.Color(200, 200, 200));
         txtUser.setText("UserName...");
         txtUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(241, 241, 241)));
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font(".VnArialH", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(180, 180, 160));
@@ -118,10 +135,20 @@ public class Register extends javax.swing.JFrame {
         pfPass.setForeground(new java.awt.Color(200, 200, 200));
         pfPass.setText("jPasswordField1");
         pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(241, 241, 241)));
+        pfPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfPassActionPerformed(evt);
+            }
+        });
 
         pfConfirm.setForeground(new java.awt.Color(200, 200, 200));
         pfConfirm.setText("jPasswordField1");
         pfConfirm.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(241, 241, 241)));
+        pfConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfConfirmActionPerformed(evt);
+            }
+        });
 
         lbName.setForeground(new java.awt.Color(255, 0, 0));
         lbName.setText("jLabel9");
@@ -187,7 +214,7 @@ public class Register extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(pfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbUser, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,7 +275,7 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(lbEmail))
                 .addGap(0, 0, 0)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -325,6 +352,47 @@ public class Register extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_txtNameKeyReleased
 
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+         if (txtName.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, " họ và tên không được để trống");
+            return;
+        }
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumberActionPerformed
+        Pattern p = Pattern.compile("^[0-9]{10}$");
+        if(p.matcher(txtNumber.getText()).find()){
+            JOptionPane.showMessageDialog(this, "số điện thoại đạt");
+        }else{
+            JOptionPane.showMessageDialog(this, "số điện thoại không được quá 10 số");
+            return;
+        }
+    }//GEN-LAST:event_txtNumberActionPerformed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        if (txtUser.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "tên khòng được trống");
+            return;
+        }
+    }//GEN-LAST:event_txtUserActionPerformed
+
+    private void pfPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfPassActionPerformed
+         if (pfPass.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Mật Khẩu không được trống");
+            return;
+        }
+    }//GEN-LAST:event_pfPassActionPerformed
+
+    private void pfConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfConfirmActionPerformed
+         if (pfConfirm.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Mật Khẩu không được trống");
+            return;
+        }if(pfConfirm != pfPass){
+             JOptionPane.showMessageDialog(this, "Mật Khẩu phải trùng");
+             return;
+        }
+    }//GEN-LAST:event_pfConfirmActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -382,9 +450,9 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel lbUser;
     private javax.swing.JPasswordField pfConfirm;
     private javax.swing.JPasswordField pfPass;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtNumber;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
