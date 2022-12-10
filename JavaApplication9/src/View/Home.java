@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import View.BanHang;
+import View.Carts;
 import java.awt.Window;
 
 import java.awt.PopupMenu;
@@ -322,8 +322,8 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnBanHangMouseClicked
-        BanHang bh = new BanHang(jPanel2.getLocationOnScreen());
-        bh.getObj(jPanel2.getLocationOnScreen()).setVisible(true);
+//        BanHang bh = new BanHang(jPanel2.getLocationOnScreen());
+//        bh.getObj(jPanel2.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_pnBanHangMouseClicked
 
     private void pnBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnBanHangMouseEntered
