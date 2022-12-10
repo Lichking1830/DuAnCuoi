@@ -23,6 +23,11 @@ public class SanPham {
         this.tenSanPham = tenSanPham;
     }
 
+    public SanPham(String maSanPham, String tenSanPham) {
+        this.maSanPham = maSanPham;
+        this.tenSanPham = tenSanPham;
+    }
+
     public String getIdSanPham() {
         return idSanPham;
     }
@@ -50,6 +55,10 @@ public class SanPham {
     @Override
     public String toString() {
         return "SanPham{" + "idSanPham=" + idSanPham + ", maSanPham=" + maSanPham + ", tenSanPham=" + tenSanPham + '}';
+    }
+
+    public Object[] showdata() {
+        return new Object[]{ maSanPham, tenSanPham};
     }
 
 }

@@ -343,7 +343,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnThongKeMouseExited
 
     private void pnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnThongKeMouseClicked
-        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenChucVu().equals("Nhân Viên")) {
+        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenCV().equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
         } else {
             ThongKe tk = new ThongKe(jPanel2.getLocationOnScreen());
@@ -373,7 +373,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnNhanVienMouseEntered
 
     private void pnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnNhanVienMouseClicked
-        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenChucVu().equals("Nhân Viên")) {
+        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenCV().equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
         } else {
             NhanVien nv = new NhanVien(jPanel2.getLocationOnScreen());
@@ -391,7 +391,7 @@ public class Home extends javax.swing.JFrame {
 
     private void pnLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnLogOutMouseClicked
         new Login().setVisible(true);
-        for(DomainModel.NhanVien nv : nvs.getNVOnline()){
+        for (DomainModels.NhanVien nv : nvs.getNVOnline()) {
             nv.setTrangThai(1);
         }
         this.dispose();

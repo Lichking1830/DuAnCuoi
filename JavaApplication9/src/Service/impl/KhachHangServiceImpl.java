@@ -4,7 +4,7 @@
  */
 package Service.impl;
 
-import DomainModel.KhachHang;
+import DomainModels.KhachHang;
 import Repository.KhachHangReposition;
 import Service.KhachHangService;
 import java.util.List;

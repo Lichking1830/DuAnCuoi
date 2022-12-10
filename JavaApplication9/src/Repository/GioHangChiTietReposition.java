@@ -4,13 +4,13 @@
  */
 package Repository;
 
-import DomainModel.ChiTietSP;
-import DomainModel.DanhMucSP;
-import DomainModel.DongSP;
-import DomainModel.GioHang;
-import DomainModel.GioHangChiTiet;
-import DomainModel.MauSac;
-import DomainModel.NSX;
+import DomainModels.ChiTietSP;
+import DomainModels.SanPham;
+import DomainModels.DongSP;
+import DomainModels.GioHang;
+import DomainModels.GioHangChiTiet;
+import DomainModels.MauSac;
+import DomainModels.NSX;
 import Ultilities.SQLConnection;
 import java.util.List;
 import java.sql.Connection;

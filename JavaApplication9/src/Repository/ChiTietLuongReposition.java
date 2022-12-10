@@ -4,8 +4,8 @@
  */
 package Repository;
 
-import DomainModel.ChiTietLuong;
-import DomainModel.NhanVien;
+import DomainModels.ChiTietLuong;
+import DomainModels.NhanVien;
 import Ultilities.SQLConnection;
 import ViewModel.ViewModelChiTietLuong;
 import java.sql.Connection;
@@ -25,8 +25,7 @@ public class ChiTietLuongReposition {
         String query = "SELECT dbo.ChiTietLuong.Id, dbo.NhanVien.Ma, dbo.NhanVien.HoTen, dbo.ChiTietLuong.SoGioLam, dbo.ChiTietLuong.LuongCoBan, dbo.ChiTietLuong.LuongTinhTheoGio,  (dbo.ChiTietLuong.SoGioLam *dbo.ChiTietLuong.LuongTinhTheoGio) as 'LuongLamViec', (dbo.ChiTietLuong.SoGioLam *dbo.ChiTietLuong.LuongTinhTheoGio) + dbo.ChiTietLuong.LuongCoBan as'LuongThucTe'\n"
                 + "FROM     dbo.ChiTietLuong INNER JOIN\n"
                 + "                  dbo.NhanVien ON dbo.ChiTietLuong.IdNV = dbo.NhanVien.Id";
-        try (Connection con = SQLConnection.getConnection();
-                PreparedStatement ps = con.prepareStatement(query)) {
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
             List<ViewModelChiTietLuong> list = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -49,12 +48,11 @@ public class ChiTietLuongReposition {
                 + "      ,[LuongTinhTheoGio] = ?"
                 + " WHERE Id like ?";
         int check = 0;
-        try (Connection con = SQLConnection.getConnection();
-                PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setObject(1, ctl.getNv().getID());
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setObject(1, ctl.getNhanVien().getIdNhanVien());
             ps.setObject(2, ctl.getSoGioLam());
             ps.setObject(3, ctl.getLuongCoBan());
-            ps.setObject(4, ctl.getLuongTinhTheoGio());
+            ps.setObject(4, ctl.getLuongCoBan());
             ps.setObject(5, id);
             check = ps.executeUpdate();
         } catch (SQLException ex) {

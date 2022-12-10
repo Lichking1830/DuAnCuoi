@@ -4,15 +4,15 @@
  */
 package View;
 
-import DomainModel.DanhMucSP;
-import DomainModel.DongSP;
-import DomainModel.GioHang;
-import DomainModel.GioHangChiTiet;
-import DomainModel.HoaDon;
-import DomainModel.HoaDonChiTiet;
-import DomainModel.KhachHang;
-import DomainModel.MauSac;
-import DomainModel.NSX;
+import DomainModels.SanPham;
+import DomainModels.DongSP;
+import DomainModels.GioHang;
+import DomainModels.GioHangChiTiet;
+import DomainModels.HoaDon;
+import DomainModels.HoaDonChiTiet;
+import DomainModels.KhachHang;
+import DomainModels.MauSac;
+import DomainModels.NSX;
 import Repository.NhanVienReposition;
 import Service.impl.ChiTietSPServiceImpl;
 import Service.impl.GioHangServiceimpl;
@@ -29,7 +29,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import DomainModel.NhanVien;
+import DomainModels.NhanVien;
 
 /**
  *
@@ -79,13 +79,13 @@ public class BanHang extends javax.swing.JFrame {
         int STT = 1;
         dtmGH.setRowCount(0);
         for (GioHangChiTiet hoaDonViewModelHD : list) {
-            dtmGH.addRow(new Object[]{STT++, hoaDonViewModelHD.getCtsp().getDongSanPham().getTenDSP(),
-                hoaDonViewModelHD.getCtsp().getNsx().getTenNSX(),
-                hoaDonViewModelHD.getCtsp().getMauSac().getTenMS(),
-                hoaDonViewModelHD.getCtsp().getDongSanPham().getTenDSP(),
-                hoaDonViewModelHD.getCtsp().getNamBH(),
-                hoaDonViewModelHD.getCtsp().getSoLuongTon(),
-                hoaDonViewModelHD.getCtsp().getGiaBan()});
+            dtmGH.addRow(new Object[]{STT++, hoaDonViewModelHD.getChiTietSP().getDongSP().getTenDSP(),
+                hoaDonViewModelHD.getChiTietSP().getNsx().getTenNSX(),
+                hoaDonViewModelHD.getChiTietSP().getMauSac().getTenMS(),
+                hoaDonViewModelHD.getChiTietSP().getSanPham().getTenSanPham(),
+                hoaDonViewModelHD.getChiTietSP().getNamBH(),
+                hoaDonViewModelHD.getChiTietSP().getSoLuongTon(),
+                hoaDonViewModelHD.getChiTietSP().getGiaBan()});
         }
     }
 
@@ -107,9 +107,9 @@ public class BanHang extends javax.swing.JFrame {
     }
 
     private void filldata(List<ViewModelChiTietSP> listctsp, int index) {
-        ViewModelChiTietSP ctsp = listctsp.get(index);
-        ctsp.getSanPham().setMaSP(ctsp.getSanPham().getMaSP());
-        ctsp.getSanPham().setTenSP(ctsp.getSanPham().getTenSP());
+//        ViewModelChiTietSP ctsp = listctsp.get(index);
+//        ctsp.getSanPham().setMaSP(ctsp.getSanPham().getMaSP());
+//        ctsp.getSanPham().setTenSP(ctsp.getSanPham().getTenSP());
     }
 
     /**

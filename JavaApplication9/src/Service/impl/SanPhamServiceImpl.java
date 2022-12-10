@@ -4,7 +4,7 @@
  */
 package Service.impl;
 
-import DomainModel.DanhMucSP;
+import DomainModels.SanPham;
 import Repository.SanPhamReposition;
 import Service.SanPhamService;
 import java.util.List;
@@ -18,12 +18,12 @@ public class SanPhamServiceImpl implements SanPhamService {
     SanPhamReposition spre = new SanPhamReposition();
 
     @Override
-    public List<DanhMucSP> getall() {
+    public List<SanPham> getall() {
         return spre.getAll();
     }
 
     @Override
-    public DanhMucSP getOne(String ten) {
+    public SanPham getOne(String ten) {
         return spre.getOne(ten);
     }
 
@@ -38,7 +38,7 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
-    public String add(DanhMucSP sp) {
+    public String add(SanPham sp) {
         boolean add = spre.add(sp);
         if (add) {
             return "thanh cong";
@@ -48,7 +48,7 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
-    public String update(DanhMucSP sp, String id) {
+    public String update(SanPham sp, String id) {
         boolean update = spre.update(sp, id);
         if (update) {
             return "thanh cong";

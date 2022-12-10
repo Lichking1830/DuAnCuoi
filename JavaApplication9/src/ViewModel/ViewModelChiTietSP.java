@@ -4,10 +4,10 @@
  */
 package ViewModel;
 
-import DomainModel.DongSP;
-import DomainModel.MauSac;
-import DomainModel.NSX;
-import DomainModel.DanhMucSP;
+import DomainModels.DongSP;
+import DomainModels.MauSac;
+import DomainModels.NSX;
+import DomainModels.SanPham;
 
 /**
  *
@@ -16,7 +16,7 @@ import DomainModel.DanhMucSP;
 public class ViewModelChiTietSP {
 
     private String ID;
-    private DanhMucSP sanPham;
+    private SanPham sanPham;
     private NSX nsx;
     private MauSac mauSac;
     private DongSP dongSanPham;
@@ -30,7 +30,7 @@ public class ViewModelChiTietSP {
     public ViewModelChiTietSP() {
     }
 
-    public ViewModelChiTietSP(String ID, DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan, float tongTien) {
+    public ViewModelChiTietSP(String ID, SanPham sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan, float tongTien) {
         this.ID = ID;
         this.sanPham = sanPham;
         this.nsx = nsx;
@@ -44,8 +44,8 @@ public class ViewModelChiTietSP {
         this.tongTien = tongTien;
     }
 
-    public ViewModelChiTietSP(DanhMucSP sanPham) {
-         this.sanPham = sanPham;
+    public ViewModelChiTietSP(SanPham sanPham) {
+        this.sanPham = sanPham;
     }
 
     public String getID() {
@@ -56,11 +56,11 @@ public class ViewModelChiTietSP {
         this.ID = ID;
     }
 
-    public DanhMucSP getSanPham() {
+    public SanPham getSanPham() {
         return sanPham;
     }
 
-    public void setSanPham(DanhMucSP sanPham) {
+    public void setSanPham(SanPham sanPham) {
         this.sanPham = sanPham;
     }
 
@@ -134,6 +134,10 @@ public class ViewModelChiTietSP {
 
     public void setTongTien(float tongTien) {
         this.tongTien = tongTien;
+    }
+
+    public Object[] showdata() {
+        return new Object[]{sanPham.getTenSanPham(), nsx.getTenNSX(), mauSac.getTenMS(), dongSanPham.getTenDSP(), namBH, soLuongTon, giaBan};
     }
 
 }

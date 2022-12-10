@@ -39,6 +39,23 @@ public class NhanVien {
         this.trangThai = trangThai;
     }
 
+    public NhanVien(String string, String string0) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public NhanVien(String idNhanVien, String maNhanVien, String hoTenNhanVien, String ngaySinh, boolean gioiTinh, String diaChi, String soDienThoai, String tenTaiKhoan, String matKhau, int trangThai) {
+        this.idNhanVien = idNhanVien;
+        this.maNhanVien = maNhanVien;
+        this.hoTenNhanVien = hoTenNhanVien;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.soDienThoai = soDienThoai;
+        this.tenTaiKhoan = tenTaiKhoan;
+        this.matKhau = matKhau;
+        this.trangThai = trangThai;
+    }
+
     public String getIdNhanVien() {
         return idNhanVien;
     }
