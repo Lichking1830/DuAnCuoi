@@ -25,6 +25,11 @@ public class NhanVien {
     public NhanVien() {
     }
 
+    public NhanVien(String maNhanVien, String hoTenNhanVien) {
+        this.maNhanVien = maNhanVien;
+        this.hoTenNhanVien = hoTenNhanVien;
+    }
+
     public NhanVien(String idNhanVien, ChucVu chucVu, String maNhanVien, String hoTenNhanVien, String ngaySinh, boolean gioiTinh, String diaChi, String soDienThoai, String tenTaiKhoan, String matKhau, int trangThai) {
         this.idNhanVien = idNhanVien;
         this.chucVu = chucVu;
@@ -37,10 +42,6 @@ public class NhanVien {
         this.tenTaiKhoan = tenTaiKhoan;
         this.matKhau = matKhau;
         this.trangThai = trangThai;
-    }
-
-    public NhanVien(String string, String string0) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public NhanVien(String idNhanVien, String maNhanVien, String hoTenNhanVien, String ngaySinh, boolean gioiTinh, String diaChi, String soDienThoai, String tenTaiKhoan, String matKhau, int trangThai) {

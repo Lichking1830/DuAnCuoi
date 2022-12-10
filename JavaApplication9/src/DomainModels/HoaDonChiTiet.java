@@ -10,6 +10,7 @@ package DomainModels;
  */
 public class HoaDonChiTiet {
 
+    private String idHoaDonChiTiet;
     private HoaDon hoaDon;
     private ChiTietSP chiTietSP;
     private int soLuong;
@@ -23,11 +24,41 @@ public class HoaDonChiTiet {
         this.donGia = donGia;
     }
 
+    public HoaDonChiTiet(HoaDon hoaDon, int soLuong, float donGia) {
+        this.hoaDon = hoaDon;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+    }
+    
     public HoaDonChiTiet(HoaDon hoaDon, ChiTietSP chiTietSP, int soLuong, float donGia) {
         this.hoaDon = hoaDon;
         this.chiTietSP = chiTietSP;
         this.soLuong = soLuong;
         this.donGia = donGia;
+    }
+
+    public String getIdHoaDonChiTiet() {
+        return idHoaDonChiTiet;
+    }
+
+    public void setIdHoaDonChiTiet(String idHoaDonChiTiet) {
+        this.idHoaDonChiTiet = idHoaDonChiTiet;
+    }
+
+    public HoaDon getHoaDon() {
+        return hoaDon;
+    }
+
+    public void setHoaDon(HoaDon hoaDon) {
+        this.hoaDon = hoaDon;
+    }
+
+    public ChiTietSP getChiTietSP() {
+        return chiTietSP;
+    }
+
+    public void setChiTietSP(ChiTietSP chiTietSP) {
+        this.chiTietSP = chiTietSP;
     }
 
     public HoaDon getHd() {

@@ -16,5 +16,6 @@ import java.awt.Point;
 public class Application {
 
     public static void main(String[] args) {
+        new View.Login().setVisible(true);
     }
 }

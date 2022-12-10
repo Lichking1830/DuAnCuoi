@@ -22,7 +22,11 @@ public class HoaDon {
 
     public HoaDon() {
     }
-    
+
+    public HoaDon(String idHoaDon) {
+        this.idHoaDon = idHoaDon;
+    }
+
     public HoaDon(String idHoaDon, KhachHang khachHang, NhanVien nhanVien, String maHoaDon, String ngayTao, String ngayThanhToan, int tinhTrang) {
         this.idHoaDon = idHoaDon;
         this.khachHang = khachHang;
