@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -18,7 +19,7 @@ import javax.swing.table.JTableHeader;
 public class ChiTietSP extends javax.swing.JFrame {
 
     private static ChiTietSP manSanPham = null;
-
+    private DefaultTableModel dtm = new DefaultTableModel();
     /**
      * Creates new form NewJFrame
      */
