@@ -4,7 +4,6 @@
  */
 package View;
 
-import DomainModel.DanhMucSP;
 import Service.NhanVienService;
 import Service.impl.NhanVienServiceimpl;
 import java.awt.Color;
@@ -14,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import View.BanHang;
-import ViewModel.ViewModelChiTietSP;
 import java.awt.Window;
 
 import java.awt.PopupMenu;
@@ -66,6 +64,7 @@ public class Home extends javax.swing.JFrame {
         pnLogOut = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -243,6 +242,8 @@ public class Home extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("ĐĂNG XUẤT");
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/export_50px.png"))); // NOI18N
+
         javax.swing.GroupLayout pnLogOutLayout = new javax.swing.GroupLayout(pnLogOut);
         pnLogOut.setLayout(pnLogOutLayout);
         pnLogOutLayout.setHorizontalGroup(
@@ -251,15 +252,15 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel11)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel10))
         );
         pnLogOutLayout.setVerticalGroup(
             pnLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-            .addGroup(pnLogOutLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -285,7 +286,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(pnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(pnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(85, 52, 165));
@@ -294,7 +295,7 @@ public class Home extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 761, Short.MAX_VALUE)
+            .addGap(0, 747, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,7 +343,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnThongKeMouseExited
 
     private void pnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnThongKeMouseClicked
-        if (nvs.getNVOnline().get(0).getChucVu().getTenChucVu().equals("Nhân Viên")) {
+        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenChucVu().equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
         } else {
             ThongKe tk = new ThongKe(jPanel2.getLocationOnScreen());
@@ -351,8 +352,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnThongKeMouseClicked
 
     private void pnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSanPhamMouseClicked
-        ChiTietSP ctsp = new ChiTietSP(jPanel2.getLocationOnScreen());
-        ctsp.getManSanPham(jPanel2.getLocationOnScreen()).setVisible(true);
+        ChiTietSP sp = new ChiTietSP(jPanel2.getLocationOnScreen());
+        sp.getManSanPham(jPanel2.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_pnSanPhamMouseClicked
 
     private void pnSanPhamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSanPhamMouseEntered
@@ -372,7 +373,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnNhanVienMouseEntered
 
     private void pnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnNhanVienMouseClicked
-        if (nvs.getNVOnline().get(0).getChucVu().getTenChucVu().equals("Nhân Viên")) {
+        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenChucVu().equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
         } else {
             NhanVien nv = new NhanVien(jPanel2.getLocationOnScreen());
@@ -390,6 +391,9 @@ public class Home extends javax.swing.JFrame {
 
     private void pnLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnLogOutMouseClicked
         new Login().setVisible(true);
+        for(DomainModel.NhanVien nv : nvs.getNVOnline()){
+            nv.setTrangThai(1);
+        }
         this.dispose();
     }//GEN-LAST:event_pnLogOutMouseClicked
 
@@ -431,6 +435,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
