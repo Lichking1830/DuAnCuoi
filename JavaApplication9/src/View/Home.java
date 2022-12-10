@@ -4,6 +4,8 @@
  */
 package View;
 
+import Service.NhanVienService;
+import Service.impl.NhanVienServiceimpl;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
@@ -14,6 +16,7 @@ import View.BanHang;
 import java.awt.Window;
 
 import java.awt.PopupMenu;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,12 +24,19 @@ import java.awt.PopupMenu;
  */
 public class Home extends javax.swing.JFrame {
 
+    public NhanVienService nvs = new NhanVienServiceimpl();
+
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
+        nvs.getNVOnline().get(0).getTrangThai();
 
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
     }
 
     /**
@@ -51,6 +61,9 @@ public class Home extends javax.swing.JFrame {
         pnNhanVien = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        pnLogOut = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,6 +111,8 @@ public class Home extends javax.swing.JFrame {
         );
 
         pnThongKe.setBackground(new java.awt.Color(25, 30, 50));
+        pnThongKe.setDoubleBuffered(false);
+        pnThongKe.setEnabled(false);
         pnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnThongKeMouseClicked(evt);
@@ -207,6 +222,44 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pnLogOut.setBackground(new java.awt.Color(25, 30, 50));
+        pnLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnLogOutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnLogOutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnLogOutMouseExited(evt);
+            }
+        });
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/export_50px.png"))); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("ĐĂNG XUẤT");
+
+        javax.swing.GroupLayout pnLogOutLayout = new javax.swing.GroupLayout(pnLogOut);
+        pnLogOut.setLayout(pnLogOutLayout);
+        pnLogOutLayout.setHorizontalGroup(
+            pnLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnLogOutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnLogOutLayout.setVerticalGroup(
+            pnLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+            .addGroup(pnLogOutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -215,6 +268,7 @@ public class Home extends javax.swing.JFrame {
             .addComponent(pnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnLogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +281,9 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(pnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(pnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(pnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(85, 52, 165));
@@ -236,7 +292,7 @@ public class Home extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 762, Short.MAX_VALUE)
+            .addGap(0, 761, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,12 +340,16 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnThongKeMouseExited
 
     private void pnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnThongKeMouseClicked
-        ThongKe tk = new ThongKe(jPanel2.getLocationOnScreen());
-        tk.getThongKe(jPanel2.getLocationOnScreen()).setVisible(true);
+        if (nvs.getNVOnline().get(0).getChucVu().getTenChucVu().equals("Nhân Viên")) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
+        } else {
+            ThongKe tk = new ThongKe(jPanel2.getLocationOnScreen());
+            tk.getThongKe(jPanel2.getLocationOnScreen()).setVisible(true);
+        }
     }//GEN-LAST:event_pnThongKeMouseClicked
 
     private void pnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSanPhamMouseClicked
-        ChiTietSP sp = new ChiTietSP(jPanel2.getLocationOnScreen());
+        SanPham sp = new SanPham(jPanel2.getLocationOnScreen());
         sp.getManSanPham(jPanel2.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_pnSanPhamMouseClicked
 
@@ -310,9 +370,26 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnNhanVienMouseEntered
 
     private void pnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnNhanVienMouseClicked
-        NhanVien nv = new NhanVien(jPanel2.getLocationOnScreen());
-        nv.getNhanVien(jPanel2.getLocationOnScreen()).setVisible(true);
+        if (nvs.getNVOnline().get(0).getChucVu().getTenChucVu().equals("Nhân Viên")) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
+        } else {
+            NhanVien nv = new NhanVien(jPanel2.getLocationOnScreen());
+            nv.getNhanVien(jPanel2.getLocationOnScreen()).setVisible(true);
+        }
     }//GEN-LAST:event_pnNhanVienMouseClicked
+
+    private void pnLogOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnLogOutMouseEntered
+        pnLogOut.setBackground(new Color(135, 142, 205));
+    }//GEN-LAST:event_pnLogOutMouseEntered
+
+    private void pnLogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnLogOutMouseExited
+        pnNhanVien.setBackground(new Color(25, 30, 50));
+    }//GEN-LAST:event_pnLogOutMouseExited
+
+    private void pnLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnLogOutMouseClicked
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_pnLogOutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -351,6 +428,7 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -358,9 +436,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pnBanHang;
+    private javax.swing.JPanel pnLogOut;
     private javax.swing.JPanel pnNhanVien;
     private javax.swing.JPanel pnSanPham;
     private javax.swing.JPanel pnThongKe;
