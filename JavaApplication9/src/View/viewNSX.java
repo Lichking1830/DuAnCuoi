@@ -273,7 +273,15 @@ public class viewNSX extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String ma = txtMa.getText();
+        if(ma.isBlank()){
+            JOptionPane.showMessageDialog(this, "không được để trống mã ");
+            return;
+        }
         String ten = txtTen.getText();
+           if(ten.isBlank()){
+            JOptionPane.showMessageDialog(this, "không được để trống tên ");
+            return;
+        }
         NSX nsx = new NSX(ma, ten);
         listnsx.add(nsx);
         JOptionPane.showMessageDialog(this, nsximpl.add(nsx));

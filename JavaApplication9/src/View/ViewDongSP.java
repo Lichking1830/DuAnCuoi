@@ -292,7 +292,15 @@ public class ViewDongSP extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String ma = txtMa.getText();
+        if(ma.isBlank()){
+            JOptionPane.showMessageDialog(this, "không được để trống mã");
+            return;
+        }
         String ten = txtTen.getText();
+         if(ten.isBlank()){
+            JOptionPane.showMessageDialog(this, "không được để trống tên");
+            return;
+        }
         DongSP dsp = new DongSP(ma, ten);
         listdsp.add(dsp);
         JOptionPane.showMessageDialog(this, dspimpl.add(dsp));

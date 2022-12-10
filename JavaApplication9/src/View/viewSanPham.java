@@ -274,7 +274,15 @@ public class viewSanPham extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String ma = txtMa.getText();
+        if(ma.isBlank()){
+            JOptionPane.showMessageDialog(this, "Không được để trống mã");
+            return;
+        }
         String ten = txtTen.getText();
+         if(ten.isBlank()){
+            JOptionPane.showMessageDialog(this, "Không được để trống tên");
+            return;
+        }
         DanhMucSP sp = new DanhMucSP(ma, ten);
         listsp.add(sp);
         JOptionPane.showMessageDialog(this, spimpl.add(sp));

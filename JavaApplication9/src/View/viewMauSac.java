@@ -287,10 +287,14 @@ public class viewMauSac extends javax.swing.JFrame {
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
         String ma = txtMaMS.getText();
         if(ma.isBlank()){
-            JOptionPane.showMessageDialog(this, "khong dc de trong nhe");
+            JOptionPane.showMessageDialog(this, "không được để trống mã");
             return;
         }
         String ten = txtTenMS.getText();
+        if(ten.isBlank()){
+            JOptionPane.showMessageDialog(this, "không được để trống tên");
+            return;
+        }
         MauSac ms = new MauSac(ma, ten);
         listms.add(ms);
         JOptionPane.showMessageDialog(this, msimpl.add(ms));
