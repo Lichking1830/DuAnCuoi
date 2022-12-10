@@ -289,7 +289,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnThongKeMouseClicked
 
     private void pnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSanPhamMouseClicked
-        SanPham sp = new SanPham(jPanel2.getLocationOnScreen());
+        ChiTietSP sp = new ChiTietSP(jPanel2.getLocationOnScreen());
         sp.getManSanPham(jPanel2.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_pnSanPhamMouseClicked
 

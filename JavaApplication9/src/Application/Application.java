@@ -6,7 +6,7 @@ package Application;
 
 import View.Home;
 import View.Login;
-import View.SanPham;
+import View.ChiTietSP;
 import java.awt.Point;
 
 /**
