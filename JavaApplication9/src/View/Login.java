@@ -213,7 +213,8 @@ public class Login extends javax.swing.JFrame {
         String passWord = pfPass.getText();
         if (nvs.checkTKMK(userName, passWord) != null) {
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
-            nvs.update(nvs.checkTKMK(userName, passWord), passWord);
+            nvs.checkTKMK(userName, passWord).setTrangThai(0);
+            nvs.update(nvs.checkTKMK(userName, passWord));
         }else{
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
         }

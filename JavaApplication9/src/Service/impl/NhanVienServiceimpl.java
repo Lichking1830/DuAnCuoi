@@ -48,8 +48,8 @@ public class NhanVienServiceimpl implements NhanVienService {
     }
 
     @Override
-    public String update(NhanVien nv, String id) {
-        boolean update = nvre.update(nv, id);
+    public String update(NhanVien nv) {
+        boolean update = nvre.update(nv);
         if (update) {
             return "thanh cong";
         } else {
@@ -60,6 +60,11 @@ public class NhanVienServiceimpl implements NhanVienService {
     @Override
     public NhanVien checkTKMK(String tk, String mk) {
         return nvre.check(tk, mk);
+    }
+
+    @Override
+    public List<NhanVien> getNVOnline() {
+        return nvre.getNVOnline();
     }
 
 }

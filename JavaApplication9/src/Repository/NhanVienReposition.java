@@ -112,7 +112,7 @@ public class NhanVienReposition {
         return check > 0;
     }
 
-    public boolean update(NhanVien nv, String id) {
+    public boolean update(NhanVien nv) {
         String query = "UPDATE [dbo].[NhanVien]\n"
                 + "   SET [IdCV] = ?"
                 + "      ,[Ma] = ?"
@@ -137,7 +137,7 @@ public class NhanVienReposition {
             ps.setObject(8, nv.getTenTK());
             ps.setObject(9, nv.getMatKhau());
             ps.setObject(10, nv.getTrangThai());
-            ps.setObject(11, id);
+            ps.setObject(11, nv.getID());
             check = ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);

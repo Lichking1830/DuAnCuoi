@@ -21,7 +21,9 @@ public interface NhanVienService {
 
     String delete(String id);
 
-    String update(NhanVien nv, String id);
+    String update(NhanVien nv);
 
     NhanVien checkTKMK(String tk, String mk);
+    
+    List<NhanVien> getNVOnline();
 }
