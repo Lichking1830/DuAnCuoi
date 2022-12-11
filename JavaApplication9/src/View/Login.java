@@ -86,6 +86,11 @@ public class Login extends javax.swing.JFrame {
         txtUserName.setForeground(new java.awt.Color(255, 255, 255));
         txtUserName.setText("UserName");
         txtUserName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        txtUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUserNameMouseClicked(evt);
+            }
+        });
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyReleased(evt);
@@ -236,6 +241,12 @@ public class Login extends javax.swing.JFrame {
             txtUserName.setText("");
         }
     }//GEN-LAST:event_txtUserNameKeyReleased
+
+    private void txtUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserNameMouseClicked
+        if(txtUserName.getText().equals("UserName")){
+            txtUserName.setText("");
+        }
+    }//GEN-LAST:event_txtUserNameMouseClicked
 
     /**
      * @param args the command line arguments

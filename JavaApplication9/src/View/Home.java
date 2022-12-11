@@ -12,7 +12,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import View.Carts;
+import View.BanHang;
+import java.awt.Frame;
 import java.awt.Window;
 
 import java.awt.PopupMenu;
@@ -379,8 +380,16 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnBanHangMouseClicked
-//        BanHang bh = new BanHang(jPanel2.getLocationOnScreen());
-//        bh.getObj(jPanel2.getLocationOnScreen()).setVisible(true);
+        Frame[] allFrames = Frame.getFrames();
+        for (Frame fr : allFrames) {
+            System.out.println(fr);
+            String specificFrameName = fr.getClass().getName();
+            if (!specificFrameName.equals("View.Home")) {
+                fr.dispose();
+            }
+        }
+        BanHang bh = new BanHang(jPanel2.getLocationOnScreen());
+        bh.getObj(jPanel2.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_pnBanHangMouseClicked
 
     private void pnBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnBanHangMouseEntered
@@ -400,14 +409,18 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnThongKeMouseExited
 
     private void pnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnThongKeMouseClicked
-<<<<<<< HEAD
+        Frame[] allFrames = Frame.getFrames();
+        for (Frame fr : allFrames) {
+            System.out.println(fr);
+            String specificFrameName = fr.getClass().getName();
+            if (!specificFrameName.equals("View.Home")) {
+                fr.dispose();
+            }
+        }
         List<DomainModel.NhanVien> nv = nvs.getNVOnline();
-        DomainModel.NhanVien newNV = nv.get(0);    
+        DomainModel.NhanVien newNV = nv.get(0);
         String tenChucVu = newNV.getChucVu().getTenChucVu();
         if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenChucVu().equals("Nhân Viên")) {
-=======
-        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenCV().equals("Nhân Viên")) {
->>>>>>> origin/main
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
         } else {
             ThongKe tk = new ThongKe(jPanel2.getLocationOnScreen());
@@ -416,6 +429,14 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnThongKeMouseClicked
 
     private void pnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSanPhamMouseClicked
+        Frame[] allFrames = Frame.getFrames();
+        for (Frame fr : allFrames) {
+            System.out.println(fr);
+            String specificFrameName = fr.getClass().getName();
+            if (!specificFrameName.equals("View.Home")) {
+                fr.dispose();
+            }
+        }
         ViewChiTietSP sp = new ViewChiTietSP(jPanel2.getLocationOnScreen());
         sp.getManSanPham(jPanel2.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_pnSanPhamMouseClicked
@@ -437,7 +458,15 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnNhanVienMouseEntered
 
     private void pnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnNhanVienMouseClicked
-        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenCV().equals("Nhân Viên")) {
+        Frame[] allFrames = Frame.getFrames();
+        for (Frame fr : allFrames) {
+            System.out.println(fr);
+            String specificFrameName = fr.getClass().getName();
+            if (!specificFrameName.equals("View.Home")) {
+                fr.dispose();
+            }
+        }
+        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenChucVu().equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
         } else {
             ViewNhanVien nv = new ViewNhanVien(jPanel2.getLocationOnScreen());
@@ -455,7 +484,20 @@ public class Home extends javax.swing.JFrame {
 
     private void pnLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnLogOutMouseClicked
         new Login().setVisible(true);
-        for (DomainModels.NhanVien nv : nvs.getNVOnline()) {
+        Frame[] allFrames = Frame.getFrames();
+        for (Frame fr : allFrames) {
+            //uncomment the below line to see frames names and properties/atr.
+            System.out.println(fr);
+            //to get specific frame name
+            String specificFrameName = fr.getClass().getName();
+            //if found frame that I want I can close or any you want
+            //GUIS.CheckForCustomer is my specific frame name that I want to close.
+            if (!specificFrameName.equals("View.Login")) {
+                //close the frame
+                fr.dispose();
+            }
+        }
+        for (DomainModel.NhanVien nv : nvs.getNVOnline()) {
             nv.setTrangThai(1);
             nvs.update(nv);
         }
@@ -467,7 +509,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnDoiMKMouseEntered
 
     private void pnDoiMKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnDoiMKMouseExited
-        pnDoiMK.setBackground(new Color(25, 30, 50s));
+        pnDoiMK.setBackground(new Color(25, 30, 50));
     }//GEN-LAST:event_pnDoiMKMouseExited
 
     /**

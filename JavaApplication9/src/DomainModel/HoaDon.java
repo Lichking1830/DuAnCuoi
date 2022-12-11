@@ -2,9 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModels;
-
-import java.util.Date;
+package DomainModel;
 
 /**
  *
@@ -12,10 +10,10 @@ import java.util.Date;
  */
 public class HoaDon {
 
-    private String idHoaDon;
+    private String ID;
     private KhachHang khachHang;
     private NhanVien nhanVien;
-    private String maHoaDon;
+    private String maHD;
     private String ngayTao;
     private String ngayThanhToan;
     private int tinhTrang;
@@ -23,26 +21,22 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(String idHoaDon) {
-        this.idHoaDon = idHoaDon;
-    }
-
-    public HoaDon(String idHoaDon, KhachHang khachHang, NhanVien nhanVien, String maHoaDon, String ngayTao, String ngayThanhToan, int tinhTrang) {
-        this.idHoaDon = idHoaDon;
+    public HoaDon(String ID, KhachHang khachHang, NhanVien nhanVien, String maHD, String ngayTao, String ngayThanhToan, int tinhTrang) {
+        this.ID = ID;
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
-        this.maHoaDon = maHoaDon;
+        this.maHD = maHD;
         this.ngayTao = ngayTao;
         this.ngayThanhToan = ngayThanhToan;
         this.tinhTrang = tinhTrang;
     }
 
-    public String getIdHoaDon() {
-        return idHoaDon;
+    public String getID() {
+        return ID;
     }
 
-    public void setIdHoaDon(String idHoaDon) {
-        this.idHoaDon = idHoaDon;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public KhachHang getKhachHang() {
@@ -61,12 +55,12 @@ public class HoaDon {
         this.nhanVien = nhanVien;
     }
 
-    public String getMaHoaDon() {
-        return maHoaDon;
+    public String getMaHD() {
+        return maHD;
     }
 
-    public void setMaHoaDon(String maHoaDon) {
-        this.maHoaDon = maHoaDon;
+    public void setMaHD(String maHD) {
+        this.maHD = maHD;
     }
 
     public String getNgayTao() {
@@ -93,9 +87,5 @@ public class HoaDon {
         this.tinhTrang = tinhTrang;
     }
 
-    @Override
-    public String toString() {
-        return "HoaDon{" + "idHoaDon=" + idHoaDon + ", khachHang=" + khachHang + ", nhanVien=" + nhanVien + ", maHoaDon=" + maHoaDon + ", ngayTao=" + ngayTao + ", ngayThanhToan=" + ngayThanhToan + ", tinhTrang=" + tinhTrang + '}';
-    }
-
+   
 }

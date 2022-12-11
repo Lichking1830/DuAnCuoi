@@ -72,7 +72,7 @@
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="pfConfirm" min="-2" pref="328" max="-2" attributes="0"/>
                                       <Component id="txtUser" alignment="1" min="-2" pref="329" max="-2" attributes="0"/>
-                                      <Component id="txtNumber" alignment="1" min="-2" pref="330" max="-2" attributes="0"/>
+                                      <Component id="txtEmail" alignment="1" min="-2" pref="330" max="-2" attributes="0"/>
                                       <Component id="txtName" alignment="1" min="-2" pref="329" max="-2" attributes="0"/>
                                       <Component id="pfPass" alignment="1" min="-2" pref="328" max="-2" attributes="0"/>
                                       <Component id="lbUser" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
@@ -163,7 +163,7 @@
                       <Component id="lbEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="txtNumber" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="txtEmail" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -251,7 +251,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNameMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameKeyReleased"/>
           </Events>
         </Component>
@@ -266,7 +265,7 @@
             <Property name="text" type="java.lang.String" value="EMAIL"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNumber">
+        <Component class="javax.swing.JTextField" name="txtEmail">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="3"/>
@@ -284,12 +283,8 @@
             </Property>
           </Properties>
           <Events>
-<<<<<<< HEAD
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtEmailMouseClicked"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailKeyReleased"/>
-=======
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumberActionPerformed"/>
->>>>>>> origin/main
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -321,12 +316,8 @@
             </Property>
           </Properties>
           <Events>
-<<<<<<< HEAD
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtUserMouseClicked"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUserKeyReleased"/>
-=======
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserActionPerformed"/>
->>>>>>> origin/main
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -366,11 +357,7 @@
             </Property>
           </Properties>
           <Events>
-<<<<<<< HEAD
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pfPassKeyPressed"/>
-=======
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pfPassActionPerformed"/>
->>>>>>> origin/main
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="pfConfirm">
@@ -388,11 +375,7 @@
             </Property>
           </Properties>
           <Events>
-<<<<<<< HEAD
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pfConfirmKeyPressed"/>
-=======
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pfConfirmActionPerformed"/>
->>>>>>> origin/main
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbName">

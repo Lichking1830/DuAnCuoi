@@ -4,8 +4,8 @@
  */
 package View;
 
-import DomainModels.SanPham;
-import DomainModels.DongSP;
+import DomainModel.DanhMucSP;
+import DomainModel.DongSP;
 import Service.impl.SanPhamServiceImpl;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -24,10 +24,10 @@ import javax.swing.table.JTableHeader;
  * @author ADMIN
  */
 public class viewSanPham extends javax.swing.JFrame {
-
+    
     private static viewSanPham obj = null;
     private DefaultTableModel dtmSP = new DefaultTableModel();
-    private List<SanPham> listsp = new ArrayList<>();
+    private List<DanhMucSP> listsp = new ArrayList<>();
     private SanPhamServiceImpl spimpl = new SanPhamServiceImpl();
 
     /**
@@ -41,20 +41,20 @@ public class viewSanPham extends javax.swing.JFrame {
         tbSP.setModel(dtmSP);
         listsp = spimpl.getall();
     }
-
-    private void showdata(List<SanPham> listsp) {
+    
+    private void showdata(List<DanhMucSP> listsp) {
         dtmSP.setNumRows(0);
-        for (SanPham sp : listsp) {
+        for (DanhMucSP sp : listsp) {
             dtmSP.addRow(sp.showdata());
         }
     }
-
-    private void filldata(int index, List<SanPham> listsp) {
-        SanPham sp = listsp.get(index);
-        txtMa.setText(sp.getMaSanPham());
-        txtTen.setText(sp.getTenSanPham());
+    
+    private void filldata(int index, List<DanhMucSP> listsp) {
+        DanhMucSP sp = listsp.get(index);
+        txtMa.setText(sp.getMaSP());
+        txtTen.setText(sp.getTenSP());
     }
-
+    
     private void table_head_color(JTable table_name) {
         DefaultTableCellRenderer head_render = new DefaultTableCellRenderer();
         head_render.setForeground(Color.WHITE);
@@ -64,7 +64,7 @@ public class viewSanPham extends javax.swing.JFrame {
         //to call above method
         //table_head_color("write table name");
     }
-
+    
     public static viewSanPham getObj(Point locate) {
         if (obj == null) {
             obj = new viewSanPham(locate);
@@ -274,16 +274,8 @@ public class viewSanPham extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String ma = txtMa.getText();
-        if (ma.isBlank()) {
-            JOptionPane.showMessageDialog(this, "Không được để trống mã");
-            return;
-        }
         String ten = txtTen.getText();
-        if (ten.isBlank()) {
-            JOptionPane.showMessageDialog(this, "Không được để trống tên");
-            return;
-        }
-        SanPham sp = new SanPham(ma, ten);
+        DanhMucSP sp = new DanhMucSP(ma, ten);
         listsp.add(sp);
         JOptionPane.showMessageDialog(this, spimpl.add(sp));
         listsp = spimpl.getall();

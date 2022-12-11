@@ -4,7 +4,7 @@
  */
 package Service.impl;
 
-import DomainModels.NhanVien;
+import DomainModel.NhanVien;
 import Repository.NhanVienReposition;
 import Service.NhanVienService;
 import java.util.List;

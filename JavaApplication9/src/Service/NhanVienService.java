@@ -4,7 +4,7 @@
  */
 package Service;
 
-import DomainModels.NhanVien;
+import DomainModel.NhanVien;
 import java.util.List;
 
 /**

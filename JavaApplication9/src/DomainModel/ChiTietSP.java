@@ -2,18 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ViewModel;
-
-import DomainModel.DongSP;
-import DomainModel.MauSac;
-import DomainModel.NSX;
-import DomainModel.DanhMucSP;
+package DomainModel;
 
 /**
  *
  * @author admin
  */
-public class ViewModelChiTietSP {
+public class ChiTietSP {
 
     private String ID;
     private DanhMucSP sanPham;
@@ -25,12 +20,11 @@ public class ViewModelChiTietSP {
     private int soLuongTon;
     private float giaNhap;
     private float giaBan;
-    private float tongTien;
 
-    public ViewModelChiTietSP() {
+    public ChiTietSP() {
     }
 
-    public ViewModelChiTietSP(String ID, DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan, float tongTien) {
+    public ChiTietSP(String ID, DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan) {
         this.ID = ID;
         this.sanPham = sanPham;
         this.nsx = nsx;
@@ -41,11 +35,18 @@ public class ViewModelChiTietSP {
         this.soLuongTon = soLuongTon;
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
-        this.tongTien = tongTien;
     }
 
-    public ViewModelChiTietSP(DanhMucSP sanPham) {
-         this.sanPham = sanPham;
+    public ChiTietSP(DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan) {
+        this.sanPham = sanPham;
+        this.nsx = nsx;
+        this.mauSac = mauSac;
+        this.dongSanPham = dongSanPham;
+        this.namBH = namBH;
+        this.moTa = moTa;
+        this.soLuongTon = soLuongTon;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
     }
 
     public String getID() {
@@ -126,14 +127,6 @@ public class ViewModelChiTietSP {
 
     public void setGiaBan(float giaBan) {
         this.giaBan = giaBan;
-    }
-
-    public float getTongTien() {
-        return tongTien;
-    }
-
-    public void setTongTien(float tongTien) {
-        this.tongTien = tongTien;
     }
 
 }

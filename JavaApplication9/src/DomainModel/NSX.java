@@ -2,23 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModels;
+package DomainModel;
 
 /**
  *
- * @author admin
+ * @author HP
  */
 public class NSX {
 
-    private String idNSX;
+    private String ID;
     private String maNSX;
     private String tenNSX;
 
     public NSX() {
     }
 
-    public NSX(String idNSX, String maNSX, String tenNSX) {
-        this.idNSX = idNSX;
+    public NSX(String ID, String maNSX, String tenNSX) {
+        this.ID = ID;
         this.maNSX = maNSX;
         this.tenNSX = tenNSX;
     }
@@ -28,16 +28,12 @@ public class NSX {
         this.tenNSX = tenNSX;
     }
 
-    public NSX(String tenNSX) {
-        this.tenNSX = tenNSX;
+    public String getID() {
+        return ID;
     }
 
-    public String getIdNSX() {
-        return idNSX;
-    }
-
-    public void setIdNSX(String idNSX) {
-        this.idNSX = idNSX;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getMaNSX() {
@@ -58,11 +54,10 @@ public class NSX {
 
     @Override
     public String toString() {
-        return "NSX{" + "idNSX=" + idNSX + ", maNSX=" + maNSX + ", tenNSX=" + tenNSX + '}';
+        return "NSX{" + "ID=" + ID + ", maNSX=" + maNSX + ", tenNSX=" + tenNSX + '}';
     }
 
-    public Object[] toDataRow() {
-        return new Object[]{idNSX, maNSX, tenNSX};
+    public Object[] showdata() {
+        return new Object[]{ID, maNSX, tenNSX};
     }
-
 }

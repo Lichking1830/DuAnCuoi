@@ -2,30 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModels;
+package DomainModel;
 
 /**
  *
- * @author admin
+ * @author HP
  */
 public class KhachHang {
 
-    private String idKhachHang;
+    private String ID;
     private String maKhachHang;
-    private String tenKhachHang;
+    private String hoVaTen;
     private String ngaySinh;
     private String CCCD;
     private String diaChi;
-    private boolean gioiTinh;
+    private String gioiTinh;
     private String queQuan;
 
     public KhachHang() {
     }
 
-    public KhachHang(String idKhachHang, String maKhachHang, String tenKhachHang, String ngaySinh, String CCCD, String diaChi, boolean gioiTinh, String queQuan) {
-        this.idKhachHang = idKhachHang;
+    public KhachHang(String ID, String maKhachHang, String hoVaTen,  String ngaySinh, String CCCD, String diaChi, String gioiTinh, String queQuan) {
+        this.ID = ID;
         this.maKhachHang = maKhachHang;
-        this.tenKhachHang = tenKhachHang;
+        this.hoVaTen = hoVaTen;
         this.ngaySinh = ngaySinh;
         this.CCCD = CCCD;
         this.diaChi = diaChi;
@@ -33,17 +33,17 @@ public class KhachHang {
         this.queQuan = queQuan;
     }
 
-    public KhachHang(String maKhachHang, String tenKhachHang) {
+    public KhachHang(String maKhachHang, String hoVaTen) {
         this.maKhachHang = maKhachHang;
-        this.tenKhachHang = tenKhachHang;
+        this.hoVaTen = hoVaTen;
     }
 
-    public String getIdKhachHang() {
-        return idKhachHang;
+    public String getID() {
+        return ID;
     }
 
-    public void setIdKhachHang(String idKhachHang) {
-        this.idKhachHang = idKhachHang;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getMaKhachHang() {
@@ -54,19 +54,19 @@ public class KhachHang {
         this.maKhachHang = maKhachHang;
     }
 
-    public String getTenKhachHang() {
-        return tenKhachHang;
+    public String getHoVaTen() {
+        return hoVaTen;
     }
 
-    public void setTenKhachHang(String tenKhachHang) {
-        this.tenKhachHang = tenKhachHang;
+    public void setHoVaTen(String hoVaTen) {
+        this.hoVaTen = hoVaTen;
     }
 
-    public String getNgaySinh() {
+    public  String getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(String ngaySinh) {
+    public void setNgaySinh( String ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -86,11 +86,11 @@ public class KhachHang {
         this.diaChi = diaChi;
     }
 
-    public boolean isGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(boolean gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
@@ -100,11 +100,6 @@ public class KhachHang {
 
     public void setQueQuan(String queQuan) {
         this.queQuan = queQuan;
-    }
-
-    @Override
-    public String toString() {
-        return "KhachHang{" + "idKhachHang=" + idKhachHang + ", maKhachHang=" + maKhachHang + ", tenKhachHang=" + tenKhachHang + ", ngaySinh=" + ngaySinh + ", CCCD=" + CCCD + ", diaChi=" + diaChi + ", gioiTinh=" + gioiTinh + ", queQuan=" + queQuan + '}';
     }
 
 }

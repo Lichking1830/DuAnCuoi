@@ -4,9 +4,9 @@
  */
 package Repository;
 
-import DomainModels.HoaDon;
-import DomainModels.KhachHang;
-import DomainModels.NhanVien;
+import DomainModel.HoaDon;
+import DomainModel.KhachHang;
+import DomainModel.NhanVien;
 import Ultilities.SQLConnection;
 import ViewModel.ViewModelHoaDon;
 import java.util.List;
@@ -27,7 +27,8 @@ public class HoaDonReposition {
                 + "FROM     dbo.HoaDon INNER JOIN\n"
                 + "                  dbo.KhachHang ON dbo.HoaDon.IdKH = dbo.KhachHang.Id INNER JOIN\n"
                 + "                  dbo.NhanVien ON dbo.HoaDon.IdNV = dbo.NhanVien.Id";
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
             List<ViewModelHoaDon> list = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -48,7 +49,8 @@ public class HoaDonReposition {
                 + "FROM     dbo.HoaDon INNER JOIN\n"
                 + "                  dbo.KhachHang ON dbo.HoaDon.IdKH = dbo.KhachHang.Id INNER JOIN\n"
                 + "                  dbo.NhanVien ON dbo.HoaDon.IdNV = dbo.NhanVien.Id WHERE dbo.HoaDon.Ma like ? ";
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
             ps.setObject(1, maHD);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -74,10 +76,11 @@ public class HoaDonReposition {
                 + "     VALUES\n"
                 + "           (?,?,?,?,?,?)";
         int check = 0;
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setObject(1, hd.getKhachHang().getIdKhachHang());
-            ps.setObject(2, hd.getNhanVien().getIdNhanVien());
-            ps.setObject(3, hd.getMaHoaDon());
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setObject(1, hd.getKhachHang().getID());
+            ps.setObject(2, hd.getNhanVien().getID());
+            ps.setObject(3, hd.getMaHD());
             ps.setObject(4, hd.getNgayTao());
             ps.setObject(5, hd.getNgayThanhToan());
             ps.setObject(6, hd.getTinhTrang());
@@ -98,10 +101,11 @@ public class HoaDonReposition {
                 + "      ,[TinhTrang] =?"
                 + " WHERE Id like ?";
         int check = 0;
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setObject(1, hd.getKhachHang().getIdKhachHang());
-            ps.setObject(2, hd.getNhanVien().getIdNhanVien());
-            ps.setObject(3, hd.getMaHoaDon());
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setObject(1, hd.getKhachHang().getID());
+            ps.setObject(2, hd.getNhanVien().getID());
+            ps.setObject(3, hd.getMaHD());
             ps.setObject(4, hd.getNgayTao());
             ps.setObject(5, hd.getNgayThanhToan());
             ps.setObject(6, hd.getTinhTrang());
@@ -117,7 +121,8 @@ public class HoaDonReposition {
         String query = "DELETE FROM [dbo].[HoaDon]\n"
                 + "      WHERE Id like ?";
         int check = 0;
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
             ps.setObject(1, id);
             check = ps.executeUpdate();
         } catch (SQLException ex) {

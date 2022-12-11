@@ -4,7 +4,7 @@
  */
 package Repository;
 
-import DomainModels.ChucVu;
+import DomainModel.ChucVu;
 import Ultilities.SQLConnection;
 import java.util.List;
 import java.sql.Connection;
@@ -24,7 +24,8 @@ public class ChucVuRepositon {
                 + "      ,[Ma]\n"
                 + "      ,[Ten]\n"
                 + "  FROM [dbo].[ChucVu]";
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
             List<ChucVu> listCV = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -44,7 +45,8 @@ public class ChucVuRepositon {
                 + "      ,[Ten]\n"
                 + "  FROM [dbo].[ChucVu]\n"
                 + "  WHERE Ten like ?";
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
             ps.setObject(1, tenCV);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -64,9 +66,10 @@ public class ChucVuRepositon {
                 + "     VALUES\n"
                 + "           (?,?)";
         int check = 0;
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setObject(1, cv.getMaCV());
-            ps.setObject(2, cv.getTenCV());
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setObject(1, cv.getMaChucVu());
+            ps.setObject(2, cv.getTenChucVu());
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }
@@ -79,9 +82,10 @@ public class ChucVuRepositon {
                 + "      ,[Ten] = ?"
                 + " WHERE Id like ?";
         int check = 0;
-        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setObject(1, cv.getMaCV());
-            ps.setObject(2, cv.getTenCV());
+        try (Connection conn = SQLConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setObject(1, cv.getMaChucVu());
+            ps.setObject(2, cv.getTenChucVu());
             ps.setObject(3, idCV);
             check = ps.executeUpdate();
         } catch (SQLException ex) {
@@ -94,7 +98,8 @@ public class ChucVuRepositon {
         String query = "DELETE FROM [dbo].[ChucVu]\n"
                 + "      WHERE Id like ?";
         int check = 0;
-        try ( Connection conn = SQLConnection.getConnection();  PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = SQLConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setObject(1, idCV);
             check = ps.executeUpdate();
         } catch (SQLException ex) {

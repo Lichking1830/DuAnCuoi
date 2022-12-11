@@ -4,7 +4,7 @@
  */
 package Service.impl;
 
-import DomainModels.NSX;
+import DomainModel.NSX;
 import Repository.NSXReposition;
 import Service.NSXService;
 import java.util.List;
