@@ -31,9 +31,9 @@ public class NhanVienServiceimpl implements NhanVienService {
     public String add(NhanVien nv) {
         boolean add = nvre.add(nv);
         if (add) {
-            return "thanh cong";
+            return "Đăng ký thành công";
         } else {
-            return "ko thanh cong";
+            return "Đăng ký thất bại";
         }
     }
 
@@ -41,9 +41,9 @@ public class NhanVienServiceimpl implements NhanVienService {
     public String delete(String id) {
         boolean delete = nvre.delete(id);
         if (delete) {
-            return "thanh cong";
+            return "Xoá thành công";
         } else {
-            return "ko thanh cong";
+            return "Xoá thất bại";
         }
     }
 
@@ -51,9 +51,9 @@ public class NhanVienServiceimpl implements NhanVienService {
     public String update(NhanVien nv) {
         boolean update = nvre.update(nv);
         if (update) {
-            return "thanh cong";
+            return "Sửa thành công";
         } else {
-            return "ko thanh cong";
+            return "Sửa thất bại";
         }
     }
 
