@@ -6,7 +6,7 @@ package Application;
 
 import View.Home;
 import View.Login;
-import View.viewChiTietSP;
+import View.ChiTietSP;
 import java.awt.Point;
 
 /**
@@ -14,6 +14,8 @@ import java.awt.Point;
  * @author admin
  */
 public class Application {
+
     public static void main(String[] args) {
+        new View.Login().setVisible(true);
     }
 }

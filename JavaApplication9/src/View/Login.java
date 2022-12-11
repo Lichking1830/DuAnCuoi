@@ -4,6 +4,7 @@
  */
 package View;
 
+import DomainModel.NhanVien;
 import Service.NhanVienService;
 import Service.impl.NhanVienServiceimpl;
 import javax.swing.JOptionPane;
@@ -44,6 +45,7 @@ public class Login extends javax.swing.JFrame {
         cbShow = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         btDangKi = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,16 +86,16 @@ public class Login extends javax.swing.JFrame {
         txtUserName.setForeground(new java.awt.Color(255, 255, 255));
         txtUserName.setText("UserName");
         txtUserName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        txtUserName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserNameActionPerformed(evt);
+        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUserNameKeyReleased(evt);
             }
         });
 
         pfPass.setBackground(new java.awt.Color(135, 142, 205));
         pfPass.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         pfPass.setForeground(new java.awt.Color(255, 255, 255));
-        pfPass.setText("jPasswordField1");
+        pfPass.setText("Password");
         pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
         cbShow.setBackground(new java.awt.Color(135, 142, 205));
@@ -120,6 +122,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Forgot Password?");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -140,11 +146,11 @@ public class Login extends javax.swing.JFrame {
                                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(32, 32, 32)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(cbShow)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(pfPass, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                                                .addComponent(txtUserName))))))
+                                            .addComponent(pfPass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                                            .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(65, 65, 65)
                                 .addComponent(jLabel6)
@@ -172,13 +178,15 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(cbShow)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(31, 31, 31)
                 .addComponent(btDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(btDangKi))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 570));
@@ -189,12 +197,6 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
-        if (txtUserName.getText().equals("UserName")) {
-            txtUserName.setText("");
-        }
-    }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void lbExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbExitMouseClicked
         System.exit(0);
@@ -211,21 +213,29 @@ public class Login extends javax.swing.JFrame {
     private void btDangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDangNhapMouseClicked
         String userName = txtUserName.getText();
         String passWord = pfPass.getText();
-        if (nvs.checkTKMK(userName, passWord) != null) {
+        NhanVien nv = nvs.checkTKMK(userName, passWord);
+        if (nv != null) {
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
-            nvs.checkTKMK(userName, passWord).setTrangThai(0);
-            nvs.update(nvs.checkTKMK(userName, passWord));
-        }else{
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+            nv.setTrangThai(0);
+            nvs.update(nv);
+            this.dispose();
+            new Home().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Đăng nhập không thành công");
         }
-        new Home().setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_btDangNhapMouseClicked
 
     private void btDangKiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDangKiMouseClicked
         new Register().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btDangKiMouseClicked
+
+    private void txtUserNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyReleased
+        if (txtUserName.getText().equals("UserName")) {
+            txtUserName.setText("");
+        }
+    }//GEN-LAST:event_txtUserNameKeyReleased
 
     /**
      * @param args the command line arguments
@@ -268,6 +278,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbShow;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

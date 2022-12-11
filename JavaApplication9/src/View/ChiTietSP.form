@@ -73,9 +73,9 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField9" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="jTextField10" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="jTextField15" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="txt_tenSP" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="txt_namBH" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="txt_maSP" min="-2" pref="170" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -103,9 +103,9 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jComboBox2" alignment="0" pref="88" max="32767" attributes="0"/>
-                                      <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" max="32767" attributes="0"/>
+                                      <Component id="cbo_mauSac" alignment="0" pref="88" max="32767" attributes="0"/>
+                                      <Component id="cbo_nhaSanXuat" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbo_dongSanPham" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -128,9 +128,9 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField17" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="jTextField18" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="jTextField16" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="txt_giaNhap" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="txt_giaBan" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="txt_soLuongTon" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -158,17 +158,17 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbo_dongSanPham" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField15" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="txt_maSP" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jLabel10" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField9" alignment="3" pref="24" max="32767" attributes="0"/>
+                                  <Component id="txt_tenSP" alignment="3" pref="24" max="32767" attributes="0"/>
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="cbo_mauSac" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                                   <Component id="jButton3" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
@@ -176,16 +176,16 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField10" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="txt_namBH" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbo_nhaSanXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton5" alignment="3" pref="24" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel21" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jTextField16" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="txt_soLuongTon" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
@@ -194,13 +194,13 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jTextField17" max="32767" attributes="0"/>
+                                  <Component id="txt_giaNhap" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" pref="25" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField18" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_giaBan" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -299,7 +299,7 @@
             <Property name="text" type="java.lang.String" value="T&#xea;n SP"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField9">
+        <Component class="javax.swing.JTextField" name="txt_tenSP">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
@@ -313,7 +313,7 @@
             <Property name="text" type="java.lang.String" value="N&#x103;m BH"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField10">
+        <Component class="javax.swing.JTextField" name="txt_namBH">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
@@ -327,7 +327,7 @@
             <Property name="text" type="java.lang.String" value="M&#xf4; t&#x1ea3;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cbo_dongSanPham">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -352,7 +352,7 @@
             <Property name="text" type="java.lang.String" value="M&#xe0;u s&#x1eaf;c"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
+        <Component class="javax.swing.JComboBox" name="cbo_mauSac">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -372,7 +372,7 @@
             <Property name="text" type="java.lang.String" value="NSX"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="cbo_nhaSanXuat">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -510,7 +510,7 @@
             <Property name="text" type="java.lang.String" value="L&#x1af;U"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField15">
+        <Component class="javax.swing.JTextField" name="txt_maSP">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
@@ -519,7 +519,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField16">
+        <Component class="javax.swing.JTextField" name="txt_soLuongTon">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
@@ -533,7 +533,7 @@
             <Property name="text" type="java.lang.String" value="M&#xe3; SP"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField17">
+        <Component class="javax.swing.JTextField" name="txt_giaNhap">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
@@ -547,7 +547,7 @@
             <Property name="text" type="java.lang.String" value="T&#xea;n SP"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField18">
+        <Component class="javax.swing.JTextField" name="txt_giaBan">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">

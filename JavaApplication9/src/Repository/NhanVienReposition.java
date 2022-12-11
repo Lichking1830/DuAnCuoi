@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ import java.util.List;
 public class NhanVienReposition {
 
     public List<NhanVien> getAll() {
-        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan, \n"
+        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan, \n"
                 + "                  dbo.NhanVien.MatKhau, dbo.NhanVien.TrangThai\n"
                 + "FROM     dbo.ChucVu INNER JOIN\n"
                 + "                  dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV";
@@ -29,8 +30,8 @@ public class NhanVienReposition {
             List<NhanVien> list = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3));
-                NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(11));
+            ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
+                NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
                 list.add(nv);
             }
             return list;
@@ -41,7 +42,7 @@ public class NhanVienReposition {
     }
 
     public NhanVien getOne(String ten) {
-        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan, \n"
+        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan, \n"
                 + "                  dbo.NhanVien.MatKhau, dbo.NhanVien.TrangThai\n"
                 + "FROM     dbo.ChucVu INNER JOIN\n"
                 + "                  dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV WHERE dbo.NhanVien.HoTen like ?";
@@ -49,8 +50,8 @@ public class NhanVienReposition {
             ps.setObject(1, ten);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3));
-                NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(11));
+            ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
+                NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
                 return nv;
             }
         } catch (SQLException ex) {
@@ -60,7 +61,7 @@ public class NhanVienReposition {
     }
 
     public List<NhanVien> getNVOnline() {
-        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan, \n"
+        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan, \n"
                 + "                  dbo.NhanVien.MatKhau, dbo.NhanVien.TrangThai\n"
                 + "FROM     dbo.ChucVu INNER JOIN\n"
                 + "                  dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV WHERE dbo.NhanVien.TrangThai = 0";
@@ -68,8 +69,8 @@ public class NhanVienReposition {
             List<NhanVien> list = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3));
-                NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(11));
+            ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
+                NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
                 list.add(nv);
             }
             return list;
@@ -124,7 +125,7 @@ public class NhanVienReposition {
                 + "      ,[TenTaiKhoan] = ?"
                 + "      ,[MatKhau] = ?"
                 + "      ,[TrangThai] = ?"
-                + " WHERE Id like ?";
+                + " WHERE Id LIKE ?";
         int check = 0;
         try (Connection con = SQLConnection.getConnection(); PreparedStatement ps = con.prepareStatement(query)) {
             ps.setObject(1, nv.getChucVu().getID());
@@ -159,22 +160,23 @@ public class NhanVienReposition {
     }
 
     public NhanVien check(String tk, String mk) {
-        String querry = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan,\n"
+        String querry = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan,\n"
                 + " dbo.NhanVien.MatKhau, dbo.NhanVien.TrangThai\n"
                 + " FROM dbo.ChucVu INNER JOIN\n"
-                + " dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV WHERE dbo.NhanVien.Ma like ? and dbo.NhanVien.MatKhau = ?";
+                + " dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV WHERE dbo.NhanVien.TenTaiKhoan LIKE ? and dbo.NhanVien.MatKhau = ?";
         try (Connection con = SQLConnection.getConnection(); PreparedStatement ps = con.prepareStatement(querry)) {
             ps.setObject(1, tk);
             ps.setObject(2, mk);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3));
-                NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(12));
+                ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
+                NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
                 return nv;
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
+
 }

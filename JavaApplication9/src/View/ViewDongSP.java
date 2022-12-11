@@ -315,7 +315,7 @@ public class ViewDongSP extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ChiTietSP ctsp = new ChiTietSP(jPanel2.getLocationOnScreen());
+        ViewChiTietSP ctsp = new ViewChiTietSP(jPanel2.getLocationOnScreen());
         ctsp.getManSanPham(jPanel2.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
