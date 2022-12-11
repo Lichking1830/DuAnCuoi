@@ -4,7 +4,7 @@
  */
 package Service.impl;
 
-import DomainModel.ChucVu;
+import DomainModels.ChucVu;
 import Repository.ChucVuRepositon;
 import Service.ChucVuService;
 import java.util.List;

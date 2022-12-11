@@ -159,6 +159,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbSanPhamMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -271,6 +274,9 @@
                     <Property name="showHorizontalLines" type="boolean" value="false"/>
                     <Property name="showVerticalLines" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbGioHangMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -4,7 +4,7 @@
  */
 package View;
 
-import DomainModel.DongSP;
+import DomainModels.DongSP;
 import Service.impl.DongSPServiceImpl;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -66,7 +66,7 @@ public class ViewDongSP extends javax.swing.JFrame {
     private void showdata(List<DongSP> listdsp) {
         dtmSP.setNumRows(0);
         for (DongSP dsp : listdsp) {
-            dtmSP.addRow(dsp.showdata());
+            dtmSP.addRow(dsp.toDataRow());
         }
     }
 
@@ -292,7 +292,15 @@ public class ViewDongSP extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String ma = txtMa.getText();
+        if (ma.isBlank()) {
+            JOptionPane.showMessageDialog(this, "không được để trống mã");
+            return;
+        }
         String ten = txtTen.getText();
+        if (ten.isBlank()) {
+            JOptionPane.showMessageDialog(this, "không được để trống tên");
+            return;
+        }
         DongSP dsp = new DongSP(ma, ten);
         listdsp.add(dsp);
         JOptionPane.showMessageDialog(this, dspimpl.add(dsp));

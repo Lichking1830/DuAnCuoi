@@ -4,7 +4,7 @@
  */
 package Service.impl;
 
-import DomainModel.MauSac;
+import DomainModels.MauSac;
 import Repository.MauSacReposition;
 import Service.MauSacService;
 import java.util.List;

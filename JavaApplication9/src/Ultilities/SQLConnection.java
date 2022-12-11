@@ -18,7 +18,11 @@ public class SQLConnection {
     public static final String PORT = "1433";
     public static final String DBNAME = "QLCH";
     public static final String USERNAME = "sa";
+<<<<<<< HEAD
     public static final String PASSWORD = "phamhai308";
+=======
+    public static final String PASSWORD = "123456";
+>>>>>>> origin/main
 
     /**
      * Get connection to MSSQL Server

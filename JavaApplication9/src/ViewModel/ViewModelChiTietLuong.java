@@ -4,8 +4,8 @@
  */
 package ViewModel;
 
-import DomainModel.ChucVu;
-import DomainModel.NhanVien;
+import DomainModels.ChucVu;
+import DomainModels.NhanVien;
 
 /**
  *

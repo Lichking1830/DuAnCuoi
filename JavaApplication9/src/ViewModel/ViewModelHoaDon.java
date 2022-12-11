@@ -4,8 +4,8 @@
  */
 package ViewModel;
 
-import DomainModel.KhachHang;
-import DomainModel.NhanVien;
+import DomainModels.KhachHang;
+import DomainModels.NhanVien;
 
 /**
  *
