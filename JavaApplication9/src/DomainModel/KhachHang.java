@@ -13,27 +13,12 @@ public class KhachHang {
     private String ID;
     private String maKhachHang;
     private String hoVaTen;
-    private String ngaySinh;
-    private String CCCD;
-    private String diaChi;
-    private String gioiTinh;
-    private String queQuan;
-
+   
     public KhachHang() {
     }
 
-    public KhachHang(String ID, String maKhachHang, String hoVaTen,  String ngaySinh, String CCCD, String diaChi, String gioiTinh, String queQuan) {
+    public KhachHang(String ID, String maKhachHang, String hoVaTen) {
         this.ID = ID;
-        this.maKhachHang = maKhachHang;
-        this.hoVaTen = hoVaTen;
-        this.ngaySinh = ngaySinh;
-        this.CCCD = CCCD;
-        this.diaChi = diaChi;
-        this.gioiTinh = gioiTinh;
-        this.queQuan = queQuan;
-    }
-
-    public KhachHang(String maKhachHang, String hoVaTen) {
         this.maKhachHang = maKhachHang;
         this.hoVaTen = hoVaTen;
     }
@@ -62,44 +47,10 @@ public class KhachHang {
         this.hoVaTen = hoVaTen;
     }
 
-    public  String getNgaySinh() {
-        return ngaySinh;
+    public KhachHang(String maKhachHang, String hoVaTen) {
+        this.maKhachHang = maKhachHang;
+        this.hoVaTen = hoVaTen;
     }
 
-    public void setNgaySinh( String ngaySinh) {
-        this.ngaySinh = ngaySinh;
-    }
-
-    public String getCCCD() {
-        return CCCD;
-    }
-
-    public void setCCCD(String CCCD) {
-        this.CCCD = CCCD;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
-    public String getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
-    public String getQueQuan() {
-        return queQuan;
-    }
-
-    public void setQueQuan(String queQuan) {
-        this.queQuan = queQuan;
-    }
-
+    
 }
