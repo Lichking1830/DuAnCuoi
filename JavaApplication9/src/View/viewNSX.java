@@ -4,7 +4,7 @@
  */
 package View;
 
-import DomainModel.NSX;
+import DomainModels.NSX;
 import Service.impl.NSXServiceImpl;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,7 +23,7 @@ import javax.swing.table.JTableHeader;
  * @author ADMIN
  */
 public class viewNSX extends javax.swing.JFrame {
-    
+
     private static viewNSX obj = null;
     private DefaultTableModel dtmNSX = new DefaultTableModel();
     private NSXServiceImpl nsximpl = new NSXServiceImpl();
@@ -40,14 +40,14 @@ public class viewNSX extends javax.swing.JFrame {
         listnsx = nsximpl.getAll();
         showdata(listnsx);
     }
-    
+
     private void filldata(int index, List<NSX> listnsx) {
         NSX nsx = listnsx.get(index);
         txtMa.setText(nsx.getMaNSX());
         txtTen.setText(nsx.getTenNSX());
-        
+
     }
-    
+
     private void table_head_color(JTable table_name) {
         DefaultTableCellRenderer head_render = new DefaultTableCellRenderer();
         head_render.setForeground(Color.WHITE);
@@ -57,18 +57,17 @@ public class viewNSX extends javax.swing.JFrame {
         //to call above method
         //table_head_color("write table name");
     }
-    
+
 //    public static viewNSX getObj(Point locate) {
 //        if (obj == null) {
 //            obj = new viewNSX(locate);
 //        }
 //        return obj;
 //    }
-
     private void showdata(List<NSX> litsnsx) {
         dtmNSX.setNumRows(0);
         for (NSX nsx : listnsx) {
-            dtmNSX.addRow(nsx.showdata());
+            dtmNSX.addRow(nsx.toDataRow());
         }
     }
 
@@ -273,7 +272,15 @@ public class viewNSX extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String ma = txtMa.getText();
+        if (ma.isBlank()) {
+            JOptionPane.showMessageDialog(this, "không được để trống mã ");
+            return;
+        }
         String ten = txtTen.getText();
+        if (ten.isBlank()) {
+            JOptionPane.showMessageDialog(this, "không được để trống tên ");
+            return;
+        }
         NSX nsx = new NSX(ma, ten);
         listnsx.add(nsx);
         JOptionPane.showMessageDialog(this, nsximpl.add(nsx));

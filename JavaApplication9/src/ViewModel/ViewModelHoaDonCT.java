@@ -4,8 +4,8 @@
  */
 package ViewModel;
 
-import DomainModel.ChiTietSP;
-import DomainModel.HoaDon;
+import DomainModels.ChiTietSP;
+import DomainModels.HoaDon;
 
 /**
  *

@@ -4,7 +4,7 @@
  */
 package Repository;
 
-import DomainModel.DongSP;
+import DomainModels.DongSP;
 import Ultilities.SQLConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

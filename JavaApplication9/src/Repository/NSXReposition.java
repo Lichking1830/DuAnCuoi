@@ -4,7 +4,7 @@
  */
 package Repository;
 
-import DomainModel.NSX;
+import DomainModels.NSX;
 import Ultilities.SQLConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

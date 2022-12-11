@@ -4,7 +4,7 @@
  */
 package ViewModel;
 
-import DomainModel.ChucVu;
+import DomainModels.ChucVu;
 
 /**
  *
