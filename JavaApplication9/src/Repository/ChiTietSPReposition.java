@@ -27,8 +27,8 @@ import java.util.ArrayList;
 public class ChiTietSPReposition {
 
     public List<ViewModelChiTietSP> getAll() {
-        String query = "SELECT dbo.ChiTietSP.Id, dbo.SanPham.Ma, dbo.SanPham.Ten, dbo.NSX.Ma AS Expr1, dbo.NSX.Ten AS Expr2, dbo.MauSac.Ma AS Expr3, dbo.MauSac.Ten AS Expr4, dbo.DongSP.Ma AS Expr5, dbo.DongSP.Ten AS Expr6, dbo.ChiTietSP.NamBH, \n"
-                + "                  dbo.ChiTietSP.MoTa, dbo.ChiTietSP.SoLuongTon, dbo.ChiTietSP.GiaNhap, dbo.ChiTietSP.GiaBan, (dbo.ChiTietSP.SoLuongTon *  dbo.ChiTietSP.GiaBan) as 'ThanhTien'\n"
+        String query = "SELECT dbo.SanPham.Ma, dbo.SanPham.Ten, dbo.NSX.Ma AS Expr1, dbo.NSX.Ten AS Expr2, dbo.MauSac.Ma AS Expr3, dbo.MauSac.Ten AS Expr4, dbo.DongSP.Ma AS Expr5, dbo.DongSP.Ten AS Expr6, dbo.ChiTietSP.NamBH, \n"
+                + "                  dbo.ChiTietSP.MoTa, dbo.ChiTietSP.SoLuongTon, dbo.ChiTietSP.GiaBan, (dbo.ChiTietSP.SoLuongTon *  dbo.ChiTietSP.GiaBan) as 'ThanhTien'\n"
                 + "FROM     dbo.ChiTietSP INNER JOIN\n"
                 + "                  dbo.DongSP ON dbo.ChiTietSP.IdDongSP = dbo.DongSP.Id INNER JOIN\n"
                 + "                  dbo.MauSac ON dbo.ChiTietSP.IdMauSac = dbo.MauSac.Id INNER JOIN\n"
@@ -39,11 +39,11 @@ public class ChiTietSPReposition {
             List<ViewModelChiTietSP> list = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                DanhMucSP sp = new DanhMucSP(rs.getString(2), rs.getString(3));
-                NSX nsx = new NSX(rs.getString(4), rs.getString(5));
-                MauSac ms = new MauSac(rs.getString(6), rs.getString(7));
-                DongSP dsp = new DongSP(rs.getString(8), rs.getString(9));
-                ViewModelChiTietSP vmctsp = new ViewModelChiTietSP(rs.getString(1), sp, nsx, ms, dsp, rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getFloat(13), rs.getFloat(14), rs.getFloat(15));
+                DanhMucSP sp = new DanhMucSP(rs.getString(1), rs.getString(2));
+                NSX nsx = new NSX(rs.getString(3), rs.getString(4));
+                MauSac ms = new MauSac(rs.getString(5), rs.getString(6));
+                DongSP dsp = new DongSP(rs.getString(7), rs.getString(8));
+                ViewModelChiTietSP vmctsp = new ViewModelChiTietSP(sp, nsx, ms, dsp, rs.getInt(9), rs.getString(10), rs.getInt(11), rs.getFloat(12), rs.getFloat(13));
                 list.add(vmctsp);
             }
             return list;
@@ -54,8 +54,8 @@ public class ChiTietSPReposition {
     }
 
     public List<ViewModelChiTietSP> getSearch(String ten) {
-        String query = "SELECT dbo.ChiTietSP.Id, dbo.SanPham.Ma, dbo.SanPham.Ten, dbo.NSX.Ma AS Expr1, dbo.NSX.Ten AS Expr2, dbo.MauSac.Ma AS Expr3, dbo.MauSac.Ten AS Expr4, dbo.DongSP.Ma AS Expr5, dbo.DongSP.Ten AS Expr6, dbo.ChiTietSP.NamBH, \n"
-                + "                 dbo.ChiTietSP.MoTa, dbo.ChiTietSP.SoLuongTon, dbo.ChiTietSP.GiaNhap, dbo.ChiTietSP.GiaBan, (dbo.ChiTietSP.SoLuongTon *  dbo.ChiTietSP.GiaBan) as 'ThanhTien'\n"
+        String query = "SELECT dbo.SanPham.Ma, dbo.SanPham.Ten, dbo.NSX.Ma AS Expr1, dbo.NSX.Ten AS Expr2, dbo.MauSac.Ma AS Expr3, dbo.MauSac.Ten AS Expr4, dbo.DongSP.Ma AS Expr5, dbo.DongSP.Ten AS Expr6, dbo.ChiTietSP.NamBH, \n"
+                + "                 dbo.ChiTietSP.MoTa, dbo.ChiTietSP.SoLuongTon, dbo.ChiTietSP.GiaBan, (dbo.ChiTietSP.SoLuongTon *  dbo.ChiTietSP.GiaBan) as 'ThanhTien'\n"
                 + "                FROM     dbo.ChiTietSP INNER JOIN\n"
                 + "               dbo.DongSP ON dbo.ChiTietSP.IdDongSP = dbo.DongSP.Id INNER JOIN\n"
                 + "                dbo.MauSac ON dbo.ChiTietSP.IdMauSac = dbo.MauSac.Id INNER JOIN\n"
@@ -68,11 +68,11 @@ public class ChiTietSPReposition {
             ps.setObject(1, ten);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                DanhMucSP sp = new DanhMucSP(rs.getString(2), rs.getString(3));
-                NSX nsx = new NSX(rs.getString(4), rs.getString(5));
-                MauSac ms = new MauSac(rs.getString(6), rs.getString(7));
-                DongSP dsp = new DongSP(rs.getString(8), rs.getString(9));
-                ViewModelChiTietSP vmctsp = new ViewModelChiTietSP(rs.getString(1), sp, nsx, ms, dsp, rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getFloat(13), rs.getFloat(14), rs.getFloat(15));
+                DanhMucSP sp = new DanhMucSP(rs.getString(1), rs.getString(2));
+                NSX nsx = new NSX(rs.getString(3), rs.getString(4));
+                MauSac ms = new MauSac(rs.getString(5), rs.getString(6));
+                DongSP dsp = new DongSP(rs.getString(7), rs.getString(8));
+                ViewModelChiTietSP vmctsp = new ViewModelChiTietSP(sp, nsx, ms, dsp, rs.getInt(9), rs.getString(10), rs.getInt(11), rs.getFloat(12), rs.getFloat(13));
                 list.add(vmctsp);
             }
             return list;

@@ -15,7 +15,6 @@ import DomainModel.DanhMucSP;
  */
 public class ViewModelChiTietSP {
 
-    private String ID;
     private DanhMucSP sanPham;
     private NSX nsx;
     private MauSac mauSac;
@@ -23,15 +22,14 @@ public class ViewModelChiTietSP {
     private int namBH;
     private String moTa;
     private int soLuongTon;
-    private float giaNhap;
     private float giaBan;
     private float tongTien;
 
     public ViewModelChiTietSP() {
     }
 
-    public ViewModelChiTietSP(String ID, DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan, float tongTien) {
-        this.ID = ID;
+    public ViewModelChiTietSP(DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaBan, float tongTien) {
+
         this.sanPham = sanPham;
         this.nsx = nsx;
         this.mauSac = mauSac;
@@ -39,21 +37,12 @@ public class ViewModelChiTietSP {
         this.namBH = namBH;
         this.moTa = moTa;
         this.soLuongTon = soLuongTon;
-        this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.tongTien = tongTien;
     }
 
     public ViewModelChiTietSP(DanhMucSP sanPham) {
          this.sanPham = sanPham;
-    }
-
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
     }
 
     public DanhMucSP getSanPham() {
@@ -110,14 +99,6 @@ public class ViewModelChiTietSP {
 
     public void setSoLuongTon(int soLuongTon) {
         this.soLuongTon = soLuongTon;
-    }
-
-    public float getGiaNhap() {
-        return giaNhap;
-    }
-
-    public void setGiaNhap(float giaNhap) {
-        this.giaNhap = giaNhap;
     }
 
     public float getGiaBan() {
