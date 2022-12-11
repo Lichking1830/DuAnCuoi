@@ -38,8 +38,8 @@ public class NhanVienServiceimpl implements NhanVienService {
     }
 
     @Override
-    public String delete(String id) {
-        boolean delete = nvre.delete(id);
+    public String delete(String ten) {
+        boolean delete = nvre.delete(ten);
         if (delete) {
             return "Xoá thành công";
         } else {

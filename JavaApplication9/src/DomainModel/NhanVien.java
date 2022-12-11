@@ -19,7 +19,7 @@ public class NhanVien {
     private String ngaySinh;
     private String gioiTinh;
     private String diaChi;
-    private String SDT;
+    private String Email;
     private String tenTK;
     private String matKhau;
     private int trangThai;
@@ -27,7 +27,7 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String ID, ChucVu chucVu, String maNV, String hoTen, String ngaySinh, String gioiTinh, String diaChi, String SDT, String tenTK, String matKhau, int trangThai) {
+    public NhanVien(String ID, ChucVu chucVu, String maNV, String hoTen, String ngaySinh, String gioiTinh, String diaChi, String Email, String tenTK, String matKhau, int trangThai) {
         this.ID = ID;
         this.chucVu = chucVu;
         this.maNV = maNV;
@@ -35,7 +35,7 @@ public class NhanVien {
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
         this.diaChi = diaChi;
-        this.SDT = SDT;
+        this.Email = Email;
         this.tenTK = tenTK;
         this.matKhau = matKhau;
         this.trangThai = trangThai;
@@ -44,6 +44,26 @@ public class NhanVien {
     public NhanVien(String maNV, String hoTen) {
         this.maNV = maNV;
         this.hoTen = hoTen;
+    }
+
+    public NhanVien(String ID, String maNV, String hoTen, String ngaySinh, String gioiTinh, String diaChi, String Email, String tenTK, String matKhau, int trangThai) {
+        this.ID = ID;
+        this.maNV = maNV;
+        this.hoTen = hoTen;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.Email = Email;
+        this.tenTK = tenTK;
+        this.matKhau = matKhau;
+        this.trangThai = trangThai;
+    }
+
+    public NhanVien(String Ten, String chucvu, String email, String gender) {
+        this.hoTen = hoTen;
+        this.chucVu = chucVu;
+        this.Email = Email;
+        this.ngaySinh = ngaySinh;
     }
 
     public String getID() {
@@ -102,12 +122,12 @@ public class NhanVien {
         this.diaChi = diaChi;
     }
 
-    public String getSDT() {
-        return SDT;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setSDT(String SDT) {
-        this.SDT = SDT;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getTenTK() {
@@ -134,4 +154,12 @@ public class NhanVien {
         this.trangThai = trangThai;
     }
 
+    @Override
+    public String toString() {
+        return "NhanVien{" + "ID=" + ID + ", chucVu=" + chucVu + ", maNV=" + maNV + ", hoTen=" + hoTen + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", Email=" + Email + ", tenTK=" + tenTK + ", matKhau=" + matKhau + ", trangThai=" + trangThai + '}';
+    }
+
+    public Object[] showdata() {
+        return new Object[]{hoTen, chucVu.getTenChucVu(), gioiTinh, ngaySinh, Email};
+    }
 }

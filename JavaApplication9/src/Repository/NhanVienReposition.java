@@ -22,15 +22,15 @@ import java.util.List;
 public class NhanVienReposition {
 
     public List<NhanVien> getAll() {
-        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan, \n"
+        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Email, dbo.NhanVien.TenTaiKhoan, \n"
                 + "                  dbo.NhanVien.MatKhau, dbo.NhanVien.TrangThai\n"
                 + "FROM     dbo.ChucVu INNER JOIN\n"
                 + "                  dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV";
-        try (Connection con = SQLConnection.getConnection(); PreparedStatement ps = con.prepareStatement(query)) {
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
             List<NhanVien> list = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
+                ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
                 NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
                 list.add(nv);
             }
@@ -42,15 +42,15 @@ public class NhanVienReposition {
     }
 
     public NhanVien getOne(String ten) {
-        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan, \n"
+        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Email, dbo.NhanVien.TenTaiKhoan, \n"
                 + "                  dbo.NhanVien.MatKhau, dbo.NhanVien.TrangThai\n"
                 + "FROM     dbo.ChucVu INNER JOIN\n"
                 + "                  dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV WHERE dbo.NhanVien.HoTen like ?";
-        try (Connection con = SQLConnection.getConnection(); PreparedStatement ps = con.prepareStatement(query)) {
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
             ps.setObject(1, ten);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-            ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
+                ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
                 NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
                 return nv;
             }
@@ -61,15 +61,15 @@ public class NhanVienReposition {
     }
 
     public List<NhanVien> getNVOnline() {
-        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan, \n"
+        String query = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Email, dbo.NhanVien.TenTaiKhoan, \n"
                 + "                  dbo.NhanVien.MatKhau, dbo.NhanVien.TrangThai\n"
                 + "FROM     dbo.ChucVu INNER JOIN\n"
                 + "                  dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV WHERE dbo.NhanVien.TrangThai = 0";
-        try (Connection con = SQLConnection.getConnection(); PreparedStatement ps = con.prepareStatement(query)) {
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
             List<NhanVien> list = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
+                ChucVu cv = new ChucVu(rs.getString(2), rs.getString(3), rs.getString(4));
                 NhanVien nv = new NhanVien(rs.getString(1), cv, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
                 list.add(nv);
             }
@@ -88,21 +88,21 @@ public class NhanVienReposition {
                 + "           ,[NgaySinh]\n"
                 + "           ,[GioiTinh]\n"
                 + "           ,[DiaChi]\n"
-                + "           ,[Sdt]\n"
+                + "           ,[Email]\n"
                 + "           ,[TenTaiKhoan]\n"
                 + "           ,[MatKhau]\n"
                 + "           ,[TrangThai])\n"
                 + "     VALUES\n"
                 + "           (?,?,?,?,?,?,?,?,?,?)";
         int check = 0;
-        try (Connection con = SQLConnection.getConnection(); PreparedStatement ps = con.prepareStatement(query)) {
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
             ps.setObject(1, nv.getChucVu().getID());
             ps.setObject(2, nv.getMaNV());
             ps.setObject(3, nv.getHoTen());
             ps.setObject(4, nv.getNgaySinh());
             ps.setObject(5, nv.getGioiTinh());
             ps.setObject(6, nv.getDiaChi());
-            ps.setObject(7, nv.getSDT());
+            ps.setObject(7, nv.getEmail());
             ps.setObject(8, nv.getTenTK());
             ps.setObject(9, nv.getMatKhau());
             ps.setObject(10, nv.getTrangThai());
@@ -121,20 +121,20 @@ public class NhanVienReposition {
                 + "      ,[NgaySinh] = ?"
                 + "      ,[GioiTinh] = ?"
                 + "      ,[DiaChi] =?"
-                + "      ,[Sdt] = ?"
+                + "      ,[Email] = ?"
                 + "      ,[TenTaiKhoan] = ?"
                 + "      ,[MatKhau] = ?"
                 + "      ,[TrangThai] = ?"
                 + " WHERE Id LIKE ?";
         int check = 0;
-        try (Connection con = SQLConnection.getConnection(); PreparedStatement ps = con.prepareStatement(query)) {
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
             ps.setObject(1, nv.getChucVu().getID());
             ps.setObject(2, nv.getMaNV());
             ps.setObject(3, nv.getHoTen());
             ps.setObject(4, nv.getNgaySinh());
             ps.setObject(5, nv.getGioiTinh());
             ps.setObject(6, nv.getDiaChi());
-            ps.setObject(7, nv.getSDT());
+            ps.setObject(7, nv.getEmail());
             ps.setObject(8, nv.getTenTK());
             ps.setObject(9, nv.getMatKhau());
             ps.setObject(10, nv.getTrangThai());
@@ -146,12 +146,12 @@ public class NhanVienReposition {
         return check > 0;
     }
 
-    public boolean delete(String id) {
+    public boolean delete(String ten) {
         String query = "DELETE FROM [dbo].[NhanVien]\n"
-                + "      WHERE Id like ?";
+                + "      WHERE ten like ?";
         int check = 0;
-        try (Connection con = SQLConnection.getConnection(); PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setObject(1, id);
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setObject(1, ten);
             check = ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -160,11 +160,11 @@ public class NhanVienReposition {
     }
 
     public NhanVien check(String tk, String mk) {
-        String querry = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Sdt, dbo.NhanVien.TenTaiKhoan,\n"
+        String querry = "SELECT dbo.NhanVien.Id, dbo.ChucVu.Id, dbo.ChucVu.Ma, dbo.ChucVu.Ten, dbo.NhanVien.Ma AS Expr1, dbo.NhanVien.HoTen, dbo.NhanVien.NgaySinh, dbo.NhanVien.GioiTinh, dbo.NhanVien.DiaChi, dbo.NhanVien.Email, dbo.NhanVien.TenTaiKhoan,\n"
                 + " dbo.NhanVien.MatKhau, dbo.NhanVien.TrangThai\n"
                 + " FROM dbo.ChucVu INNER JOIN\n"
                 + " dbo.NhanVien ON dbo.ChucVu.Id = dbo.NhanVien.IdCV WHERE dbo.NhanVien.TenTaiKhoan LIKE ? and dbo.NhanVien.MatKhau = ?";
-        try (Connection con = SQLConnection.getConnection(); PreparedStatement ps = con.prepareStatement(querry)) {
+        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(querry)) {
             ps.setObject(1, tk);
             ps.setObject(2, mk);
             ResultSet rs = ps.executeQuery();

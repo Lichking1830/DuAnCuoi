@@ -19,11 +19,11 @@ public interface NhanVienService {
 
     String add(NhanVien nv);
 
-    String delete(String id);
+    String delete(String ten);
 
     String update(NhanVien nv);
 
     NhanVien checkTKMK(String tk, String mk);
-    
+
     List<NhanVien> getNVOnline();
 }
