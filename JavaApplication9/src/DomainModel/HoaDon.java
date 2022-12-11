@@ -2,16 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ViewModel;
-
-import DomainModel.KhachHang;
-import DomainModel.NhanVien;
+package DomainModel;
 
 /**
  *
  * @author admin
  */
-public class ViewModelHoaDon {
+public class HoaDon {
 
     private String ID;
     private KhachHang khachHang;
@@ -21,10 +18,10 @@ public class ViewModelHoaDon {
     private String ngayThanhToan;
     private int tinhTrang;
 
-    public ViewModelHoaDon() {
+    public HoaDon() {
     }
 
-    public ViewModelHoaDon(String ID, KhachHang khachHang, NhanVien nhanVien, String maHD, String ngayTao, String ngayThanhToan, int tinhTrang) {
+    public HoaDon(String ID, KhachHang khachHang, NhanVien nhanVien, String maHD, String ngayTao, String ngayThanhToan, int tinhTrang) {
         this.ID = ID;
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
@@ -90,4 +87,5 @@ public class ViewModelHoaDon {
         this.tinhTrang = tinhTrang;
     }
 
+   
 }

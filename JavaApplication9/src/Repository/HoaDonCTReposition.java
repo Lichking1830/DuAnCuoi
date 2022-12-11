@@ -4,8 +4,7 @@
  */
 package Repository;
 
-import DomainModels.SanPham;
-import DomainModels.SanPham;
+import DomainModel.DanhMucSP;
 import Ultilities.SQLConnection;
 import ViewModel.ViewModelChiTietSP;
 import ViewModel.ViewModelHoaDonCT;
@@ -31,7 +30,7 @@ public class HoaDonCTReposition {
             List<ViewModelHoaDonCT> listHDVM = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                SanPham sanPham = new SanPham(rs.getString(1), rs.getString(2));
+                DanhMucSP sanPham = new DanhMucSP(rs.getString(1), rs.getString(2));
                 ViewModelChiTietSP chiTietSP = new ViewModelChiTietSP(sanPham);
                 ViewModelHoaDonCT chiTietHoaDonViewModel = new ViewModelHoaDonCT(chiTietSP, rs.getInt(3), rs.getFloat(4));
                 listHDVM.add(chiTietHoaDonViewModel);
@@ -53,8 +52,8 @@ public class HoaDonCTReposition {
                 + "     VALUES\n"
                 + "           (?,?,?,?)";
         try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareCall(query)) {
-            ps.setObject(1, hoaDonChiTiet.getHoaDon().getIdHoaDon());
-            ps.setObject(2, hoaDonChiTiet.getCtsp().getIdChiTietSP());
+            ps.setObject(1, hoaDonChiTiet.getHoaDon().getID());
+            ps.setObject(2, hoaDonChiTiet.getCtsp().getID());
             ps.setObject(3, hoaDonChiTiet.getSoLuong());
             ps.setObject(4, hoaDonChiTiet.getDonGia());
             check = ps.executeUpdate();
@@ -73,8 +72,8 @@ public class HoaDonCTReposition {
                 + "      ,[DonGia] = ?"
                 + " WHERE Id = ?";
         try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareCall(query)) {
-            ps.setObject(1, hoaDonChiTiet.getHoaDon().getIdHoaDon());
-            ps.setObject(2, hoaDonChiTiet.getCtsp().getIdChiTietSP());
+            ps.setObject(1, hoaDonChiTiet.getHoaDon().getID());
+            ps.setObject(2, hoaDonChiTiet.getCtsp().getID());
             ps.setObject(3, hoaDonChiTiet.getSoLuong());
             ps.setObject(4, hoaDonChiTiet.getDonGia());
             ps.setObject(5, ma);

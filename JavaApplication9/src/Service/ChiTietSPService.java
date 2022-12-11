@@ -4,8 +4,8 @@
  */
 package Service;
 
-import DomainModels.ChiTietSP;
-import DomainModels.SanPham;
+import DomainModel.ChiTietSP;
+import DomainModel.DanhMucSP;
 import ViewModel.ViewModelChiTietSP;
 import java.util.List;
 
@@ -22,6 +22,6 @@ public interface ChiTietSPService {
     String update(ChiTietSP ctsp, String id);
 
     String delete(String id);
-
+    
     List<ViewModelChiTietSP> getSearch(String ten);
 }

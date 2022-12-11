@@ -4,7 +4,7 @@
  */
 package Service.impl;
 
-import DomainModels.ChiTietLuong;
+import DomainModel.ChiTietLuong;
 import Repository.ChiTietLuongReposition;
 import Service.ChiTietLuongService;
 import ViewModel.ViewModelChiTietLuong;

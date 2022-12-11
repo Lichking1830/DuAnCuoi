@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import View.Carts;
+import View.BanHang;
 import java.awt.Window;
 
 import java.awt.PopupMenu;
@@ -379,8 +379,8 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnBanHangMouseClicked
-//        BanHang bh = new BanHang(jPanel2.getLocationOnScreen());
-//        bh.getObj(jPanel2.getLocationOnScreen()).setVisible(true);
+        BanHang bh = new BanHang(jPanel2.getLocationOnScreen());
+        bh.getObj(jPanel2.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_pnBanHangMouseClicked
 
     private void pnBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnBanHangMouseEntered
@@ -400,14 +400,10 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnThongKeMouseExited
 
     private void pnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnThongKeMouseClicked
-<<<<<<< HEAD
         List<DomainModel.NhanVien> nv = nvs.getNVOnline();
         DomainModel.NhanVien newNV = nv.get(0);    
         String tenChucVu = newNV.getChucVu().getTenChucVu();
         if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenChucVu().equals("Nhân Viên")) {
-=======
-        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenCV().equals("Nhân Viên")) {
->>>>>>> origin/main
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
         } else {
             ThongKe tk = new ThongKe(jPanel2.getLocationOnScreen());
@@ -437,7 +433,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnNhanVienMouseEntered
 
     private void pnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnNhanVienMouseClicked
-        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenCV().equals("Nhân Viên")) {
+        if (nvs.getNVOnline().get(nvs.getNVOnline().size() - 1).getChucVu().getTenChucVu().equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập quyền quản trị");
         } else {
             ViewNhanVien nv = new ViewNhanVien(jPanel2.getLocationOnScreen());
@@ -455,7 +451,7 @@ public class Home extends javax.swing.JFrame {
 
     private void pnLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnLogOutMouseClicked
         new Login().setVisible(true);
-        for (DomainModels.NhanVien nv : nvs.getNVOnline()) {
+        for(DomainModel.NhanVien nv : nvs.getNVOnline()){
             nv.setTrangThai(1);
             nvs.update(nv);
         }

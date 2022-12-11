@@ -4,7 +4,7 @@
  */
 package Service;
 
-import DomainModels.SanPham;
+import DomainModel.DanhMucSP;
 import java.util.List;
 
 /**
@@ -13,14 +13,14 @@ import java.util.List;
  */
 public interface SanPhamService {
 
-    List<SanPham> getall();
+    List<DanhMucSP> getall();
 
-   SanPham getOne(String ten);
+    DanhMucSP getOne(String ten);
 
     String delete(String id);
 
-    String add(SanPham sp);
+    String add(DanhMucSP sp);
 
-    String update(SanPham sp, String id);
+    String update(DanhMucSP sp, String id);
 
 }

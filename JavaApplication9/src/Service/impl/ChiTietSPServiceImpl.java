@@ -4,8 +4,8 @@
  */
 package Service.impl;
 
-import DomainModels.ChiTietSP;
-import DomainModels.SanPham;
+import DomainModel.ChiTietSP;
+import DomainModel.DanhMucSP;
 import Repository.ChiTietSPReposition;
 import Service.ChiTietSPService;
 import ViewModel.ViewModelChiTietSP;

@@ -4,13 +4,13 @@
  */
 package Repository;
 
-import DomainModels.ChiTietSP;
+import DomainModel.ChiTietSP;
 import java.util.List;
-import DomainModels.ChucVu;
-import DomainModels.DongSP;
-import DomainModels.MauSac;
-import DomainModels.NSX;
-import DomainModels.SanPham;
+import DomainModel.ChucVu;
+import DomainModel.DongSP;
+import DomainModel.MauSac;
+import DomainModel.NSX;
+import DomainModel.DanhMucSP;
 import Ultilities.SQLConnection;
 import ViewModel.ViewModelChiTietSP;
 import java.util.List;
@@ -34,11 +34,12 @@ public class ChiTietSPReposition {
                 + "                  dbo.MauSac ON dbo.ChiTietSP.IdMauSac = dbo.MauSac.Id INNER JOIN\n"
                 + "                  dbo.NSX ON dbo.ChiTietSP.IdNsx = dbo.NSX.Id INNER JOIN\n"
                 + "                  dbo.SanPham ON dbo.ChiTietSP.IdSP = dbo.SanPham.Id";
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
             List<ViewModelChiTietSP> list = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                SanPham sp = new SanPham(rs.getString(2), rs.getString(3));
+                DanhMucSP sp = new DanhMucSP(rs.getString(2), rs.getString(3));
                 NSX nsx = new NSX(rs.getString(4), rs.getString(5));
                 MauSac ms = new MauSac(rs.getString(6), rs.getString(7));
                 DongSP dsp = new DongSP(rs.getString(8), rs.getString(9));
@@ -61,12 +62,13 @@ public class ChiTietSPReposition {
                 + "                    dbo.NSX ON dbo.ChiTietSP.IdNsx = dbo.NSX.Id INNER JOIN\n"
                 + "               dbo.SanPham ON dbo.ChiTietSP.IdSP = dbo.SanPham.Id \n"
                 + "			   WHERE dbo.SanPham.Ten like ?";
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
             List<ViewModelChiTietSP> list = new ArrayList<>();
             ps.setObject(1, ten);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                SanPham sp = new SanPham(rs.getString(2), rs.getString(3));
+                DanhMucSP sp = new DanhMucSP(rs.getString(2), rs.getString(3));
                 NSX nsx = new NSX(rs.getString(4), rs.getString(5));
                 MauSac ms = new MauSac(rs.getString(6), rs.getString(7));
                 DongSP dsp = new DongSP(rs.getString(8), rs.getString(9));
@@ -94,11 +96,12 @@ public class ChiTietSPReposition {
                 + "     VALUES\n"
                 + "           (?,?,?,?,?,?,?,?,?)";
         int check = 0;
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setObject(1, ctsp.getSanPham().getIdSanPham());
-            ps.setObject(2, ctsp.getNsx().getIdNSX());
-            ps.setObject(3, ctsp.getMauSac().getIdMS());
-            ps.setObject(4, ctsp.getSanPham().getIdSanPham());
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setObject(1, ctsp.getSanPham().getID());
+            ps.setObject(2, ctsp.getNsx().getID());
+            ps.setObject(3, ctsp.getMauSac().getID());
+            ps.setObject(4, ctsp.getDongSanPham().getID());
             ps.setObject(5, ctsp.getNamBH());
             ps.setObject(6, ctsp.getMoTa());
             ps.setObject(7, ctsp.getSoLuongTon());
@@ -124,11 +127,12 @@ public class ChiTietSPReposition {
                 + "      ,[GiaBan] = ?"
                 + " WHERE Id like ?";
         int check = 0;
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setObject(1, ctsp.getSanPham().getIdSanPham());
-            ps.setObject(2, ctsp.getNsx().getIdNSX());
-            ps.setObject(3, ctsp.getMauSac().getIdMS());
-            ps.setObject(4, ctsp.getSanPham().getIdSanPham());
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setObject(1, ctsp.getSanPham().getID());
+            ps.setObject(2, ctsp.getNsx().getID());
+            ps.setObject(3, ctsp.getMauSac().getID());
+            ps.setObject(4, ctsp.getDongSanPham().getID());
             ps.setObject(5, ctsp.getNamBH());
             ps.setObject(6, ctsp.getMoTa());
             ps.setObject(7, ctsp.getSoLuongTon());
@@ -146,7 +150,8 @@ public class ChiTietSPReposition {
         String query = "DELETE FROM [dbo].[ChiTietSP]\n"
                 + "      WHERE Id like ?";
         int check = 0;
-        try ( Connection con = SQLConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+        try (Connection con = SQLConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(query)) {
             ps.setObject(1, id);
             check = ps.executeUpdate();
         } catch (SQLException ex) {

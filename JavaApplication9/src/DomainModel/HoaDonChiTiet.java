@@ -2,35 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ViewModel;
-
-import DomainModel.ChiTietSP;
-import DomainModel.HoaDon;
+package DomainModel;
 
 /**
  *
  * @author admin
  */
-public class ViewModelHoaDonCT {
+public class HoaDonChiTiet {
 
     private HoaDon hoaDon;
     private ChiTietSP ctsp;
     private int soLuong;
     private float donGia;
-    private float tongTien;
 
-    public ViewModelHoaDonCT() {
+    public HoaDonChiTiet() {
     }
 
-    public ViewModelHoaDonCT(HoaDon hoaDon, ChiTietSP ctsp, int soLuong, float donGia, float tongTien) {
+    public HoaDonChiTiet(HoaDon hoaDon, ChiTietSP ctsp, int soLuong, float donGia) {
         this.hoaDon = hoaDon;
-        this.ctsp = ctsp;
-        this.soLuong = soLuong;
-        this.donGia = donGia;
-        this.tongTien = tongTien;
-    }
-
-    public ViewModelHoaDonCT(ViewModelChiTietSP chiTietSP, int soLuong, float donGia) {
         this.ctsp = ctsp;
         this.soLuong = soLuong;
         this.donGia = donGia;
@@ -66,14 +55,6 @@ public class ViewModelHoaDonCT {
 
     public void setDonGia(float donGia) {
         this.donGia = donGia;
-    }
-
-    public float getTongTien() {
-        return tongTien;
-    }
-
-    public void setTongTien(float tongTien) {
-        this.tongTien = tongTien;
     }
 
 }

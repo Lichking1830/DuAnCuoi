@@ -4,7 +4,7 @@
  */
 package Service;
 
-import DomainModels.MauSac;
+import DomainModel.MauSac;
 import com.sun.tools.javac.Main;
 import java.util.List;
 

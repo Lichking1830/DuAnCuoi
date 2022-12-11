@@ -4,7 +4,7 @@
  */
 package Service;
 
-import DomainModels.ChiTietLuong;
+import DomainModel.ChiTietLuong;
 import ViewModel.ViewModelChiTietLuong;
 import java.util.List;
 

@@ -4,7 +4,7 @@
  */
 package Service;
 
-import DomainModels.DongSP;
+import DomainModel.DongSP;
 import java.util.List;
 
 /**

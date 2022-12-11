@@ -4,7 +4,7 @@
  */
 package View;
 
-import DomainModels.MauSac;
+import DomainModel.MauSac;
 import Service.impl.MauSacServiceImpl;
 import Service.impl.SanPhamServiceImpl;
 import java.awt.Color;
@@ -24,7 +24,7 @@ import javax.swing.table.JTableHeader;
  * @author ADMIN
  */
 public class viewMauSac extends javax.swing.JFrame {
-
+    
     private static viewMauSac obj = null;
     private DefaultTableModel dtmMS = new DefaultTableModel();
     private MauSacServiceImpl msimpl = new MauSacServiceImpl();
@@ -36,13 +36,13 @@ public class viewMauSac extends javax.swing.JFrame {
     public viewMauSac() {
         initComponents();
         String header[] = {"ma", "ten"};
-
+        
         tbMauSac.setModel(dtmMS);
         dtmMS.setColumnIdentifiers(header);
         listms = msimpl.getAll();
         showdata(listms);
     }
-
+    
     private void table_head_color(JTable table_name) {
         DefaultTableCellRenderer head_render = new DefaultTableCellRenderer();
         head_render.setForeground(Color.WHITE);
@@ -52,26 +52,27 @@ public class viewMauSac extends javax.swing.JFrame {
         //to call above method
         //table_head_color("write table name");
     }
-
+    
     private void showdata(List<MauSac> listms) {
         dtmMS.setNumRows(0);
         for (MauSac ms : listms) {
-            dtmMS.addRow(ms.toDataRow());
+            dtmMS.addRow(ms.showdata());
         }
     }
-
+    
     private void filldata(List<MauSac> listms, int index) {
         MauSac ms = listms.get(index);
         txtMaMS.setText(ms.getMaMS());
         txtTenMS.setText(ms.getTenMS());
     }
-
+    
 //    public static viewMauSac getObj(Point locate) {
 ////        if (obj == null) {
 ////            obj = new viewMauSac(locate);
 ////        }
 ////        return obj;
 //    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -285,15 +286,7 @@ public class viewMauSac extends javax.swing.JFrame {
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
         String ma = txtMaMS.getText();
-        if (ma.isBlank()) {
-            JOptionPane.showMessageDialog(this, "không được để trống mã");
-            return;
-        }
         String ten = txtTenMS.getText();
-        if (ten.isBlank()) {
-            JOptionPane.showMessageDialog(this, "không được để trống tên");
-            return;
-        }
         MauSac ms = new MauSac(ma, ten);
         listms.add(ms);
         JOptionPane.showMessageDialog(this, msimpl.add(ms));

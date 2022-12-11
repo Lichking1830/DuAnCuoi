@@ -4,32 +4,14 @@
  */
 package View;
 
-import DomainModels.SanPham;
-import DomainModels.DongSP;
-import DomainModels.GioHang;
-import DomainModels.GioHangChiTiet;
-import DomainModels.HoaDon;
-import DomainModels.HoaDonChiTiet;
-import DomainModels.KhachHang;
-import DomainModels.MauSac;
-import DomainModels.NSX;
-import Repository.NhanVienReposition;
-import Service.impl.ChiTietSPServiceImpl;
-import Service.impl.GioHangServiceimpl;
-import Service.impl.NhanVienServiceimpl;
-import ViewModel.ViewModelChiTietSP;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import DomainModels.NhanVien;
 
 /**
  *
@@ -40,12 +22,6 @@ public class BanHang extends javax.swing.JFrame {
     private static BanHang obj = null;
     private DefaultTableModel dtmSP = new DefaultTableModel();
     private DefaultTableModel dtmGH = new DefaultTableModel();
-    private ChiTietSPServiceImpl ctspimpl = new ChiTietSPServiceImpl();
-    private List<ViewModelChiTietSP> listctsp = new ArrayList<>();
-    private List<GioHang> listgh = new ArrayList<>();
-    private GioHangServiceimpl ghimpl = new GioHangServiceimpl();
-    private List<GioHangChiTiet> listghct = new ArrayList<>();
-    private NhanVienServiceimpl nvimpl = new NhanVienServiceimpl();
 
     public BanHang(Point locate) {
         initComponents();
@@ -57,36 +33,10 @@ public class BanHang extends javax.swing.JFrame {
 
         tbSanPham.setModel(dtmSP);
         tbGioHang.setModel(dtmGH);
-
-        String[] headersp = {"Tên SP", "NSX", "Màu sắc", "Dòng SP", "Năm BH", "Số lượng tồn", "Giá bán"};
-        String[] headergh = {"Tên SP", "NSX", "Màu sắc", "Dòng SP", "Năm BH", "Số lượng tồn", "Giá bán"};
-        dtmGH.setColumnIdentifiers(headersp);
-        dtmSP.setColumnIdentifiers(headergh);
-        listctsp = ctspimpl.getAll();
-        listgh = ghimpl.getall();
-        showdataSP(listctsp);
-        showDataTableGioHang(listghct);
-    }
-
-    private void showdataSP(List<ViewModelChiTietSP> listctsp) {
-        dtmSP.setNumRows(0);
-        for (ViewModelChiTietSP ctsp : listctsp) {
-            dtmSP.addRow(ctsp.showdata());
-        }
-    }
-
-    private void showDataTableGioHang(List<GioHangChiTiet> list) {
-        int STT = 1;
-        dtmGH.setRowCount(0);
-        for (GioHangChiTiet hoaDonViewModelHD : list) {
-            dtmGH.addRow(new Object[]{STT++, hoaDonViewModelHD.getChiTietSP().getDongSP().getTenDSP(),
-                hoaDonViewModelHD.getChiTietSP().getNsx().getTenNSX(),
-                hoaDonViewModelHD.getChiTietSP().getMauSac().getTenMS(),
-                hoaDonViewModelHD.getChiTietSP().getSanPham().getTenSanPham(),
-                hoaDonViewModelHD.getChiTietSP().getNamBH(),
-                hoaDonViewModelHD.getChiTietSP().getSoLuongTon(),
-                hoaDonViewModelHD.getChiTietSP().getGiaBan()});
-        }
+        
+        String[] header = {"Tên SP", "NSX", "Màu sắc", "Dòng SP", "Năm BH", "Số lượng tồn", "Giá nhập", "Giá bán"};
+        dtmSP.setColumnIdentifiers(header);
+        
     }
 
     private void table_head_color(JTable table_name) {
@@ -104,12 +54,6 @@ public class BanHang extends javax.swing.JFrame {
             obj = new BanHang(locate);
         }
         return obj;
-    }
-
-    private void filldata(List<ViewModelChiTietSP> listctsp, int index) {
-//        ViewModelChiTietSP ctsp = listctsp.get(index);
-//        ctsp.getSanPham().setMaSP(ctsp.getSanPham().getMaSP());
-//        ctsp.getSanPham().setTenSP(ctsp.getSanPham().getTenSP());
     }
 
     /**
@@ -170,11 +114,6 @@ public class BanHang extends javax.swing.JFrame {
         tbSanPham.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbSanPham.setShowHorizontalLines(false);
         tbSanPham.setShowVerticalLines(false);
-        tbSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbSanPhamMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tbSanPham);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -210,11 +149,6 @@ public class BanHang extends javax.swing.JFrame {
         tbGioHang.setRowHeight(25);
         tbGioHang.setShowHorizontalLines(false);
         tbGioHang.setShowVerticalLines(false);
-        tbGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbGioHangMouseClicked(evt);
-            }
-        });
         jScrollPane2.setViewportView(tbGioHang);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -420,42 +354,6 @@ public class BanHang extends javax.swing.JFrame {
         BanHang1 bh = new BanHang1(this.getLocationOnScreen());
         bh.getManHoaDon(this.getLocationOnScreen()).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void tbSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSanPhamMouseClicked
-//        int row = tbSanPham.getSelectedRow();
-//        DongSP dongSanPham = new DongSP();
-//        MauSac ms = new MauSac();
-//        NSX nsx = new NSX();
-//        DanhMucSP sp = new DanhMucSP();
-//        KhachHang kh = new KhachHang
-//        
-//        
-////        Nhan GioHang gh = new GioHang(ID, khachHang, nhanVien, maGH, ngayTao, "", tenNguoiNhan, diaChi, SDT, "");
-////        GioHangChiTiet ghct = new GioHangChiTiet(, ctsp, row, row);
-//        int soLuongNhap = Integer.valueOf(JOptionPane.showInputDialog("moi nhap so luong"));
-//        int soluong = (int) tbSanPham.getValueAt(row, 5);
-//        if (soLuongNhap > soluong) {
-//            JOptionPane.showMessageDialog(rootPane, "qua so luong cho phep");
-//            ViewModelChiTietSP ctsp = listctsp.get(row);
-//            ctsp.setSoLuongTon(soluong - soLuongNhap);
-//            showdataSP(listctsp);
-//            sp.setMaSP((String) tbSanPham.getValueAt(row, 1));
-//            sp.setTenSP((String) tbSanPham.getValueAt(row, 2));
-//            nsx.setTenNSX((String) tbSanPham.getValueAt(row, 3));
-//            ms.setTenMS((String) tbSanPham.getValueAt(row, 4));
-//            dongSanPham.setTenDSP((String) tbSanPham.getValueAt(row, 5));
-//            ctsp.setSoLuongTon((int) tbSanPham.getValueAt(row, 7));
-//            ctsp.setGiaBan((float) tbSanPham.getValueAt(row, 8));
-//
-//            listghct.add(ghct);
-//            showDataTableGioHang(listghct);
-//        }
-    }//GEN-LAST:event_tbSanPhamMouseClicked
-
-    private void tbGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGioHangMouseClicked
-        tbSanPhamMouseClicked(evt);
-        showdataSP(listctsp);
-    }//GEN-LAST:event_tbGioHangMouseClicked
 
     /**
      * @param args the command line arguments
