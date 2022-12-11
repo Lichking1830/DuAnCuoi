@@ -4,7 +4,7 @@
  */
 package View;
 
-import DomainModel.SanPham;
+import DomainModel.DanhMucSP;
 import DomainModel.DongSP;
 import Service.impl.SanPhamServiceImpl;
 import java.awt.Color;
@@ -27,7 +27,7 @@ public class viewSanPham extends javax.swing.JFrame {
     
     private static viewSanPham obj = null;
     private DefaultTableModel dtmSP = new DefaultTableModel();
-    private List<SanPham> listsp = new ArrayList<>();
+    private List<DanhMucSP> listsp = new ArrayList<>();
     private SanPhamServiceImpl spimpl = new SanPhamServiceImpl();
 
     /**
@@ -42,15 +42,15 @@ public class viewSanPham extends javax.swing.JFrame {
         listsp = spimpl.getall();
     }
     
-    private void showdata(List<SanPham> listsp) {
+    private void showdata(List<DanhMucSP> listsp) {
         dtmSP.setNumRows(0);
-        for (SanPham sp : listsp) {
+        for (DanhMucSP sp : listsp) {
             dtmSP.addRow(sp.showdata());
         }
     }
     
-    private void filldata(int index, List<SanPham> listsp) {
-        SanPham sp = listsp.get(index);
+    private void filldata(int index, List<DanhMucSP> listsp) {
+        DanhMucSP sp = listsp.get(index);
         txtMa.setText(sp.getMaSP());
         txtTen.setText(sp.getTenSP());
     }
@@ -275,7 +275,7 @@ public class viewSanPham extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String ma = txtMa.getText();
         String ten = txtTen.getText();
-        SanPham sp = new SanPham(ma, ten);
+        DanhMucSP sp = new DanhMucSP(ma, ten);
         listsp.add(sp);
         JOptionPane.showMessageDialog(this, spimpl.add(sp));
         listsp = spimpl.getall();
