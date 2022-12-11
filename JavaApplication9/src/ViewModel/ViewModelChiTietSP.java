@@ -8,6 +8,7 @@ import DomainModel.DongSP;
 import DomainModel.MauSac;
 import DomainModel.NSX;
 import DomainModel.DanhMucSP;
+import DomainModel.SanPham;
 
 /**
  *
@@ -16,6 +17,7 @@ import DomainModel.DanhMucSP;
 public class ViewModelChiTietSP {
 
     private DanhMucSP sanPham;
+    private SanPham sp;
     private NSX nsx;
     private MauSac mauSac;
     private DongSP dongSanPham;
@@ -41,8 +43,16 @@ public class ViewModelChiTietSP {
         this.tongTien = tongTien;
     }
 
+    public SanPham getSp() {
+        return sp;
+    }
+
+    public void setSp(SanPham sp) {
+        this.sp = sp;
+    }
+
     public ViewModelChiTietSP(DanhMucSP sanPham) {
-         this.sanPham = sanPham;
+        this.sanPham = sanPham;
     }
 
     public DanhMucSP getSanPham() {
@@ -115,6 +125,10 @@ public class ViewModelChiTietSP {
 
     public void setTongTien(float tongTien) {
         this.tongTien = tongTien;
+    }
+
+    public Object[] showdata() {
+        return new Object[]{sanPham.getTenSP(), nsx.getTenNSX(), mauSac.getTenMS(), dongSanPham.getTenDSP(), namBH, soLuongTon, giaBan};
     }
 
 }

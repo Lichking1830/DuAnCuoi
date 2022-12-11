@@ -5,16 +5,40 @@
 package View;
 
 import DomainModel.ChiTietSP;
+import DomainModel.DongSP;
+import DomainModel.GioHang;
+import DomainModel.HoaDon;
+import DomainModel.HoaDonChiTiet;
+import DomainModel.MauSac;
+import DomainModel.NSX;
+import DomainModel.NhanVien;
 import Service.ChiTietSPService;
+import Service.DongSPService;
+import Service.HoaDonChiTietService;
+import Service.KhachHangService;
+import Service.MauSacService;
+import Service.NSXService;
+import Service.NhanVienService;
 import Service.SanPhamService;
 import Service.impl.ChiTietSPServiceImpl;
+import Service.impl.DongSPServiceImpl;
+import Service.impl.GioHangServiceimpl;
+import Service.impl.HoaDonChiTietServiceimpl;
+import Service.impl.KhachHangServiceImpl;
+import Service.impl.MauSacServiceImpl;
+import Service.impl.NSXServiceImpl;
+import Service.impl.NhanVienServiceimpl;
 import Service.impl.SanPhamServiceImpl;
 import ViewModel.ViewModelChiTietSP;
+import ViewModel.ViewModelGioHang;
+import ViewModel.ViewModelSanPham;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -29,8 +53,33 @@ public class BanHang extends javax.swing.JFrame {
     private static BanHang obj = null;
     private DefaultTableModel dtmSP = new DefaultTableModel();
     private DefaultTableModel dtmGH = new DefaultTableModel();
-    private SanPhamService sps = new SanPhamServiceImpl();
+//    private SanPhamService sps = new SanPhamServiceImpl();
     private ChiTietSPService ctsv = new ChiTietSPServiceImpl();
+
+    private List<ViewModelChiTietSP> listctsp = new ArrayList<>();
+//    private List<DongSP> listdsp = new ArrayList<>();
+//    private List<MauSac> listms = new ArrayList<>();
+//    private List<NSX> listnsx = new ArrayList<>();
+//    private List<ViewModelSanPham> listsp = new ArrayList<>();
+    private List<HoaDonChiTiet> listHDCT = new ArrayList<>();
+    private List<ViewModelGioHang> listVMGH = new ArrayList<>();
+//    private List<HoaDon> listVMHD = new ArrayList<>();
+//    private List<NhanVien> listVMNV = new ArrayList<>();
+//    private List<String> taiKhoan = new ArrayList<>();
+
+//    private SanPhamService sanPhamService = new SanPhamServiceImpl();
+    private GioHangServiceimpl gh = new GioHangServiceimpl();
+    private ChiTietSPService ctspi = new ChiTietSPServiceImpl();
+//    private DongSPService dspi = new DongSPServiceImpl();
+//    private NSXService nsxi = new NSXServiceImpl();
+//    private MauSacService msi = new MauSacServiceImpl();
+//    private SanPhamService spi = new SanPhamServiceImpl();
+//    private HoaDonService hdsi = new HoaDon;
+    private HoaDonChiTietService hdctS = new HoaDonChiTietServiceimpl();
+    private List<GioHang> listGioHangs = new ArrayList<>();
+//    private NhanVienService nvsi = new NhanVienServiceimpl();
+//    private KhachHangService khs = new KhachHangServiceImpl();
+//    private TaiKhoanService tks = new TaiKhoanServiceImpl();
 
     public BanHang(Point locate) {
         initComponents();
@@ -40,12 +89,22 @@ public class BanHang extends javax.swing.JFrame {
 
         table_head_color(tbGioHang);
 
-        tbSanPham.setModel(dtmSP);
+//        tbSanPham.setModel(dtmSP);
         tbGioHang.setModel(dtmGH);
-
-        String[] header = {"Tên SP", "NSX", "Màu sắc", "Dòng SP", "Năm BH", "Số lượng tồn", "Giá nhập", "Giá bán"};
-        dtmSP.setColumnIdentifiers(header);
-
+        String headerGH[] = {"STT", "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá", "Thành Tiền"};
+        String[] headersp = {"Tên SP", "NSX", "Màu sắc", "Dòng SP", "Năm BH", "Số lượng tồn", "Giá bán"};
+        dtmGH.setColumnIdentifiers(headerGH);
+        dtmSP.setColumnIdentifiers(headersp);
+        tbGioHang.setModel(dtmGH);
+        tbSanPham.setModel(dtmSP);
+        listctsp = ctspi.getAll();
+//        listdsp = dspi.getall();
+//        listms = msi.getAll();
+//        listnsx = nsxi.getAll();        
+        listctsp = ctspi.getAll();
+        listGioHangs = gh.getall();
+        showDataTableGioHang(listVMGH);
+        showdataSP(listctsp);
     }
 
     private void table_head_color(JTable table_name) {
@@ -63,6 +122,27 @@ public class BanHang extends javax.swing.JFrame {
             obj = new BanHang(locate);
         }
         return obj;
+    }
+
+    private void showDataTableGioHang(List<ViewModelGioHang> list) {
+        int STT = 1;
+        dtmGH.setRowCount(0);
+        for (ViewModelGioHang hoaDonViewModelHD : list) {
+            dtmGH.addRow(new Object[]{STT++, hoaDonViewModelHD.getMaSP(), hoaDonViewModelHD.getTenSP(), hoaDonViewModelHD.getSoLuong(), hoaDonViewModelHD.getDonGia(), hoaDonViewModelHD.thanhTien()});
+        }
+    }
+
+    private void filldata(List<ViewModelChiTietSP> listctsp, int index) {
+        ViewModelChiTietSP ctsp = listctsp.get(index);
+        ctsp.getSanPham().setMaSP(ctsp.getSanPham().getMaSP());
+        ctsp.getSanPham().setTenSP(ctsp.getSanPham().getTenSP());
+    }
+
+    private void showdataSP(List<ViewModelChiTietSP> listctsp) {
+        dtmSP.setNumRows(0);
+        for (ViewModelChiTietSP ctsp : listctsp) {
+            dtmSP.addRow(ctsp.showdata());
+        }
     }
 
     /**
@@ -124,6 +204,11 @@ public class BanHang extends javax.swing.JFrame {
         tbSanPham.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbSanPham.setShowHorizontalLines(false);
         tbSanPham.setShowVerticalLines(false);
+        tbSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbSanPhamMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbSanPham);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -398,6 +483,34 @@ public class BanHang extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void tbSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSanPhamMouseClicked
+        // TODO add your handling code here:
+        ViewModelGioHang chiTietHoaDonViewModel = new ViewModelGioHang();
+        JOptionPane frame = new JOptionPane();
+        String textNhap = JOptionPane.showInputDialog(frame, "Xin mời nhập số lượng", 1);
+        if (textNhap == null) {
+            frame.setVisible(false);
+        } else if (textNhap.matches("\"[a-z A-Z]+\"") == true) {
+            JOptionPane.showMessageDialog(this, "Sai định dạng số lượng");
+        } else if (textNhap.isEmpty() == false && textNhap.matches("\\d+") == true) {
+            int soLuongNhap = Integer.valueOf(textNhap);
+            int row = tbSanPham.getSelectedRow();
+            int soLuong = (int) tbSanPham.getValueAt(row, 5);
+            if (soLuongNhap > soLuong) {
+                JOptionPane.showMessageDialog(rootPane, "Vượt quá số lượng tồn");
+            } else {
+                ViewModelChiTietSP sanPhamViewModel = listctsp.get(row);
+                sanPhamViewModel.setSoLuongTon(soLuong - soLuongNhap);
+                showdataSP(listctsp);
+                String maSP = sanPhamViewModel.getSp().getMaSP();
+                String tenSP = sanPhamViewModel.getSp().getTenSP();
+                float donGia = (float) dtmSP.getValueAt(row, 7);
+                ViewModelGioHang gioHang = new ViewModelGioHang(maSP, tenSP, soLuongNhap, donGia, (float) soLuongNhap * donGia);
+                listVMGH.add(gioHang);
+                showDataTableGioHang(listVMGH);
+            }
+    }//GEN-LAST:event_tbSanPhamMouseClicked
+    }
     /**
      * @param args the command line arguments
      */
