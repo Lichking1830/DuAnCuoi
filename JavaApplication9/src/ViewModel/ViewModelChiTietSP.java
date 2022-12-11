@@ -8,7 +8,6 @@ import DomainModel.DongSP;
 import DomainModel.MauSac;
 import DomainModel.NSX;
 import DomainModel.DanhMucSP;
-import DomainModel.SanPham;
 
 /**
  *
@@ -16,22 +15,23 @@ import DomainModel.SanPham;
  */
 public class ViewModelChiTietSP {
 
+    private String id;
     private DanhMucSP sanPham;
-    private SanPham sp;
     private NSX nsx;
     private MauSac mauSac;
     private DongSP dongSanPham;
     private int namBH;
     private String moTa;
     private int soLuongTon;
+    private float giaNhap;
     private float giaBan;
     private float tongTien;
 
     public ViewModelChiTietSP() {
     }
 
-    public ViewModelChiTietSP(DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaBan, float tongTien) {
-
+    public ViewModelChiTietSP(String id, DanhMucSP sanPham, NSX nsx, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, float giaNhap, float giaBan, float tongTien) {
+        this.id = id;
         this.sanPham = sanPham;
         this.nsx = nsx;
         this.mauSac = mauSac;
@@ -39,20 +39,17 @@ public class ViewModelChiTietSP {
         this.namBH = namBH;
         this.moTa = moTa;
         this.soLuongTon = soLuongTon;
+        this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.tongTien = tongTien;
     }
 
-    public SanPham getSp() {
-        return sp;
+    public String getId() {
+        return id;
     }
 
-    public void setSp(SanPham sp) {
-        this.sp = sp;
-    }
-
-    public ViewModelChiTietSP(DanhMucSP sanPham) {
-        this.sanPham = sanPham;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public DanhMucSP getSanPham() {
@@ -111,6 +108,14 @@ public class ViewModelChiTietSP {
         this.soLuongTon = soLuongTon;
     }
 
+    public float getGiaNhap() {
+        return giaNhap;
+    }
+
+    public void setGiaNhap(float giaNhap) {
+        this.giaNhap = giaNhap;
+    }
+
     public float getGiaBan() {
         return giaBan;
     }
@@ -125,10 +130,6 @@ public class ViewModelChiTietSP {
 
     public void setTongTien(float tongTien) {
         this.tongTien = tongTien;
-    }
-
-    public Object[] showdata() {
-        return new Object[]{sanPham.getTenSP(), nsx.getTenNSX(), mauSac.getTenMS(), dongSanPham.getTenDSP(), namBH, soLuongTon, giaBan};
     }
 
 }
