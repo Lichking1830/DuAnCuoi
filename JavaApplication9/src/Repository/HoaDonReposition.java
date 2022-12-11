@@ -32,7 +32,7 @@ public class HoaDonReposition {
             List<ViewModelHoaDon> list = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                KhachHang kh = new KhachHang(rs.getString(2), rs.getString(3));
+                KhachHang kh = new KhachHang(rs.getString(2),rs.getString(3));
                 NhanVien nv = new NhanVien(rs.getString(4), rs.getString(5));
                 ViewModelHoaDon hd = new ViewModelHoaDon(rs.getString(1), kh, nv, rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
                 list.add(hd);
