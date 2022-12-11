@@ -132,4 +132,7 @@ public class ViewModelChiTietSP {
         this.tongTien = tongTien;
     }
 
+    public Object[] showData() {
+        return new Object[]{sanPham.getTenSP(), mauSac.getTenMS(), nsx.getTenNSX(), dongSanPham.getTenDSP(), moTa, soLuongTon, giaBan};
+    }
 }

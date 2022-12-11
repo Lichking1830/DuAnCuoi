@@ -141,7 +141,7 @@ public class BanHang extends javax.swing.JFrame {
     private void showdataSP(List<ViewModelChiTietSP> listctsp) {
         dtmSP.setNumRows(0);
         for (ViewModelChiTietSP ctsp : listctsp) {
-            dtmSP.addRow(ctsp.showdata());
+            dtmSP.addRow(ctsp.showData());
         }
     }
 
@@ -502,8 +502,8 @@ public class BanHang extends javax.swing.JFrame {
                 ViewModelChiTietSP sanPhamViewModel = listctsp.get(row);
                 sanPhamViewModel.setSoLuongTon(soLuong - soLuongNhap);
                 showdataSP(listctsp);
-                String maSP = sanPhamViewModel.getSp().getMaSP();
-                String tenSP = sanPhamViewModel.getSp().getTenSP();
+                String maSP = sanPhamViewModel.getSanPham().getMaSP();
+                String tenSP = sanPhamViewModel.getSanPham().getTenSP();
                 float donGia = (float) dtmSP.getValueAt(row, 7);
                 ViewModelGioHang gioHang = new ViewModelGioHang(maSP, tenSP, soLuongNhap, donGia, (float) soLuongNhap * donGia);
                 listVMGH.add(gioHang);
